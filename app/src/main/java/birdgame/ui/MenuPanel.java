@@ -13,10 +13,8 @@ import javax.swing.JPanel;
 
 public class MenuPanel extends JPanel{
     private Window window;
-    private LevelSelectPanel level;
     public MenuPanel(Window window){
         this.window = window;
-        this.level = new LevelSelectPanel(window, this);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -30,7 +28,7 @@ public class MenuPanel extends JPanel{
                 // cause thats how game(loop) and level setup should be done
                 // Level1 level1 = new Level1();
                 // Game game = new Game(level1);
-                window.navTo(level);
+                window.navTo(window.getLevelSelectPanel());
 
             } 
         });
