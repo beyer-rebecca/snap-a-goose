@@ -1,4 +1,6 @@
-package birdgame;
+package birdgame.game;
+
+import birdgame.ui.Window;
 
 public class Game {
     Window window;
