@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 
 public class LevelSelectPanel extends JPanel{
-    public LevelSelectPanel(Window window, MenuPanel menu){
+    public LevelSelectPanel(Window window){
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -31,13 +31,15 @@ public class LevelSelectPanel extends JPanel{
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        level1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                window.navTo(window.getLevelPanel());
+                
+            }
+        });
         back.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                // leave it be until level and game are implemented
-                // cause thats how game(loop) and level setup should be done
-                // Level1 level1 = new Level1();
-                // Game game = new Game(level1);
-                window.navTo(menu);
+                window.navTo(window.getMenuPanel());
 
             } 
         });
