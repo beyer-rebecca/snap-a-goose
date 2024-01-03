@@ -63,7 +63,7 @@ public class LevelPanel extends JPanel {
     public void update(){
         time -= 1;
         timeField.setText(String.valueOf(time));
-        // spawn();
+        spawn();
     }
     public void spawn(){
         birds.add(new Bird(rand.nextInt(100)*(-1), rand.nextInt(620), 50, 100));
