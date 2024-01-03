@@ -1,18 +1,32 @@
 package birdgame.ui;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import birdgame.ui.Window;
 
 import javax.swing.JPanel;
 
+import birdgame.game.Bird;
+import birdgame.game.Game;
+
 public class LevelPanel extends JPanel {
-    LevelPanel(Window window){
+    public Bird bird;
+    private Game game;
+    public LevelPanel(Window window){
+        bird = new Bird(500,500, 50, 100);
+        this.game = window.getGame();
+        System.out.println(this.game);
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
         CTextField score = new CTextField();
         CTextField time = new CTextField();
+
+        setBackground(Color.GRAY);
 
         score.setText("0");
         c.gridx = 1;
@@ -30,5 +44,12 @@ public class LevelPanel extends JPanel {
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
         add(time, c);
+
+        window.getGame().startGameLoop();
+    }
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+
+        game.render(g);
     }
 }

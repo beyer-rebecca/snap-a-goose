@@ -15,14 +15,15 @@ public class Window extends JFrame{
     // public HighscorePanel highscore = new HighscorePanel();
     // public CreditsPanel creditsPanel = new CreditsPanel();
     // public InstructionsPanel instructionsPanel = new InstructionsPanel();
-    private LevelPanel levelPanel = new LevelPanel(this);
+    private LevelPanel levelPanel;
     
     public Window(Game game){
         this.game = game;
+
         
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(game.WINDOW_WIDHT, game.WINDOW_HEIGHT);
+        setSize(this.game.WINDOW_WIDHT, this.game.WINDOW_HEIGHT);
         setResizable(false);
         setTitle("Bird Game");
         setContentPane(menu);
@@ -39,6 +40,10 @@ public class Window extends JFrame{
         this.revalidate();
     }
 
+    public void startGame(){
+        levelPanel = new LevelPanel(this);
+    }
+
     public MenuPanel getMenuPanel(){
         return this.menu;
     }
@@ -47,5 +52,8 @@ public class Window extends JFrame{
     }
     public LevelPanel getLevelPanel(){
         return this.levelPanel;
+    }
+    public Game getGame(){
+        return this.game;
     }
 }

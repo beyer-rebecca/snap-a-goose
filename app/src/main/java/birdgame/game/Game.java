@@ -1,5 +1,6 @@
 package birdgame.game;
 
+import java.awt.Graphics;
 import java.awt.Toolkit;
 
 import birdgame.ui.Window;
@@ -17,6 +18,7 @@ public class Game implements Runnable{
     
     public Game(){
         this.window = new Window(this);
+        System.out.println("Window: " + this.window);
         
     }
 
@@ -26,7 +28,11 @@ public class Game implements Runnable{
     }
 
     public void update(){
-        // TODO add GameObject update functions
+        window.getLevelPanel().bird.update();
+    }
+
+    public void render(Graphics g){
+        window.getLevelPanel().bird.render(g);
     }
 
     @Override
@@ -59,7 +65,7 @@ public class Game implements Runnable{
             }
 
             if(deltaF >= 1){
-                // gamePanel.repaint();
+                window.getLevelPanel().repaint();
                 Toolkit.getDefaultToolkit().sync();
                 frames++;
                 deltaF--;
