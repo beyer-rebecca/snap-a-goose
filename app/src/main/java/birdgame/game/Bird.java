@@ -13,6 +13,8 @@ public class Bird extends Entity {
 
     private Image img;
 
+    public boolean isActive = true;
+
     public Bird(float x, float y, int width, int height){
         super(x,y,height,width);
         
@@ -31,13 +33,13 @@ public class Bird extends Entity {
             System.out.println(e);
         }
         g.drawImage(img, (int) x,(int) y, null);
-        System.out.println("render");
         
     }
 
     public void update(){
         x += birdSpeed;
-        System.out.println("Bird x: " + x);
-        
+        if (x > 1280/2){
+            isActive = false;
+        }
     }
 }

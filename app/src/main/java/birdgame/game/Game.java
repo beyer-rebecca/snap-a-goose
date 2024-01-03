@@ -1,13 +1,19 @@
 package birdgame.game;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+
+import birdgame.ui.LevelPanel;
 import birdgame.ui.Window;
 
 public class Game implements Runnable{
     private Window window;
     private Thread gameThread;
+    private LevelPanel levelPanel;
 
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
@@ -15,10 +21,19 @@ public class Game implements Runnable{
 
 	public int WINDOW_WIDHT = 1280;
 	public int WINDOW_HEIGHT = 720;
+
+
+
+    private Image img;
     
     public Game(){
         this.window = new Window(this);
         System.out.println("Window: " + this.window);
+        try{
+            img = ImageIO.read(getClass().getClassLoader().getResource("level1.jpg"));
+        }catch(Exception e){
+            
+        }
         
     }
 
@@ -26,13 +41,36 @@ public class Game implements Runnable{
         gameThread = new Thread(this);
         gameThread.start();
     }
+    //Temp
+    public void startGame(){
+        levelPanel = new LevelPanel(this, img);
+    }
+
+    //Temp
+    public LevelPanel getLevelPanel(){
+        return levelPanel;
+    }
+
+    public void loadLevel(int level, Image background){
+        // TODO: write Level Loading
+    }
 
     public void update(){
-        window.getLevelPanel().bird.update();
+        for (Bird bird : levelPanel.birds){
+            if(bird.isActive)
+                bird.update();
+        }
     }
 
     public void render(Graphics g){
-        window.getLevelPanel().bird.render(g);
+        for (Bird bird : levelPanel.birds){
+            if(bird.isActive)
+                bird.render(g);
+        }
+    }
+    
+    public void updateSec(){
+        levelPanel.update(); 
     }
 
     @Override
@@ -65,7 +103,7 @@ public class Game implements Runnable{
             }
 
             if(deltaF >= 1){
-                window.getLevelPanel().repaint();
+                levelPanel.repaint();
                 Toolkit.getDefaultToolkit().sync();
                 frames++;
                 deltaF--;
@@ -73,6 +111,7 @@ public class Game implements Runnable{
 
             if(System.currentTimeMillis() - lastCheck >= 1000){
                 lastCheck = System.currentTimeMillis();
+                updateSec();
                 System.out.println("Fps: " + frames + "UPS: " + updates);
                 frames = 0;
                 updates = 0;

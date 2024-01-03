@@ -33,8 +33,8 @@ public class LevelSelectPanel extends JPanel{
         }
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                window.startGame();
-                window.navTo(window.getLevelPanel());
+                window.getGame().startGame();
+                window.navTo(window.getGame().getLevelPanel());
                 
             }
         });

@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
-import birdgame.ui.Window;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -13,20 +15,24 @@ import birdgame.game.Bird;
 import birdgame.game.Game;
 
 public class LevelPanel extends JPanel {
+    private int time = 120;
     public Bird bird;
     private Game game;
-    public LevelPanel(Window window){
-        bird = new Bird(500,500, 50, 100);
-        this.game = window.getGame();
-        System.out.println(this.game);
+    private Image background;
+    CTextField score = new CTextField();
+    CTextField timeField = new CTextField();
+    public ArrayList<Bird> birds = new ArrayList<Bird>();
+    private Random rand = new Random();
+    public int size = 0;
+    public LevelPanel(Game game, Image background){
+        this.game = game;
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        CTextField score = new CTextField();
-        CTextField time = new CTextField();
+        this.background = background;
 
-        setBackground(Color.GRAY);
+
 
         score.setText("0");
         c.gridx = 1;
@@ -36,20 +42,31 @@ public class LevelPanel extends JPanel {
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
         add(score, c);
-        time.setText("120");
+        timeField.setText("120");
         c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.NORTHWEST;
         c.weighty = 1;
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
-        add(time, c);
+        add(timeField, c);
 
-        window.getGame().startGameLoop();
+        game.startGameLoop();
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        //drawBackground
+        g.drawImage(this.background, 0,0, 1280, 720, null);
 
         game.render(g);
+    }
+    public void update(){
+        time -= 1;
+        timeField.setText(String.valueOf(time));
+        // spawn();
+    }
+    public void spawn(){
+        birds.add(new Bird(rand.nextInt(100)*(-1), rand.nextInt(620), 50, 100));
+
     }
 }

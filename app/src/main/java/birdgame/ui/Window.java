@@ -15,7 +15,6 @@ public class Window extends JFrame{
     // public HighscorePanel highscore = new HighscorePanel();
     // public CreditsPanel creditsPanel = new CreditsPanel();
     // public InstructionsPanel instructionsPanel = new InstructionsPanel();
-    private LevelPanel levelPanel;
     
     public Window(Game game){
         this.game = game;
@@ -40,18 +39,12 @@ public class Window extends JFrame{
         this.revalidate();
     }
 
-    public void startGame(){
-        levelPanel = new LevelPanel(this);
-    }
 
     public MenuPanel getMenuPanel(){
         return this.menu;
     }
     public LevelSelectPanel getLevelSelectPanel(){
         return this.levelSelect;
-    }
-    public LevelPanel getLevelPanel(){
-        return this.levelPanel;
     }
     public Game getGame(){
         return this.game;
