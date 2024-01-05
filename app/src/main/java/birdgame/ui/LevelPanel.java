@@ -38,7 +38,7 @@ public class LevelPanel extends JPanel {
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
         add(score, c);
-        timeField.setText("120");
+        timeField.setText(String.valueOf(time));
         c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.NORTHWEST;
