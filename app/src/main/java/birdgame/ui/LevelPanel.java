@@ -66,7 +66,7 @@ public class LevelPanel extends JPanel {
         g.drawImage(this.background, 0,0, 1280, 720, null);
 
         game.render(g);
-        // g.drawImage(this.mask, 0,0, 1280, 720, null);
+        g.drawImage(this.mask, 0,0, 1280, 720, null);
     }
     public void update(){
         time -= 1;

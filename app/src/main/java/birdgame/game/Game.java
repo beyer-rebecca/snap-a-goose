@@ -59,20 +59,23 @@ public class Game implements Runnable{
 
     public void update(){
         for (Bird bird : levelPanel.birds){
-            if(bird.isActive)
+            if(bird.getIsMoving())
                 bird.update();
         }
     }
 
     public void render(Graphics g){
         for (Bird bird : levelPanel.birds){
-            if(bird.isActive)
+            if(bird.getIsMoving())
                 bird.render(g);
         }
     }
     
     public void updateSec(){
         levelPanel.update(); 
+        for (Bird bird : levelPanel.birds){
+            bird.updateSec();
+        }
     }
 
     @Override
