@@ -19,18 +19,20 @@ public class LevelPanel extends JPanel {
     public Bird bird;
     private Game game;
     private Image background;
+    private Image mask;
     CTextField score = new CTextField();
     CTextField timeField = new CTextField();
     public ArrayList<Bird> birds = new ArrayList<Bird>();
     private Random rand = new Random();
     public int size = 0;
-    public LevelPanel(Game game, Image background){
+    public LevelPanel(Game game, Image background, Image mask){
         this.game = game;
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
         this.background = background;
+        this.mask = mask;
 
 
 
@@ -51,6 +53,7 @@ public class LevelPanel extends JPanel {
         c.insets = new Insets(10, 10, 10, 10);
         add(timeField, c);
 
+        spawn();
         game.startGameLoop();
     }
     public void paintComponent(Graphics g){
@@ -59,11 +62,11 @@ public class LevelPanel extends JPanel {
         g.drawImage(this.background, 0,0, 1280, 720, null);
 
         game.render(g);
+        g.drawImage(this.mask, 0,0, 1280, 720, null);
     }
     public void update(){
         time -= 1;
         timeField.setText(String.valueOf(time));
-        spawn();
     }
     public void spawn(){
         birds.add(new Bird(rand.nextInt(100)*(-1), rand.nextInt(620), 50, 100));

@@ -25,12 +25,14 @@ public class Game implements Runnable{
 
 
     private Image img;
+    private Image mask;
     
     public Game(){
         this.window = new Window(this);
         System.out.println("Window: " + this.window);
         try{
             img = ImageIO.read(getClass().getClassLoader().getResource("level1.jpg"));
+            mask = ImageIO.read(getClass().getClassLoader().getResource("level1_mask.png"));
         }catch(Exception e){
             
         }
@@ -43,7 +45,7 @@ public class Game implements Runnable{
     }
     //Temp
     public void startGame(){
-        levelPanel = new LevelPanel(this, img);
+        levelPanel = new LevelPanel(this, img, mask);
     }
 
     //Temp
