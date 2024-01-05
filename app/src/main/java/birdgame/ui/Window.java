@@ -12,7 +12,7 @@ public class Window extends JFrame{
     private MenuPanel menu = new MenuPanel(this);
     private LevelSelectPanel levelSelect = new LevelSelectPanel(this);
     // public LoginPanel login = new LoginPanel();
-    // public HighscorePanel highscore = new HighscorePanel();
+    public HighscorePanel highscorePanel = new HighscorePanel(this);
     public CreditsPanel creditsPanel = new CreditsPanel(this);
     // public InstructionsPanel instructionsPanel = new InstructionsPanel();
     
@@ -52,5 +52,9 @@ public class Window extends JFrame{
 
     public CreditsPanel getCreditsPanel(){
         return this.creditsPanel;
+    }
+
+    public HighscorePanel getHighscorePanel(){
+        return this.highscorePanel;
     }
 }

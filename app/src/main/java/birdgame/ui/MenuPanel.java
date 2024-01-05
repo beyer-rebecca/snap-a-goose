@@ -17,8 +17,8 @@ public class MenuPanel extends JPanel{
         this.window = window;
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.RELATIVE;
 
-        
 
         // CButton buttonlevel = new CButton("Level");
         CButton buttonlevel = new CButton("Level");
@@ -41,10 +41,15 @@ public class MenuPanel extends JPanel{
             }
         });
 
+        CButton highscoreButton = new CButton("Highscores");
+        highscoreButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                window.navTo(window.getHighscorePanel());
+            }
+        });
 
 
         CButton manuel = new CButton("Manuel");
-        CButton highscore = new CButton("Highscore");
         CButton sound = new CButton("Sound");
         CButton music = new CButton("Music");
         CButton logout = new CButton("Logout");
@@ -69,7 +74,7 @@ public class MenuPanel extends JPanel{
         add(manuel, c);
         c.gridx = 0;
         c.gridy = 4;
-        add(highscore, c);
+        add(highscoreButton, c);
         c.gridx = 0;
         c.gridy = 5;
         add(creditsButton, c);
