@@ -13,7 +13,7 @@ public class Window extends JFrame{
     private LevelSelectPanel levelSelect = new LevelSelectPanel(this);
     // public LoginPanel login = new LoginPanel();
     // public HighscorePanel highscore = new HighscorePanel();
-    // public CreditsPanel creditsPanel = new CreditsPanel();
+    public CreditsPanel creditsPanel = new CreditsPanel(this);
     // public InstructionsPanel instructionsPanel = new InstructionsPanel();
     
     public Window(Game game){
@@ -48,5 +48,9 @@ public class Window extends JFrame{
     }
     public Game getGame(){
         return this.game;
+    }
+
+    public CreditsPanel getCreditsPanel(){
+        return this.creditsPanel;
     }
 }
