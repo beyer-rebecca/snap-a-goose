@@ -45,7 +45,7 @@ public class Game implements Runnable{
     }
     //Temp
     public void startGame(){
-        levelPanel = new LevelPanel(this, img, mask);
+        levelPanel = new LevelPanel(this, 1,img, mask);
     }
 
     //Temp

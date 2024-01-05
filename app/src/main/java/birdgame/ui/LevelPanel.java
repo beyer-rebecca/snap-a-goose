@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 
 import birdgame.game.Bird;
 import birdgame.game.Game;
+import birdgame.utils.Constants;
+import birdgame.utils.Vec2;
 
 public class LevelPanel extends JPanel {
     private int time = 120;
@@ -25,8 +27,10 @@ public class LevelPanel extends JPanel {
     public ArrayList<Bird> birds = new ArrayList<Bird>();
     private Random rand = new Random();
     public int size = 0;
-    public LevelPanel(Game game, Image background, Image mask){
+    private int level;
+    public LevelPanel(Game game, int level,Image background, Image mask){
         this.game = game;
+        this.level = level;
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -62,14 +66,19 @@ public class LevelPanel extends JPanel {
         g.drawImage(this.background, 0,0, 1280, 720, null);
 
         game.render(g);
-        g.drawImage(this.mask, 0,0, 1280, 720, null);
+        // g.drawImage(this.mask, 0,0, 1280, 720, null);
     }
     public void update(){
         time -= 1;
         timeField.setText(String.valueOf(time));
     }
     public void spawn(){
-        birds.add(new Bird(rand.nextInt(100)*(-1), rand.nextInt(620), 50, 100));
+        switch(level){
+            case 1:
+                for(Vec2 pos : Constants.Level1.birdsPos){
+                    birds.add(new Bird(pos.x, pos.y, 20, 40));
+                }
+        }
 
     }
 }

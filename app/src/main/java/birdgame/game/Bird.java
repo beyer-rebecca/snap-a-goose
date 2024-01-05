@@ -16,7 +16,7 @@ public class Bird extends Entity {
     public boolean isActive = true;
 
     public Bird(float x, float y, int width, int height){
-        super(x,y,height,width);
+        super(x,y,width,height);
         
     }
 
@@ -28,7 +28,7 @@ public class Bird extends Entity {
     public void render(Graphics g){
         try{
             BufferedImage _img = ImageIO.read(getClass().getClassLoader().getResource("goose.png"));
-            img = _img.getScaledInstance(50, 100, Image.SCALE_SMOOTH);
+            img = _img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         }catch(Exception e){
             System.out.println(e);
         }
@@ -37,9 +37,9 @@ public class Bird extends Entity {
     }
 
     public void update(){
-        x += birdSpeed;
-        if (x > 1280/2){
-            isActive = false;
-        }
+        // x += birdSpeed;
+        // if (x > 1280/2){
+        //     isActive = false;
+        // }
     }
 }
