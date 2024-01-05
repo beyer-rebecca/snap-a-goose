@@ -32,9 +32,19 @@ public class MenuPanel extends JPanel{
 
             } 
         });
+
+
+        CButton creditsButton = new CButton("Credits");
+        creditsButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                window.navTo(window.getCreditsPanel());
+            }
+        });
+
+
+
         CButton manuel = new CButton("Manuel");
         CButton highscore = new CButton("Highscore");
-        CButton credits = new CButton("Credits");
         CButton sound = new CButton("Sound");
         CButton music = new CButton("Music");
         CButton logout = new CButton("Logout");
@@ -62,7 +72,7 @@ public class MenuPanel extends JPanel{
         add(highscore, c);
         c.gridx = 0;
         c.gridy = 5;
-        add(credits, c);
+        add(creditsButton, c);
         c.anchor = GridBagConstraints.SOUTHEAST;
         c.weighty = 1;
         c.gridx = 1;
