@@ -10,8 +10,10 @@ import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import java.awt.Font;
 
 import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
 
@@ -30,9 +32,10 @@ public class LevelPanel extends JPanel {
     private Game game;
     private Image background;
     private Image mask;
-    CTextField scoreDisplay = new CTextField(Color.WHITE);
-    CTextField timeField = new CTextField(Color.WHITE);
+    private JLabel scoreDisplay;
+    private JLabel timeField;
     public int size = 0;
+    private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
 
     public LevelPanel(Game game, int level, Image background,Image mask, ScoreController scoreController, Score score){
         this.game = game;
@@ -48,7 +51,9 @@ public class LevelPanel extends JPanel {
 
 
 
-        scoreDisplay.setText("0");
+        scoreDisplay = new JLabel("0");
+        scoreDisplay.setFont(titleFont);
+        scoreDisplay.setForeground(Color.WHITE);
         c.gridx = 1;
         c.gridy = 0;
         c.anchor = GridBagConstraints.NORTHEAST;
@@ -56,7 +61,10 @@ public class LevelPanel extends JPanel {
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
         add(scoreDisplay, c);
-        timeField.setText(String.valueOf(time));
+        
+        timeField = new JLabel(String.valueOf(time));
+        timeField.setFont(titleFont);
+        timeField.setForeground(Color.WHITE); 
         c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.NORTHWEST;
