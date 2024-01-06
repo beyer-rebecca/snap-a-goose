@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import birdgame.model.Score;
 import birdgame.ui.LevelPanel;
 import birdgame.ui.Window;
 import birdgame.utils.Constants;
@@ -25,17 +26,22 @@ public class Game implements Runnable{
 	public int WINDOW_WIDHT = 1280;
 	public int WINDOW_HEIGHT = 720;
 
-
-
     private Image img;
     private Image mask;
     private ArrayList<Bird> birds = new ArrayList<Bird>();
+
+    private Score score;
+    private ScoreController scoreController;
     
     public Game(){
         this.window = new Window(this);
         System.out.println("Window: " + this.window);
-        
+
+        this.score = new Score();
+        this.scoreController = new ScoreController(this.score);
     }
+
+
 
     public void startGameLoop(){
         gameThread = new Thread(this);
@@ -46,7 +52,7 @@ public class Game implements Runnable{
         return levelPanel;
     }
 
-    
+
 
     public void loadLevel(int level){
         switch(level){
@@ -76,7 +82,7 @@ public class Game implements Runnable{
                 break;
         }
         spawn(level);
-        levelPanel = new LevelPanel(this, level, this.img, this.mask);
+        levelPanel = new LevelPanel(this, level, this.img, this.mask, this.scoreController, this.score);
     }
 
     public void spawn(int level){
@@ -155,4 +161,20 @@ public class Game implements Runnable{
             }
         }
     }
+
+    public ArrayList<Bird> getBirds() {
+        return birds;
+    }
+
+    public void removeBird(Bird bird){
+        birds.remove(bird);
+    }
+
+    public boolean isBirdinFrontofMask(int x, int y){
+        
+        return true;
+
+    }
+
+
 }

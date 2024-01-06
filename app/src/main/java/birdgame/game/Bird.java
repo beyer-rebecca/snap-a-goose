@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Bird extends Entity {
 
-    private float birdSpeed = .5f;
+    private float birdSpeed = .2f;
 
     private Image img;
 
@@ -76,4 +76,14 @@ public class Bird extends Entity {
         }
         
     }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
+
 }

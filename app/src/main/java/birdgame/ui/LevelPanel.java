@@ -5,22 +5,40 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 import javax.swing.JPanel;
 
+import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
+
 import birdgame.game.Game;
+import birdgame.game.PlayerController;
+import birdgame.game.ScoreController;
+import birdgame.model.Score;
+
 
 public class LevelPanel extends JPanel {
+    private PlayerController playerController;
+    private ScoreController scoreController;
+    private Score score;
+
     private int time = 120;
     private Game game;
     private Image background;
     private Image mask;
-    CTextField score = new CTextField(Color.WHITE);
+    CTextField scoreDisplay = new CTextField(Color.WHITE);
     CTextField timeField = new CTextField(Color.WHITE);
     public int size = 0;
-    public LevelPanel(Game game, int level,Image background, Image mask){
+
+    public LevelPanel(Game game, int level, Image background,Image mask, ScoreController scoreController, Score score){
         this.game = game;
+        this.playerController = new PlayerController(game, scoreController);
+        this.scoreController = scoreController;
+        this.score = score;
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -30,14 +48,14 @@ public class LevelPanel extends JPanel {
 
 
 
-        score.setText("0");
+        scoreDisplay.setText("0");
         c.gridx = 1;
         c.gridy = 0;
         c.anchor = GridBagConstraints.NORTHEAST;
         c.weighty = 1;
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
-        add(score, c);
+        add(scoreDisplay, c);
         timeField.setText(String.valueOf(time));
         c.gridx = 0;
         c.gridy = 0;
@@ -47,7 +65,15 @@ public class LevelPanel extends JPanel {
         c.insets = new Insets(10, 10, 10, 10);
         add(timeField, c);
 
+        addMouseListener(new MouseAdapter(){
+            @Override 
+            public void mouseClicked(MouseEvent e){
+                playerController.takePhoto(e.getX(),e.getY());
+            }
+        });
+
         game.startGameLoop();
+    
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -58,8 +84,11 @@ public class LevelPanel extends JPanel {
         // drawMask
         g.drawImage(this.mask, 0,0, 1280, 720, null);
     }
+
     public void update(){
         time -= 1;
         timeField.setText(String.valueOf(time));
+        scoreDisplay.setText(String.valueOf(score.getCurrentScore()));
     }
+
 }
