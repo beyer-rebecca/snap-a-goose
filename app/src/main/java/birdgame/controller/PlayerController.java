@@ -8,13 +8,11 @@ import birdgame.utils.Vec2;
 
 public class PlayerController {
 
-    private Game game;
     private ScoreController scoreController;
     private BirdFlockController birdFlockController;
 
 
-    public PlayerController(Game game, ScoreController scoreController, BirdFlockController birdFlockController){
-        this.game = game;
+    public PlayerController(ScoreController scoreController, BirdFlockController birdFlockController){
         this.scoreController = scoreController;
         this.birdFlockController = birdFlockController;
     }
@@ -25,7 +23,6 @@ public class PlayerController {
         if (birdInPhoto != null){
             birdFlockController.removeBird(birdInPhoto);
             scoreController.increaseScore(1);
-            // game.getLevelPanel().repaint();
         }
     }
 
@@ -44,7 +41,8 @@ public class PlayerController {
 
                 // Prüfen, ob der Klick innerhalb der Grenzen von Vogels 
                 if (x >= birdPos.x && x <= birdPos.x + birdWidth &&
-                    y >= birdPos.y && y <= birdPos.y + birdHeight) {
+                    y >= birdPos.y && y <= birdPos.y + birdHeight &&
+                    bird.getIsAllowedMove()) {
                         return bird;   
                 }
             }

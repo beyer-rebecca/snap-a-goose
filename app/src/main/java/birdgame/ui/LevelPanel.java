@@ -39,9 +39,9 @@ public class LevelPanel extends JPanel {
     public int size = 0;
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
 
-    public LevelPanel(Game game, int level, Image background,Image mask, ScoreController scoreController, Score score){
+    public LevelPanel(Game game, int level, Image background,Image mask, ScoreController scoreController, BirdFlockController birdFlockController, Score score){
         this.game = game;
-        this.playerController = new PlayerController(game, scoreController, birdFlockController);
+        this.playerController = new PlayerController(scoreController, birdFlockController);
         this.scoreController = scoreController;
         this.score = score;
 

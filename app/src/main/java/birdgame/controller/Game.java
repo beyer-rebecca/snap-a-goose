@@ -54,7 +54,6 @@ public class Game implements Runnable{
     }
 
 
-
     public void loadLevel(int level){
         switch(level){
             case 1:
@@ -83,7 +82,7 @@ public class Game implements Runnable{
                 break;
         }
         spawn(level);
-        levelPanel = new LevelPanel(this, level, this.img, this.mask, this.scoreController, this.score);
+        levelPanel = new LevelPanel(this, level, this.img, this.mask, this.scoreController, this.birdFlockController, this.score);
     }
 
     public void spawn(int level){
