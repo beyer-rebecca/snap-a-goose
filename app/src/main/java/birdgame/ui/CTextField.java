@@ -1,14 +1,16 @@
 package birdgame.ui;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JTextField;
 
 public class CTextField extends JTextField {
     private Font font = new Font("TimesRoman", Font.BOLD, 50);
-    CTextField(){
+    CTextField(Color fgColor){
         setBorder(null);
-        setBackground(null);
+        setOpaque(false);
         setFont(font);
+        setForeground(fgColor);
     }
 }
