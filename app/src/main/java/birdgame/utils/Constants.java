@@ -14,4 +14,9 @@ public class Constants {
                 new Vec2(470, 287)
                 );
     }
+
+    public class Window {
+        public static int WINDOW_WIDHT = 1280;
+        public static int WINDOW_HEIGHT = 720;
+    }
 }

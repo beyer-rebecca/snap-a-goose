@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+
+import birdgame.game.Game;
+
 import javax.imageio.ImageIO;
 
 
@@ -33,20 +36,23 @@ public class LevelSelectPanel extends JPanel{
         }
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                window.getGame().loadLevel(1);
-                window.navTo(window.getGame().getLevelPanel());
+                Game game = new Game();
+                game.loadLevel(1);
+                window.navTo(game.getLevelPanel());
             }
         });
         level2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                window.getGame().loadLevel(2);
-                window.navTo(window.getGame().getLevelPanel());
+                Game game = new Game();
+                game.loadLevel(2);
+                window.navTo(game.getLevelPanel());
             }
         });
         level3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                window.getGame().loadLevel(3);
-                window.navTo(window.getGame().getLevelPanel());
+                Game game = new Game();
+                game.loadLevel(3);
+                window.navTo(game.getLevelPanel());
             }
         });
         back.addActionListener(new ActionListener() { 

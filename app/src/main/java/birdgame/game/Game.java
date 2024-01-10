@@ -15,7 +15,6 @@ import birdgame.utils.Constants;
 import birdgame.utils.Vec2;
 
 public class Game implements Runnable{
-    private Window window;
     private Thread gameThread;
     private LevelPanel levelPanel;
 
@@ -34,8 +33,6 @@ public class Game implements Runnable{
     private ScoreController scoreController;
     
     public Game(){
-        this.window = new Window(this);
-        System.out.println("Window: " + this.window);
 
         this.score = new Score();
         this.scoreController = new ScoreController(this.score);

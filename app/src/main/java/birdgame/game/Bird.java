@@ -8,6 +8,8 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import birdgame.utils.Vec2;
+
 public class Bird extends Entity {
 
     private float birdSpeed = .2f;
@@ -30,8 +32,8 @@ public class Bird extends Entity {
         
     }
 
-    public Dimension getPos(){
-        return new Dimension((int)x, (int)y);
+    public Vec2 getPos(){
+        return new Vec2((int)x, (int)y);
         
     }
 

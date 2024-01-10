@@ -5,9 +5,10 @@ import javax.swing.JPanel;
 
 import birdgame.game.Game;
 
+import birdgame.utils.Constants;
+
 public class Window extends JFrame{
 
-    private Game game;
 
     private MenuPanel menu = new MenuPanel(this);
     private LevelSelectPanel levelSelect = new LevelSelectPanel(this);
@@ -16,16 +17,12 @@ public class Window extends JFrame{
     public CreditsPanel creditsPanel = new CreditsPanel(this);
     // public InstructionsPanel instructionsPanel = new InstructionsPanel();
     
-    public Window(Game game){
-        this.game = game;
-
-        
-        
+    public Window(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(this.game.WINDOW_WIDHT, this.game.WINDOW_HEIGHT);
+        setSize(Constants.Window.WINDOW_WIDHT, Constants.Window.WINDOW_HEIGHT);
         setResizable(false);
         setTitle("Bird Game");
-        setContentPane(login);
+        setContentPane(menu);
         
 
         // needs to be last
@@ -44,9 +41,6 @@ public class Window extends JFrame{
     }
     public LevelSelectPanel getLevelSelectPanel(){
         return this.levelSelect;
-    }
-    public Game getGame(){
-        return this.game;
     }
 
     public CreditsPanel getCreditsPanel(){

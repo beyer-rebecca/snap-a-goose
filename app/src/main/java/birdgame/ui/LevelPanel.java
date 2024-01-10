@@ -75,7 +75,7 @@ public class LevelPanel extends JPanel {
 
         addMouseListener(new MouseAdapter(){
             @Override 
-            public void mouseClicked(MouseEvent e){
+            public void mousePressed(MouseEvent e){
                 playerController.takePhoto(e.getX(),e.getY());
             }
         });

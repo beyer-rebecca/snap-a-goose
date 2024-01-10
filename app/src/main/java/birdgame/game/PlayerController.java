@@ -1,7 +1,8 @@
 package birdgame.game;
 
-import java.awt.Dimension;
 import java.util.Iterator;
+
+import birdgame.utils.Vec2;
 
 public class PlayerController {
 
@@ -29,13 +30,13 @@ public class PlayerController {
         Iterator<Bird> it = game.getBirds().iterator();
         while (it.hasNext()) {
             Bird bird = it.next();
-            Dimension birdPos = bird.getPos();
+            Vec2 birdPos = bird.getPos();
             int birdWidth = bird.getWidth();
             int birdHeight = bird.getHeight();
 
             // Prüfen, ob der Klick innerhalb der Grenzen von Vogels 
-            if (x >= birdPos.width && x <= birdPos.width + birdWidth &&
-                y >= birdPos.height && y <= birdPos.height + birdHeight) {
+            if (x >= birdPos.x && x <= birdPos.x + birdWidth &&
+                y >= birdPos.y && y <= birdPos.y + birdHeight) {
                     return bird;   
             }
         }
