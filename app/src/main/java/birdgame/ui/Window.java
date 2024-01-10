@@ -3,7 +3,6 @@ package birdgame.ui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import birdgame.game.Game;
 
 import birdgame.utils.Constants;
 
