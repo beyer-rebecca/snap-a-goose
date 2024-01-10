@@ -25,7 +25,7 @@ public class PlayerController {
         if (birdInPhoto != null){
             birdFlockController.removeBird(birdInPhoto);
             scoreController.increaseScore(1);
-            game.getLevelPanel().repaint();
+            // game.getLevelPanel().repaint();
         }
     }
 

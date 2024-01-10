@@ -7,7 +7,7 @@ public class BirdFlock {
     private List<Bird> birds;
 
     public BirdFlock() {
-        this.birds = new ArrayList<>();
+        this.birds = new ArrayList<Bird>();
     }
 
     public void addBird(Bird bird) {
@@ -19,7 +19,7 @@ public class BirdFlock {
     }
 
     public ArrayList<Bird> getBirds() {
-        return new ArrayList<>(birds);
+        return new ArrayList<Bird>(birds);
     }
 
 

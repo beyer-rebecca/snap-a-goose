@@ -51,12 +51,15 @@ public class Bird extends Entity {
     }
 
     public Vec2 getPos(){
-        return new Vec2((int)x, (int)y); 
+        return new Vec2((int) x, (int) y);
+    }
+
+    public float getPosX(){
+        return this.x;
     }
 
     public void setPosX(float newX){
-        // also input parametertype float oder int?
-        this.x = (float)newX;
+        this.x = newX;
     }
 
     public boolean getIsMoving(){
@@ -68,7 +71,6 @@ public class Bird extends Entity {
     }
 
     public boolean getIsAllowedMove(){
-        // selber output wie ist getIsMOving, sicher dass das beide notwendig sind, vlt nur getIsMoving? dann muss aber auch set (naächste Fkt geändert werden)
         return this.isAllowedMove;
     }
 

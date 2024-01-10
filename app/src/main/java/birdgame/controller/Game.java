@@ -39,6 +39,7 @@ public class Game implements Runnable{
         this.score = new Score();
         this.scoreController = new ScoreController(this.score);
         this.birdFlockController = new BirdFlockController(new BirdFlock());
+        this.birdController = new BirdController(birdFlockController);
     }
 
 

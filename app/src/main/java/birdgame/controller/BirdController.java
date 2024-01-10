@@ -35,8 +35,7 @@ public class BirdController{
     public void updateSec() {
         for (Bird bird : birdFlockController.getBirds()){
             if (bird.getMoveTimeUpdate() != 0){
-                int moveTimeUpdate = bird.getMoveTimeUpdate();
-                bird.setMoveTimeUpdate( moveTimeUpdate--);
+                bird.setMoveTimeUpdate(bird.getMoveTimeUpdate()-1);
             } else{
                 bird.setIsAllowedMove(true);
                 bird.setMoveTimeUpdate(bird.getMoveTime());
@@ -47,22 +46,19 @@ public class BirdController{
 
     public void update(){
         for (Bird bird : birdFlockController.getBirds()){
-            if(bird.getIsAllowedMove()&& bird.getIsMoving()){ //kam aus game so weiß nicht ob beide bool wichtig
-                Vec2 birdPos = bird.getPos();
-                float newPosX = birdPos.x + bird.getBirdSpeed(); //wusste nicht ob float oder int
-                bird.setPosX(newPosX);
+            if(bird.getIsAllowedMove()){
+                bird.setPosX(bird.getPosX() + bird.getBirdSpeed());
 
-                Vec2 newbirdPos = bird.getPos();
             
-                if(bird.getOrigX() + bird.getBIRD_MOVEMENT_LIMIT() <  newbirdPos.x){
+                if(bird.getOrigX() + bird.getBIRD_MOVEMENT_LIMIT() <  bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
                 }   
-                if(bird.getOrigX() - bird.getBIRD_MOVEMENT_LIMIT() > newbirdPos.x){
+                if(bird.getOrigX() - bird.getBIRD_MOVEMENT_LIMIT() > bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
                 }
-                if(bird.getOrigX() == newbirdPos.x){
+                if(bird.getOrigX() == bird.getPosX()){
                     bird.setIsAllowedMove(false);
                 }
             } 
