@@ -11,7 +11,7 @@ public class Window extends JFrame{
 
     private MenuPanel menu = new MenuPanel(this);
     private LevelSelectPanel levelSelect = new LevelSelectPanel(this);
-    // public LoginPanel login = new LoginPanel();
+    public LoginPanel login = new LoginPanel(this);
     public HighscorePanel highscorePanel = new HighscorePanel(this);
     public CreditsPanel creditsPanel = new CreditsPanel(this);
     // public InstructionsPanel instructionsPanel = new InstructionsPanel();
@@ -25,8 +25,7 @@ public class Window extends JFrame{
         setSize(this.game.WINDOW_WIDHT, this.game.WINDOW_HEIGHT);
         setResizable(false);
         setTitle("Bird Game");
-        setContentPane(menu);
-        // navTo(menu);
+        setContentPane(login);
         
 
         // needs to be last
