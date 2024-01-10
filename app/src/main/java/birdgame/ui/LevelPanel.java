@@ -17,9 +17,9 @@ import java.awt.Font;
 
 import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
 
-import birdgame.game.Game;
-import birdgame.game.PlayerController;
-import birdgame.game.ScoreController;
+import birdgame.controller.Game;
+import birdgame.controller.PlayerController;
+import birdgame.controller.ScoreController;
 import birdgame.model.Score;
 
 

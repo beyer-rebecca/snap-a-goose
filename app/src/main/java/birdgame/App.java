@@ -1,7 +1,7 @@
 package birdgame;
 
+import birdgame.controller.Game;
 import birdgame.ui.Window;
-import birdgame.game.Game;
 
 public class App {
     public String getGreeting() {

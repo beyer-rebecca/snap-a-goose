@@ -1,4 +1,4 @@
-package birdgame.game;
+package birdgame.controller;
 
 import birdgame.model.Score;
 

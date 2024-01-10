@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import birdgame.game.Game;
+import birdgame.controller.Game;
 
 import javax.imageio.ImageIO;
 

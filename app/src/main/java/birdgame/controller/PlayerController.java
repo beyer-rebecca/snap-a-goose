@@ -1,4 +1,4 @@
-package birdgame.game;
+package birdgame.controller;
 
 import java.util.Iterator;
 
