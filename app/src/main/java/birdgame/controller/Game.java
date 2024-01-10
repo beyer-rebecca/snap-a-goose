@@ -4,18 +4,15 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import birdgame.model.Bird;
-import birdgame.controller.BirdController;
 import birdgame.model.Score;
 import birdgame.ui.LevelPanel;
 import birdgame.utils.Constants;
 import birdgame.utils.Vec2;
 import birdgame.model.BirdFlock;
-import birdgame.controller.BirdFlockController;
 
 public class Game implements Runnable{
     private Thread gameThread;
