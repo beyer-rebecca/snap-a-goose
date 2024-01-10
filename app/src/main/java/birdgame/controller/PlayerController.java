@@ -22,7 +22,7 @@ public class PlayerController {
         Bird birdInPhoto = isBirdInPhoto(x, y);
         if (birdInPhoto != null){
             birdFlockController.removeBird(birdInPhoto);
-            scoreController.increaseScore(1);
+            scoreController.increaseScore(25);
         }
     }
 

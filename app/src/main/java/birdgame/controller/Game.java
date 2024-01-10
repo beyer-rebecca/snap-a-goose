@@ -101,10 +101,11 @@ public class Game implements Runnable{
 
     public void render(Graphics g){
         birdController.render(g);
+        levelPanel.update();
     }
     
     public void updateSec(){
-        levelPanel.update(); 
+        levelPanel.updateSec(); 
         birdController.updateSec();
     }
 

@@ -96,9 +96,12 @@ public class LevelPanel extends JPanel {
         g.drawImage(this.mask, 0,0, 1280, 720, null);
     }
 
-    public void update(){
+    public void updateSec(){
         time -= 1;
         timeField.setText(String.valueOf(time));
+    }
+
+    public void update(){
         scoreDisplay.setText(String.valueOf(score.getCurrentScore()));
     }
 

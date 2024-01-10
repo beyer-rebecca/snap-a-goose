@@ -12,5 +12,6 @@ public class CTextField extends JTextField {
         setOpaque(false);
         setFont(font);
         setForeground(fgColor);
+        setEditable(false);
     }
 }
