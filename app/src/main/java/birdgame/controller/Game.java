@@ -8,11 +8,14 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import birdgame.model.Bird;
+import birdgame.controller.BirdController;
 import birdgame.model.Score;
 import birdgame.ui.LevelPanel;
-import birdgame.ui.Window;
 import birdgame.utils.Constants;
 import birdgame.utils.Vec2;
+import birdgame.model.BirdFlock;
+import birdgame.controller.BirdFlockController;
 
 public class Game implements Runnable{
     private Thread gameThread;
@@ -27,7 +30,9 @@ public class Game implements Runnable{
 
     private Image img;
     private Image mask;
-    private ArrayList<Bird> birds = new ArrayList<Bird>();
+
+    private BirdController birdController;
+    private BirdFlockController birdFlockController;
 
     private Score score;
     private ScoreController scoreController;
@@ -36,6 +41,7 @@ public class Game implements Runnable{
 
         this.score = new Score();
         this.scoreController = new ScoreController(this.score);
+        this.birdFlockController = new BirdFlockController(new BirdFlock());
     }
 
 
@@ -86,30 +92,23 @@ public class Game implements Runnable{
         switch(level){
             case 1:
                 for(Vec2 pos : Constants.Level1.birdsPos){
-                    birds.add(new Bird(pos.x, pos.y, 20, 40));
+                    birdFlockController.addBird(new Bird(pos.x, pos.y, 20, 40));
                 }
+                break;
         }
     }
     
     public void update(){
-        for (Bird bird : birds){
-            if(bird.getIsMoving())
-                bird.update();
-        }
+        birdController.update();
     }
 
     public void render(Graphics g){
-        for (Bird bird : birds){
-            if(bird.getIsMoving())
-                bird.render(g);
-        }
+        birdController.render(g);
     }
     
     public void updateSec(){
         levelPanel.update(); 
-        for (Bird bird : birds){
-            bird.updateSec();
-        }
+        birdController.updateSec();
     }
 
     // gameLoop
@@ -159,19 +158,8 @@ public class Game implements Runnable{
         }
     }
 
-    public ArrayList<Bird> getBirds() {
-        return birds;
-    }
 
-    public void removeBird(Bird bird){
-        birds.remove(bird);
-    }
 
-    public boolean isBirdinFrontofMask(int x, int y){
-        
-        return true;
-
-    }
 
 
 }

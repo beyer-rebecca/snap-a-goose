@@ -1,6 +1,5 @@
 package birdgame;
 
-import birdgame.controller.Game;
 import birdgame.ui.Window;
 
 public class App {

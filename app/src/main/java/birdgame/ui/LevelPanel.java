@@ -20,12 +20,14 @@ import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
 import birdgame.controller.Game;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
+import birdgame.controller.BirdFlockController;
 import birdgame.model.Score;
 
 
 public class LevelPanel extends JPanel {
     private PlayerController playerController;
     private ScoreController scoreController;
+    private BirdFlockController birdFlockController;
     private Score score;
 
     private int time = 120;
@@ -39,9 +41,10 @@ public class LevelPanel extends JPanel {
 
     public LevelPanel(Game game, int level, Image background,Image mask, ScoreController scoreController, Score score){
         this.game = game;
-        this.playerController = new PlayerController(game, scoreController);
+        this.playerController = new PlayerController(game, scoreController, birdFlockController);
         this.scoreController = scoreController;
         this.score = score;
+
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
