@@ -13,8 +13,8 @@ public class App {
         System.out.println(new App().getGreeting());
         
         WindowModel windowModel = new WindowModel();
-        WindowController windowController = new WindowController(windowModel);
         WindowView windowView = new WindowView();
+        WindowController windowController = new WindowController(windowView,windowModel);
         windowController.setWindowView(windowView);
     }
 }

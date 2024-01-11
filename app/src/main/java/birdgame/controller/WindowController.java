@@ -19,7 +19,6 @@ public class WindowController {
     }
 
     public void navTo(JPanel panel){
-        windowModel.setCurrentPanel(panel);
         windowView.setPanel(panel);
     }
 }
