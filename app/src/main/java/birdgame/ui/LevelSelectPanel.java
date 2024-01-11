@@ -10,7 +10,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import birdgame.controller.Game;
+import birdgame.controller.GameController;
+import birdgame.model.Game;
 
 import javax.imageio.ImageIO;
 
@@ -36,23 +37,26 @@ public class LevelSelectPanel extends JPanel{
         }
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Game game = new Game();
-                game.loadLevel(1);
-                window.navTo(game.getLevelPanel());
+                Game game = new Game();     
+                GameController gameController = new GameController(game);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
+                gameController.loadLevel(1);
+                window.navTo(gameController.getLevelPanel());
             }
         });
         level2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game game = new Game();
-                game.loadLevel(2);
-                window.navTo(game.getLevelPanel());
+                GameController gameController = new GameController(game);
+                gameController.loadLevel(2);
+                window.navTo(gameController.getLevelPanel());
             }
         });
         level3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game game = new Game();
-                game.loadLevel(3);
-                window.navTo(game.getLevelPanel());
+                GameController gameController = new GameController(game);
+                gameController.loadLevel(3);
+                window.navTo(gameController.getLevelPanel());
             }
         });
         back.addActionListener(new ActionListener() { 

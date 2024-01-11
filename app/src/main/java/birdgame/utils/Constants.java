@@ -13,7 +13,13 @@ public class Constants {
                 new Vec2(683, 538),
                 new Vec2(470, 287)
                 );
+        public static int BIRD_WIDTH = 20;
+        public static int BIRD_HEIGHT = 40;
+
     }
+
+    
+
 
     public class Window {
         public static int WINDOW_WIDHT = 1280;

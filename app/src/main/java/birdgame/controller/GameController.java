@@ -1,47 +1,39 @@
 package birdgame.controller;
 
+import birdgame.model.Bird;
+import birdgame.model.Score;
+import birdgame.model.BirdFlock;
+import birdgame.model.Game;
+import birdgame.ui.LevelPanel;
+import birdgame.utils.Constants;
+import birdgame.utils.Vec2;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
-import birdgame.model.Bird;
-import birdgame.model.Score;
-import birdgame.ui.LevelPanel;
-import birdgame.utils.Constants;
-import birdgame.utils.Vec2;
-import birdgame.model.BirdFlock;
-
-public class Game implements Runnable{
+// class manages the game loop
+public class GameController implements Runnable{
     private Thread gameThread;
     private LevelPanel levelPanel;
-
-    private final int FPS_SET = 120;
-    private final int UPS_SET = 200;
-
-
-	public int WINDOW_WIDHT = 1280;
-	public int WINDOW_HEIGHT = 720;
-
-    private Image img;
-    private Image mask;
-
     private BirdController birdController;
     private BirdFlockController birdFlockController;
-
     private Score score;
     private ScoreController scoreController;
-    
-    public Game(){
+    private Game game;
 
+    private Image backgroundImage;
+    private Image levelMask;
+    
+    public GameController(Game game){
+        this.game = game;
         this.score = new Score();
         this.scoreController = new ScoreController(this.score);
         this.birdFlockController = new BirdFlockController(new BirdFlock());
         this.birdController = new BirdController(birdFlockController);
     }
-
 
 
     public void startGameLoop(){
@@ -53,43 +45,36 @@ public class Game implements Runnable{
         return levelPanel;
     }
 
-
     public void loadLevel(int level){
         switch(level){
             case 1:
-                try{
-                    img = ImageIO.read(getClass().getClassLoader().getResource("level1.jpg"));
-                    mask = ImageIO.read(getClass().getClassLoader().getResource("level1_mask.png"));
-                }catch(IOException e){
-                    System.out.println("loadImages for Level1: " + e);
-                }
+                loadImages(game.getLevel1Image(),game.getLevel1Mask());
                 break;
             case 2:
-                try{
-                    img = ImageIO.read(getClass().getClassLoader().getResource("level2.jpg"));
-                    mask = ImageIO.read(getClass().getClassLoader().getResource("level2_mask.png"));
-                }catch(IOException e){
-                    System.out.println("loadImages for Level1: " + e);
-                }
+                loadImages(game.getLevel2Image(),game.getLevel2Mask());
                 break;
             case 3:
-                try{
-                    img = ImageIO.read(getClass().getClassLoader().getResource("level3.jpg"));
-                    mask = ImageIO.read(getClass().getClassLoader().getResource("level3_mask.png"));
-                }catch(IOException e){
-                    System.out.println("loadImages for Level1: " + e);
-                }
+                loadImages(game.getLevel3Image(),game.getLevel3Mask());
                 break;
         }
-        spawn(level);
-        levelPanel = new LevelPanel(this, level, this.img, this.mask, this.scoreController, this.birdFlockController, this.score);
+        spawnBirds(level);
+        levelPanel = new LevelPanel(this, level, this.backgroundImage, this.levelMask, this.scoreController, this.birdFlockController, this.score);
     }
 
-    public void spawn(int level){
+    private void loadImages(String imagePath, String maskPath){
+        try{
+            backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(imagePath));
+            levelMask = ImageIO.read(getClass().getClassLoader().getResource(maskPath));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void spawnBirds(int level){
         switch(level){
             case 1:
                 for(Vec2 pos : Constants.Level1.birdsPos){
-                    birdFlockController.addBird(new Bird(pos.x, pos.y, 20, 40));
+                    birdFlockController.addBird(new Bird(pos.x, pos.y, Constants.Level1.BIRD_WIDTH, Constants.Level1.BIRD_HEIGHT));
                 }
                 break;
         }
@@ -113,8 +98,8 @@ public class Game implements Runnable{
     @Override
     public void run() {
 
-        double timePerFrame = 1000000000.0 / FPS_SET;
-        double timePerUpdate = 1000000000.0 / UPS_SET;
+        double timePerFrame = 1000000000.0 / game.getFPS_SET();
+        double timePerUpdate = 1000000000.0 / game.getUPS_SET();
 
         long previousTime = System.nanoTime();
 

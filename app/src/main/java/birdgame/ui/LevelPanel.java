@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,9 +14,9 @@ import javax.swing.JPanel;
 
 import java.awt.Font;
 
-import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper;
+// import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper; //wofür ist das?
 
-import birdgame.controller.Game;
+import birdgame.controller.GameController;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
 import birdgame.controller.BirdFlockController;
@@ -27,11 +26,10 @@ import birdgame.model.Score;
 public class LevelPanel extends JPanel {
     private PlayerController playerController;
     private ScoreController scoreController;
-    private BirdFlockController birdFlockController;
     private Score score;
 
     private int time = 120;
-    private Game game;
+    private GameController gameController;
     private Image background;
     private Image mask;
     private JLabel scoreDisplay;
@@ -39,8 +37,8 @@ public class LevelPanel extends JPanel {
     public int size = 0;
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
 
-    public LevelPanel(Game game, int level, Image background,Image mask, ScoreController scoreController, BirdFlockController birdFlockController, Score score){
-        this.game = game;
+    public LevelPanel(GameController gameController, int level, Image background,Image mask, ScoreController scoreController, BirdFlockController birdFlockController, Score score){
+        this.gameController = gameController;
         this.playerController = new PlayerController(scoreController, birdFlockController);
         this.scoreController = scoreController;
         this.score = score;
@@ -83,7 +81,7 @@ public class LevelPanel extends JPanel {
             }
         });
 
-        game.startGameLoop();
+        gameController.startGameLoop();
     
     }
     public void paintComponent(Graphics g){
@@ -91,7 +89,7 @@ public class LevelPanel extends JPanel {
         // drawBackground
         g.drawImage(this.background, 0,0, 1280, 720, null);
 
-        game.render(g);
+        gameController.render(g);
         // drawMask
         g.drawImage(this.mask, 0,0, 1280, 720, null);
     }
