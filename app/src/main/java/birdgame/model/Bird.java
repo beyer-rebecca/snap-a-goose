@@ -1,7 +1,6 @@
 
 package birdgame.model;
 
-import birdgame.controller.Entity;
 import birdgame.utils.Vec2;
 
 import java.util.Random;

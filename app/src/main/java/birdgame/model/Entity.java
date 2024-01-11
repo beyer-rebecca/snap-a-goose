@@ -1,4 +1,4 @@
-package birdgame.controller;
+package birdgame.model;
 
 public abstract class Entity {
     protected float x,y;
