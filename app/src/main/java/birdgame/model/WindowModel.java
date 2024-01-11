@@ -17,6 +17,4 @@ public class WindowModel {
     public int getWINDOW_HEIGHT(){
         return WINDOW_HEIGHT;
     }
-
-
 }
