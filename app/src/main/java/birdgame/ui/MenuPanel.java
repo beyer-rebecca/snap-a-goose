@@ -10,11 +10,18 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import birdgame.controller.WindowController;
+
 
 public class MenuPanel extends JPanel{
-    private Window window;
-    public MenuPanel(Window window){
-        this.window = window;
+    private WindowView windowView;
+    private WindowController windowController;
+
+
+    public MenuPanel(WindowView windowView, WindowController windowController){
+        this.windowView = windowView;
+        this.windowController = windowController;
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.RELATIVE;
@@ -28,7 +35,7 @@ public class MenuPanel extends JPanel{
                 // cause thats how game(loop) and level setup should be done
                 // Level1 level1 = new Level1();
                 // Game game = new Game(level1);
-                window.navTo(window.getLevelSelectPanel());
+                windowController.navTo(windowView.getLevelSelectPanel());
 
             } 
         });
@@ -37,14 +44,14 @@ public class MenuPanel extends JPanel{
         CButton creditsButton = new CButton("Credits");
         creditsButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                window.navTo(window.getCreditsPanel());
+                windowController.navTo(windowView.getCreditsPanel());
             }
         });
 
         CButton highscoreButton = new CButton("Highscores");
         highscoreButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                window.navTo(window.getHighscorePanel());
+                windowController.navTo(windowView.getHighscorePanel());
             }
         });
 

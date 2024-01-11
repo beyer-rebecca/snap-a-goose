@@ -1,5 +1,7 @@
 package birdgame.ui;
 
+import birdgame.controller.WindowController;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -14,11 +16,15 @@ import javax.swing.Box;
 import javax.imageio.ImageIO;
 
 public class HighscorePanel extends JPanel {
+    private WindowView windowView;
+    private WindowController windowController;
 
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
     private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
 
-    public HighscorePanel(Window window){
+    public HighscorePanel(WindowView windowView, WindowController windowController ){
+        this.windowView = windowView;
+        this.windowController = windowController;
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
@@ -27,7 +33,7 @@ public class HighscorePanel extends JPanel {
         CButton backButton = new CButton("<--");
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                window.navTo(window.getMenuPanel());
+                windowController.navTo(windowView.getMenuPanel());
             } 
         });
 

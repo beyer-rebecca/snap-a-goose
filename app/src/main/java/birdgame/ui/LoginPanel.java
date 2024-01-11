@@ -22,19 +22,21 @@ import javax.swing.JTextField;
 
 import org.json.JSONObject;
 
+import birdgame.controller.WindowController;
+
 
 public class LoginPanel extends JPanel {
-
+    private WindowView windowView;
+    private WindowController windowController;
     private boolean nameHadFocus = false;
-
     private Font font = new Font("TimesRoman", Font.PLAIN, 30);
+
     
-    private LoginPanel _this;
-    public LoginPanel(Window window){
+    public LoginPanel(WindowView windowView, WindowController windowController){
+        this.windowView = windowView;
+        this.windowController = windowController;
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        _this = this;
-
         loginView(c);
         
     }

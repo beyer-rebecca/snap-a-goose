@@ -1,6 +1,8 @@
 package birdgame;
 
-import birdgame.ui.Window;
+import birdgame.ui.WindowView;
+import birdgame.model.WindowModel;
+import birdgame.controller.WindowController;
 
 public class App {
     public String getGreeting() {
@@ -10,7 +12,9 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
         
-        new Window();
-        
+        WindowModel windowModel = new WindowModel();
+        WindowController windowController = new WindowController(windowModel);
+        WindowView windowView = new WindowView();
+        windowController.setWindowView(windowView);
     }
 }
