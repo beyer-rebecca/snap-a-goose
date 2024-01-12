@@ -15,6 +15,6 @@ public class App {
         WindowModel windowModel = new WindowModel();
         WindowView windowView = new WindowView();
         WindowController windowController = new WindowController(windowView,windowModel);
-        windowController.setWindowView(windowView);
+        windowView.setController(windowController);
     }
 }
