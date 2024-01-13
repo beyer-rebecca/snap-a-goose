@@ -20,7 +20,11 @@ dependencies {
     testImplementation libs.junit.jupiter
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    implementation group: 'org.json', name: 'json', version: '20231013'
+
+    // JSON.org 
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'  //try2
+    //implementation 'org.json:json:20210307'    //try1
+    //implementation group: 'org.json', name: 'json', version: '20231013' //try0
 
     // This dependency is used by the application.
     implementation libs.guava
