@@ -39,12 +39,12 @@ public class LevelSelectPanel extends JPanel{
             level2 = new CButton(img);
             level3 = new CButton(img);
         } catch (Exception ex) {
-            System.out.println(ex);
+            System.out.println("Error loading button image: "+ex);
         }
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game game = new Game();     
-                GameController gameController = new GameController(game);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
+                GameController gameController = new GameController(windowController,game);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
                 gameController.loadLevel(1);
                 System.out.println(gameController.getLevelPanel());
                 windowController.navTo(gameController.getLevelPanel());
@@ -53,7 +53,7 @@ public class LevelSelectPanel extends JPanel{
         level2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game game = new Game();
-                GameController gameController = new GameController(game);
+                GameController gameController = new GameController(windowController,game);
                 gameController.loadLevel(2);
                 windowController.navTo(gameController.getLevelPanel());
             }
@@ -61,7 +61,7 @@ public class LevelSelectPanel extends JPanel{
         level3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game game = new Game();
-                GameController gameController = new GameController(game);
+                GameController gameController = new GameController(windowController,game);
                 gameController.loadLevel(3);
                 windowController.navTo(gameController.getLevelPanel());
             }

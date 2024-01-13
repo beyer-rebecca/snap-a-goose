@@ -20,6 +20,7 @@ public class GameController implements Runnable{
     private LevelPanel levelPanel;
     private BirdController birdController;
     private BirdFlockController birdFlockController;
+    private WindowController windowController;
     private Score score;
     private ScoreController scoreController;
     private Game game;
@@ -27,12 +28,13 @@ public class GameController implements Runnable{
     private Image backgroundImage;
     private Image levelMask;
     
-    public GameController(Game game){
+    public GameController(WindowController windowController, Game game){
         this.game = game;
         this.score = new Score();
         this.scoreController = new ScoreController(this.score);
         this.birdFlockController = new BirdFlockController(new BirdFlock());
         this.birdController = new BirdController(birdFlockController);
+        this.windowController = windowController;
     }
 
 
@@ -58,7 +60,7 @@ public class GameController implements Runnable{
                 break;
         }
         spawnBirds(level);
-        levelPanel = new LevelPanel(this, level, this.backgroundImage, this.levelMask, this.scoreController, this.birdFlockController, this.score);
+        levelPanel = new LevelPanel(this.windowController, this, level, this.backgroundImage, this.levelMask, this.scoreController, this.birdFlockController, this.score);
     }
 
     private void loadImages(String imagePath, String maskPath){
@@ -88,11 +90,21 @@ public class GameController implements Runnable{
         birdController.render(g);
         levelPanel.update();
     }
+
+    public void updateTimer(){
+        int newTime = game.getTime() -1; 
+        game.setTime(newTime);
+    }
+
+    public int getTime(){
+        return game.getTime();
+    }
     
     public void updateSec(){
-        levelPanel.updateSec(); 
+        updateTimer(); 
         birdController.updateSec();
     }
+
 
     // gameLoop
     @Override

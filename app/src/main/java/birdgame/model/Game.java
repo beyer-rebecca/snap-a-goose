@@ -4,6 +4,9 @@ public class Game {
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
 
+    private final int maxTime = 60;
+    private int time;
+
     private final String level1Image = "level1.jpg";
     private final String level1Mask ="level1_mask.png";
 
@@ -13,6 +16,9 @@ public class Game {
     private final String level3Image="level3.jpg";
     private final String level3Mask ="level3_mask.png";
 
+    public Game(){
+        this.time = maxTime;
+    }
 
     public int getFPS_SET(){
         return FPS_SET;
@@ -20,6 +26,18 @@ public class Game {
 
     public int getUPS_SET(){
         return UPS_SET;
+    }
+
+    public int getTime(){
+        return this.time;
+    }
+
+    public void setTime(int newTime){
+        this.time = newTime;
+    }
+
+    public void resetTime(){
+        this.time = maxTime;
     }
 
     public String getLevel1Image() {

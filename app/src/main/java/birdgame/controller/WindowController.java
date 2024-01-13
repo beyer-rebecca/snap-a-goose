@@ -21,4 +21,14 @@ public class WindowController {
     public void navTo(JPanel panel){
         windowView.setPanel(panel);
     }
+
+    public int getWINDOW_WIDHT(){
+        return windowModel.getWINDOW_WIDHT();
+    }
+
+    public int getWINDOW_HEIGHT(){
+        return windowModel.getWINDOW_HEIGHT();
+    }
+
+
 }

@@ -8,14 +8,13 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import java.awt.Font;
 
 // import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper; //wofür ist das?
 
+import birdgame.controller.WindowController;
 import birdgame.controller.GameController;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
@@ -24,36 +23,44 @@ import birdgame.model.Score;
 
 
 public class LevelPanel extends JPanel {
+    private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
+
     private PlayerController playerController;
     private ScoreController scoreController;
     private Score score;
-
-    private int time = 120;
+    private WindowController windowController;
     private GameController gameController;
+
     private Image background;
     private Image mask;
+    public int size = 0;
+
+    private final int backgroundWidth;
+    private final int backgroundHeight;
+
     private JLabel scoreDisplay;
     private JLabel timeField;
-    public int size = 0;
-    private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
 
-    public LevelPanel(GameController gameController, int level, Image background,Image mask, ScoreController scoreController, BirdFlockController birdFlockController, Score score){
+    private int time;
+    
+
+    public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
+                      ScoreController scoreController, BirdFlockController birdFlockController, Score score){
         this.gameController = gameController;
         this.playerController = new PlayerController(scoreController, birdFlockController);
         this.scoreController = scoreController;
         this.score = score;
-
-
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
+        this.time = gameController.getTime();
+        this.backgroundWidth = windowController.getWINDOW_WIDHT();
+        this.backgroundHeight = windowController.getWINDOW_HEIGHT();
         this.background = background;
         this.mask = mask;
 
-
-
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        
         scoreDisplay = new JLabel("0");
-        scoreDisplay.setFont(titleFont);
+        scoreDisplay.setFont(TITLE_FONT);
         scoreDisplay.setForeground(Color.WHITE);
         c.gridx = 1;
         c.gridy = 0;
@@ -64,7 +71,7 @@ public class LevelPanel extends JPanel {
         add(scoreDisplay, c);
         
         timeField = new JLabel(String.valueOf(time));
-        timeField.setFont(titleFont);
+        timeField.setFont(TITLE_FONT);
         timeField.setForeground(Color.WHITE); 
         c.gridx = 0;
         c.gridy = 0;
@@ -84,18 +91,21 @@ public class LevelPanel extends JPanel {
         gameController.startGameLoop();
     
     }
+
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         // drawBackground
-        g.drawImage(this.background, 0,0, 1280, 720, null);
+        g.drawImage(this.background, 0,0,backgroundWidth,backgroundHeight, null);
 
         gameController.render(g);
         // drawMask
-        g.drawImage(this.mask, 0,0, 1280, 720, null);
+        g.drawImage(this.mask, 0,0,backgroundWidth, backgroundHeight, null);
     }
 
-    public void updateSec(){
-        time -= 1;
+
+    public void updateTimer(){
+        int time = gameController.getTime();
         timeField.setText(String.valueOf(time));
     }
 

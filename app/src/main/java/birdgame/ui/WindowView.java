@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import birdgame.controller.WindowController;
-import birdgame.model.WindowModel; 
 
 
 public class WindowView extends JFrame{
@@ -20,7 +19,7 @@ public class WindowView extends JFrame{
 
     public WindowView(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(WindowModel.WINDOW_WIDHT, WindowModel.WINDOW_HEIGHT);  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
+        setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
         setResizable(false);
         setTitle("Bird Game");
         
