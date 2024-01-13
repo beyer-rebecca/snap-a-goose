@@ -23,18 +23,21 @@ import javax.swing.JTextField;
 import org.json.JSONObject;
 
 import birdgame.controller.WindowController;
+import birdgame.controller.LoginController;
 
 
 public class LoginPanel extends JPanel {
     private WindowView windowView;
     private WindowController windowController;
+    private LoginController loginController;
     private boolean nameHadFocus = false;
     private Font font = new Font("TimesRoman", Font.PLAIN, 30);
 
     
-    public LoginPanel(WindowView windowView, WindowController windowController){
+    public LoginPanel(WindowView windowView, WindowController windowController, LoginController loginController){
         this.windowView = windowView;
         this.windowController = windowController;
+        this.loginController = loginController;
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         loginView(c);
@@ -137,7 +140,7 @@ public class LoginPanel extends JPanel {
         register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                System.out.println(hashPassword(passwordInput.getPassword().toString(), generateSalt(512).get()).get());
+                System.out.println(loginController.hashPassword(passwordInput.getPassword().toString(), loginController.generateSalt(512).get()).get());
 
             }
         });
@@ -172,51 +175,5 @@ public class LoginPanel extends JPanel {
         
     }
     
-    private static final SecureRandom RAND = new SecureRandom();
-
-    public static Optional<String> generateSalt (final int length) {
-
-        if (length < 1) {
-            System.err.println("error in generateSalt: length must be > 0");
-            return Optional.empty();
-        }
-
-        byte[] salt = new byte[length];
-        RAND.nextBytes(salt);
-
-        return Optional.of(Base64.getEncoder().encodeToString(salt));
-    }
     
-    private static final int ITERATIONS = 65536;
-    private static final int KEY_LENGTH = 512;
-    private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
-
-    public static Optional<String> hashPassword (String password, String salt) {
-
-        char[] chars = password.toCharArray();
-        byte[] bytes = salt.getBytes();
-
-        PBEKeySpec spec = new PBEKeySpec(chars, bytes, ITERATIONS, KEY_LENGTH);
-
-        Arrays.fill(chars, Character.MIN_VALUE);
-
-        try {
-            SecretKeyFactory fac = SecretKeyFactory.getInstance(ALGORITHM);
-            byte[] securePassword = fac.generateSecret(spec).getEncoded();
-            return Optional.of(Base64.getEncoder().encodeToString(securePassword));
-
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
-            System.err.println("Exception encountered in hashPassword()");
-            return Optional.empty();
-
-        } finally {
-            spec.clearPassword();
-        }
-    }
-    
-    public static boolean verifyPassword (String password, String key, String salt) {
-        Optional<String> optEncrypted = hashPassword(password, salt);
-        if (!optEncrypted.isPresent()) return false;
-        return optEncrypted.get().equals(key);
-    }
 }

@@ -8,7 +8,7 @@ import birdgame.controller.WindowController;
 
 public class WindowView extends JFrame{
     private WindowController windowController;
-
+    
     private MenuPanel menuPanel;
     private LevelSelectPanel levelSelectPanel;
     private LoginPanel loginPanel;
