@@ -38,7 +38,7 @@ public class WindowView extends JFrame{
         highscorePanel = new HighscorePanel(this, windowController);
         creditsPanel = new CreditsPanel(this, windowController);
         this.windowController = windowController;
-        setPanel(menuPanel);
+        setPanel(loginPanel);
     }
 
     public void setPanel(JPanel panel){
