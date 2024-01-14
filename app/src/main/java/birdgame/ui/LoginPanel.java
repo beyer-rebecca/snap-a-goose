@@ -20,24 +20,18 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import org.json.JSONObject;
-
 import birdgame.controller.WindowController;
-import birdgame.controller.LoginController;
-
+import birdgame.controller.AuthenticationController;
 
 public class LoginPanel extends JPanel {
     private WindowView windowView;
     private WindowController windowController;
-    private LoginController loginController;
-    private boolean nameHadFocus = false;
     private Font font = new Font("TimesRoman", Font.PLAIN, 30);
 
     
-    public LoginPanel(WindowView windowView, WindowController windowController, LoginController loginController){
+    public LoginPanel(WindowView windowView, WindowController windowController){
         this.windowView = windowView;
         this.windowController = windowController;
-        this.loginController = loginController;
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         loginView(c);
@@ -70,6 +64,19 @@ public class LoginPanel extends JPanel {
                 revalidate();
                 repaint();
                 registerView(c);
+
+            }
+
+        });
+
+        login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(AuthenticationController.verifyPassword(nameInput.getText(), new String(passwordInput.getPassword()))){
+                    windowController.navTo(windowView.getMenuPanel());
+                }else{
+                    System.out.println("Login not woring");
+                }
 
             }
 
@@ -140,7 +147,8 @@ public class LoginPanel extends JPanel {
         register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                System.out.println(loginController.hashPassword(passwordInput.getPassword().toString(), loginController.generateSalt(512).get()).get());
+                AuthenticationController.storeData(nameInput.getText(), emailInput.getText(), new String(passwordInput.getPassword()));
+                windowController.navTo(windowView.getMenuPanel());
 
             }
         });
@@ -174,6 +182,5 @@ public class LoginPanel extends JPanel {
         add(register, c);
         
     }
-    
     
 }
