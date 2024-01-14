@@ -3,8 +3,6 @@ package birdgame.controller;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.Base64;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -45,7 +43,6 @@ public class AuthenticationController{
         JSONObject innerObject= new JSONObject();
         innerObject.put("email", email);
         
-            // String pas = Base64.getEncoder().withoutPadding().encodeToString(password.getBytes("UTF-8"));
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String pas = encoder.encode(password);
             innerObject.put("password", pas);

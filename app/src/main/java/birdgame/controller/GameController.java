@@ -60,7 +60,9 @@ public class GameController implements Runnable{
                 break;
         }
         spawnBirds(level);
-        levelPanel = new LevelPanel(this.windowController, this, level, this.backgroundImage, this.levelMask, this.scoreController, this.birdFlockController, this.score);
+        levelPanel = new LevelPanel(this.windowController, this, level, 
+                this.backgroundImage, this.levelMask, this.scoreController, 
+                this.birdFlockController, this.score, this.game);
     }
 
     private void loadImages(String imagePath, String maskPath){
@@ -88,7 +90,7 @@ public class GameController implements Runnable{
 
     public void render(Graphics g){
         birdController.render(g);
-        levelPanel.update();
+        levelPanel.render();
     }
 
     public void updateTimer(){
@@ -98,6 +100,10 @@ public class GameController implements Runnable{
 
     public int getTime(){
         return game.getTime();
+    }
+
+    public void setTime(int time){
+        game.setTime(time);
     }
     
     public void updateSec(){

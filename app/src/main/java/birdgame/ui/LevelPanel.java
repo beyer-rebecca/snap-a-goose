@@ -12,13 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Font;
 
-// import com.google.errorprone.annotations.OverridingMethodsMustInvokeSuper; //wofür ist das?
-
 import birdgame.controller.WindowController;
 import birdgame.controller.GameController;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
 import birdgame.controller.BirdFlockController;
+import birdgame.model.Game;
 import birdgame.model.Score;
 
 
@@ -30,6 +29,7 @@ public class LevelPanel extends JPanel {
     private Score score;
     private WindowController windowController;
     private GameController gameController;
+    private Game game;
 
     private Image background;
     private Image mask;
@@ -45,7 +45,7 @@ public class LevelPanel extends JPanel {
     
 
     public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
-                      ScoreController scoreController, BirdFlockController birdFlockController, Score score){
+                      ScoreController scoreController, BirdFlockController birdFlockController, Score score, Game game){
         this.gameController = gameController;
         this.playerController = new PlayerController(scoreController, birdFlockController);
         this.scoreController = scoreController;
@@ -55,6 +55,7 @@ public class LevelPanel extends JPanel {
         this.backgroundHeight = windowController.getWINDOW_HEIGHT();
         this.background = background;
         this.mask = mask;
+        this.game = game;
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -104,13 +105,9 @@ public class LevelPanel extends JPanel {
     }
 
 
-    public void updateTimer(){
-        int time = gameController.getTime();
-        timeField.setText(String.valueOf(time));
-    }
-
-    public void update(){
+    public void render(){
         scoreDisplay.setText(String.valueOf(score.getCurrentScore()));
+        timeField.setText(String.valueOf(game.getTime()));
     }
 
 }

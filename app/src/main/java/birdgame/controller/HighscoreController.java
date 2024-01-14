@@ -56,7 +56,7 @@ public class HighscoreController {
     public int getHighscore(String user, int level) {
         if (highscoreData.containsKey(user)) {
             JSONObject userData = (JSONObject) highscoreData.get(user);
-            return (userData.getOrDefault("level" + level, 0)).intValue();
+            // return (userData.getOrDefault("level" + level, 0)).intValue();
         }
         return 0;
     }

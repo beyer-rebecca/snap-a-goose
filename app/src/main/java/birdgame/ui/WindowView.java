@@ -19,7 +19,6 @@ public class WindowView extends JFrame{
 
     public WindowView(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
         setResizable(false);
         setTitle("Bird Game");
         
@@ -37,6 +36,7 @@ public class WindowView extends JFrame{
         highscorePanel = new HighscorePanel(this, windowController);
         creditsPanel = new CreditsPanel(this, windowController);
         this.windowController = windowController;
+        setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
         setPanel(loginPanel);
     }
 
