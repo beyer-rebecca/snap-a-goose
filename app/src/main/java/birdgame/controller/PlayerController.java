@@ -5,23 +5,25 @@ import birdgame.model.Bird;
 import java.util.Iterator;
 import birdgame.utils.Vec2;
 
+import birdgame.model.BirdFlock;
 
 public class PlayerController {
 
     private ScoreController scoreController;
-    private BirdFlockController birdFlockController;
+    private BirdFlock birdFlock;
 
 
-    public PlayerController(ScoreController scoreController, BirdFlockController birdFlockController){
+    public PlayerController(ScoreController scoreController, BirdFlock birdFlock){
         this.scoreController = scoreController;
-        this.birdFlockController = birdFlockController;
+        this.birdFlock = birdFlock;
     }
 
     
     public void takePhoto(int x, int y){
         Bird birdInPhoto = isBirdInPhoto(x, y);
         if (birdInPhoto != null){
-            birdFlockController.removeBird(birdInPhoto);
+            // birdFlockController.removeBird(birdInPhoto);
+            birdInPhoto.setIsHit(true);
             scoreController.increaseScore(25);
         }
     }
@@ -32,7 +34,7 @@ public class PlayerController {
     }
 
     private Bird isBirdInPhoto(int x, int y){
-            Iterator<Bird> it = birdFlockController.getBirds().iterator();
+            Iterator<Bird> it = birdFlock.getBirds().iterator();
             while (it.hasNext()) {
                 Bird bird = it.next();
                 Vec2 birdPos = bird.getPos();

@@ -11,15 +11,15 @@ public class BirdFlock {
     }
 
     public void addBird(Bird bird) {
-        birds.add(bird);
+        this.birds.add(bird);
     }
 
     public void removeBird(Bird bird) {
-        birds.remove(bird);
+        this.birds.remove(bird);
     }
 
     public ArrayList<Bird> getBirds() {
-        return new ArrayList<Bird>(birds);
+        return new ArrayList<Bird>(this.birds);
     }
 
 

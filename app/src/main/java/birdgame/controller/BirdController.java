@@ -8,17 +8,18 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
+import birdgame.model.BirdFlock;
 
 public class BirdController{
-    private BirdFlockController birdFlockController;
+    private BirdFlock birdFlock;
 
-    public BirdController(BirdFlockController birdFlockController){
-        this.birdFlockController = birdFlockController;
+    public BirdController(BirdFlock birdFlock){
+        this.birdFlock = birdFlock;
     }
  
     public void render(Graphics g){
-        for (Bird bird : birdFlockController.getBirds()){
-            if(bird.getIsMoving()){
+        for (Bird bird : birdFlock.getBirds()){
+            if(bird.getIsMoving() && !bird.getIsHit()){
                 try {
                     String birdImage = bird.getImage();
                     BufferedImage _img = ImageIO.read(getClass().getClassLoader().getResource(birdImage));
@@ -33,7 +34,7 @@ public class BirdController{
     }
 
     public void updateSec() {
-        for (Bird bird : birdFlockController.getBirds()){
+        for (Bird bird : birdFlock.getBirds()){
             if (bird.getMoveTimeUpdate() != 0){
                 bird.setMoveTimeUpdate(bird.getMoveTimeUpdate()-1);
             } else{
@@ -43,9 +44,8 @@ public class BirdController{
         }
     }
 
-
     public void update(){
-        for (Bird bird : birdFlockController.getBirds()){
+        for (Bird bird : birdFlock.getBirds()){
             if(bird.getIsAllowedMove()){
                 bird.setPosX(bird.getPosX() + bird.getBirdSpeed());
 

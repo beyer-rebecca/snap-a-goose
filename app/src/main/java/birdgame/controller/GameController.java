@@ -19,7 +19,7 @@ public class GameController implements Runnable{
     private Thread gameThread;
     private LevelPanel levelPanel;
     private BirdController birdController;
-    private BirdFlockController birdFlockController;
+    private BirdFlock birdFlock;
     private WindowController windowController;
     private Score score;
     private ScoreController scoreController;
@@ -32,8 +32,8 @@ public class GameController implements Runnable{
         this.game = game;
         this.score = new Score();
         this.scoreController = new ScoreController(this.score);
-        this.birdFlockController = new BirdFlockController(new BirdFlock());
-        this.birdController = new BirdController(birdFlockController);
+        this.birdFlock = new BirdFlock();
+        this.birdController = new BirdController(this.birdFlock);
         this.windowController = windowController;
     }
 
@@ -62,7 +62,7 @@ public class GameController implements Runnable{
         spawnBirds(level);
         levelPanel = new LevelPanel(this.windowController, this, level, 
                 this.backgroundImage, this.levelMask, this.scoreController, 
-                this.birdFlockController, this.score, this.game);
+                this.birdFlock, this.score, this.game);
     }
 
     private void loadImages(String imagePath, String maskPath){
@@ -78,7 +78,7 @@ public class GameController implements Runnable{
         switch(level){
             case 1:
                 for(Vec2 pos : Constants.Level1.birdsPos){
-                    birdFlockController.addBird(new Bird(pos.x, pos.y, Constants.Level1.BIRD_WIDTH, Constants.Level1.BIRD_HEIGHT));
+                    birdFlock.addBird(new Bird(pos.x, pos.y, Constants.Level1.BIRD_WIDTH, Constants.Level1.BIRD_HEIGHT));
                 }
                 break;
         }

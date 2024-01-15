@@ -16,7 +16,7 @@ import birdgame.controller.WindowController;
 import birdgame.controller.GameController;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
-import birdgame.controller.BirdFlockController;
+import birdgame.model.BirdFlock;
 import birdgame.model.Game;
 import birdgame.model.Score;
 
@@ -45,9 +45,9 @@ public class LevelPanel extends JPanel {
     
 
     public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
-                      ScoreController scoreController, BirdFlockController birdFlockController, Score score, Game game){
+                      ScoreController scoreController, BirdFlock birdFlock, Score score, Game game){
         this.gameController = gameController;
-        this.playerController = new PlayerController(scoreController, birdFlockController);
+        this.playerController = new PlayerController(scoreController, birdFlock);
         this.scoreController = scoreController;
         this.score = score;
         this.time = gameController.getTime();
