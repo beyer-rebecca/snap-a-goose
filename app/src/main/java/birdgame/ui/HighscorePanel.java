@@ -1,5 +1,6 @@
 package birdgame.ui;
 
+import birdgame.controller.HighscoreController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
@@ -9,6 +10,8 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JComponent;
@@ -19,7 +22,14 @@ public class HighscorePanel extends JPanel {
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
     private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
 
+    private WindowModel windowModel;
+
+    private JLabel scoreLevel1Label;
+    private JLabel scoreLevel2Label;
+    private JLabel scoreLevel3Label;
+
     public HighscorePanel(WindowModel windowModel, WindowController windowController ){
+        this.windowModel = windowModel;
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
@@ -43,8 +53,8 @@ public class HighscorePanel extends JPanel {
         
 
         // show level1 highscore
-        int highscoreLevel1 = 1;  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
-        JLabel scoreLevel1Label = new JLabel(Integer.toString(highscoreLevel1));
+        int highscoreLevel1 = HighscoreController.getHighscore(windowModel.getUserName(), 1);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
+        scoreLevel1Label = new JLabel(Integer.toString(highscoreLevel1));
         scoreLevel1Label.setFont(normalFont);
         
 
@@ -54,8 +64,8 @@ public class HighscorePanel extends JPanel {
         
 
         // show level2 Highscore
-        int highscoreLevel2 = 22;  //nachdem highscoreController, userController eingebaut: =highscoreController.getHighscore(level2, user.getUsername)
-        JLabel scoreLevel2Label = new JLabel(Integer.toString(highscoreLevel2));
+        int highscoreLevel2 = HighscoreController.getHighscore(windowModel.getUserName(), 2);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
+        scoreLevel2Label = new JLabel(Integer.toString(highscoreLevel2));
         scoreLevel2Label.setFont(normalFont);
         
         //show lebel3 name
@@ -63,8 +73,8 @@ public class HighscorePanel extends JPanel {
         level3Label.setFont(normalFont);
 
         // show level3 Highscore
-        int highscoreLevel3 = 333333;  //nachdem highscoreController, userController eingebaut: =highscoreController.getHighscore(level3, user.getUsername)
-        JLabel scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
+        int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
+        scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
         scoreLevel3Label.setFont(normalFont);
 
 
@@ -121,5 +131,15 @@ public class HighscorePanel extends JPanel {
 
 
     }
+
+    @Override
+    protected void paintComponent(Graphics arg0) {
+        super.paintComponent(arg0);
+
+        scoreLevel1Label.setText(Integer.toString(HighscoreController.getHighscore(windowModel.getUserName(), 1)));
+        scoreLevel2Label.setText(Integer.toString(HighscoreController.getHighscore(windowModel.getUserName(), 2)));
+        scoreLevel3Label.setText(Integer.toString(HighscoreController.getHighscore(windowModel.getUserName(), 3)));
+    }
+
     
 }

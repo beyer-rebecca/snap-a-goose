@@ -13,6 +13,7 @@ public class Constants {
                 new Vec2(683, 538),
                 new Vec2(470, 287)
                 );
+        public static int birdsSize = birdsPos.size();
         public static int BIRD_WIDTH = 20;
         public static int BIRD_HEIGHT = 40;
 

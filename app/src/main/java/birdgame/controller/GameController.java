@@ -20,7 +20,9 @@ public class GameController implements Runnable{
     private BirdController birdController;
     private BirdFlock birdFlock;
     private WindowController windowController;
+    private PlayerController playerController;
     private Game game;
+    private int level;
 
     private Image backgroundImage;
     private Image levelMask;
@@ -30,6 +32,7 @@ public class GameController implements Runnable{
         this.game = new Game();
         this.birdFlock = new BirdFlock();
         this.birdController = new BirdController(this.birdFlock);
+        this.playerController = new PlayerController(this.birdFlock);
         this.windowController = windowController;
     }
 
@@ -44,6 +47,7 @@ public class GameController implements Runnable{
     }
 
     public void loadLevel(int level){
+        this.level = level;
         switch(level){
             case 1:
                 loadImages(game.getLevel1Image(),game.getLevel1Mask());
@@ -59,7 +63,7 @@ public class GameController implements Runnable{
         
         levelPanel = new LevelPanel(this.windowController, this, level, 
                 this.backgroundImage, this.levelMask, 
-                this.birdFlock, this.game);
+                this.birdFlock, this.game, this.playerController);
     }
 
     private void loadImages(String imagePath, String maskPath){
@@ -73,6 +77,17 @@ public class GameController implements Runnable{
 
     public void update(){
         birdController.update();
+
+        if(this.game.getTime() <= 0 || this.playerController.getScoreController().getScoreModel().getCurrentScore() == 150){
+            gameFinished();
+        }
+    }
+
+    public void gameFinished(){
+        gameThread.interrupt();
+        HighscoreController.updateHighscore(this.windowController.getWindowModel().getUserName(), this.level, this.playerController.getScoreController().getScoreModel().getCurrentScore());
+        this.windowController.getWindowModel().getHighscorePanel().repaint();
+        this.windowController.navTo(windowController.getWindowModel().getMenuPanel());
     }
 
     public void render(Graphics g){
@@ -115,7 +130,7 @@ public class GameController implements Runnable{
         double deltaU = 0;
         double deltaF = 0;
 
-        while(true){
+        while(!gameThread.isInterrupted()){
             long currentTime = System.nanoTime();
 
 

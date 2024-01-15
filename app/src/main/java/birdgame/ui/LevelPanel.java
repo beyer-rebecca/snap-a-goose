@@ -45,9 +45,9 @@ public class LevelPanel extends JPanel {
     
 
     public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
-                      BirdFlock birdFlock, Game game){
+                      BirdFlock birdFlock, Game game, PlayerController playerController){
         this.gameController = gameController;
-        this.playerController = new PlayerController(birdFlock);
+        this.playerController = playerController;
         this.scoreController = playerController.getScoreController();
         this.score = scoreController.getScoreModel();
         this.time = gameController.getTime();

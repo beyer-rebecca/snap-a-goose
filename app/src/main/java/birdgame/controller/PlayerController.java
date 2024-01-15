@@ -26,7 +26,6 @@ public class PlayerController {
     public void takePhoto(int x, int y){
         Bird birdInPhoto = isBirdInPhoto(x, y);
         if (birdInPhoto != null){
-            // birdFlockController.removeBird(birdInPhoto);
             birdInPhoto.setIsHit(true);
             scoreController.increaseScore(25);
         }
@@ -48,7 +47,7 @@ public class PlayerController {
                 // Prüfen, ob der Klick innerhalb der Grenzen von Vogels 
                 if (x >= birdPos.x && x <= birdPos.x + birdWidth &&
                     y >= birdPos.y && y <= birdPos.y + birdHeight &&
-                    bird.getIsAllowedMove()) {
+                    !bird.getIsHit() && bird.getIsAllowedMove()) {
                         return bird;   
                 }
             }

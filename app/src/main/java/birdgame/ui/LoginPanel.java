@@ -66,6 +66,7 @@ public class LoginPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(AuthenticationController.verifyPassword(nameInput.getText(), new String(passwordInput.getPassword()))){
+                    windowModel.setUserName(nameInput.getText());
                     windowController.navTo(windowModel.getMenuPanel());
                 }else{
                     System.out.println("Login not woring");
@@ -141,6 +142,7 @@ public class LoginPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 AuthenticationController.storeData(nameInput.getText(), emailInput.getText(), new String(passwordInput.getPassword()));
+                windowModel.setUserName(nameInput.getText());
                 windowController.navTo(windowModel.getMenuPanel());
 
             }

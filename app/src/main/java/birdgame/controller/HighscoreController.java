@@ -3,75 +3,81 @@ package birdgame.controller;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.commons.lang3.SystemUtils;
+
 // Verwaltet Highscores (ändert highscores fügt neue users dazu, liiest highscores), wird bei Anwendungs-Start initialisiert
 public class HighscoreController {
-    private static final String FILE_PATH = "highscore.json";
-    private JSONObject highscoreData;
-    private static HighscoreController instance;
 
-    private HighscoreController() {
-        initializeFile();
-    }
-
-    //Singleton muster anwenden
-    public static HighscoreController getInstance() {
-        if (instance == null) {
-            instance = new HighscoreController();
+    public static int getHighscore(String username, int level){
+        String path;
+        if(SystemUtils.IS_OS_WINDOWS){
+            path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
         }
-        return instance;
-    }
-
-    private void initializeFile() {
-        try {
-            FileReader reader = new FileReader(FILE_PATH);
-            JSONParser jsonParser = new JSONParser();
-            highscoreData = (JSONObject) jsonParser.parse(reader);
-        } catch (IOException | ParseException e) {
-            highscoreData = new JSONObject();
-            saveHighscoreData();
+        else{
+            path = System.getProperty("user.home") + "/.local/share/birdgame/" + "birdgame.json";
         }
-    }
 
-    private void saveHighscoreData() {
-        try (FileWriter file = new FileWriter(FILE_PATH)) {
-            file.write(highscoreData.toJSONString());
-        } catch (IOException e) {
-            e.printStackTrace();
+        JSONParser parser = new JSONParser();
+        try(FileReader reader = new FileReader(path))
+        {
+            Object obj = parser.parse(reader);
+            JSONObject combinedObject = (JSONObject) obj;
+            JSONObject innerObject = (JSONObject) combinedObject.get(username);
+            if(innerObject == null || innerObject.get("scoreLevel" + level) == null) return -1;
+            return Integer.valueOf(innerObject.get("scoreLevel" + level).toString());
+
+        }catch(IOException | ParseException e){
+            System.out.println(e);
         }
-    }
 
-    public void addNewUser(String user) {
-        JSONObject userData = new JSONObject();
-        userData.put("level1", 0);
-        userData.put("level2", 0);
-        userData.put("level3", 0);
-        highscoreData.put(user, userData);
-        saveHighscoreData();
+        return -1;
+        
     }
-
-    public int getHighscore(String user, int level) {
-        if (highscoreData.containsKey(user)) {
-            JSONObject userData = (JSONObject) highscoreData.get(user);
-            // return (userData.getOrDefault("level" + level, 0)).intValue();
+    
+    @SuppressWarnings("unchecked")
+    public static void updateHighscore(String username, int level, int score){
+        
+        System.out.println("update score");
+        String path;
+        if(SystemUtils.IS_OS_WINDOWS){
+            path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
         }
-        return 0;
-    }
+        else{
+            path = System.getProperty("user.home") + "/.local/share/birdgame/" + "birdgame.json";
+        }
 
-    public boolean isNewHighscore(String user, int level, int score) {
-        return score > getHighscore(user, level);
-    }
-
-    public void updateHighscore(String user, int level, int finalScore) {
-        if (isNewHighscore(user, level, finalScore)){
-            if (highscoreData.containsKey(user)) {
-                JSONObject userData = (JSONObject) highscoreData.get(user);
-                userData.put("level" + level, finalScore);
-                saveHighscoreData();
+        JSONParser parser = new JSONParser();
+        try(FileReader reader = new FileReader(path))
+        {
+            Object obj = parser.parse(reader);
+            JSONObject combinedObject = (JSONObject) obj;
+            JSONObject innerObject = (JSONObject) combinedObject.get(username);
+            System.out.println(innerObject.toString());
+            if(innerObject.get("scoreLevel" + level) != null && Integer.valueOf(innerObject.get("scoreLevel" + level).toString()) < score){
+                innerObject.put("scoreLevel" + level, score);
+                combinedObject.put(username, innerObject);
+                System.out.println(combinedObject.toString());
+                FileWriter writer = new FileWriter(path);
+                writer.write(combinedObject.toString());
+                writer.flush();
+                writer.close();
+            }else if(innerObject.get("scoreLevel" + level) == null){
+                innerObject.put("scoreLevel" + level, score);
+                combinedObject.put(username, innerObject);
+                System.out.println(combinedObject.toString());
+                FileWriter writer = new FileWriter(path);
+                writer.write(combinedObject.toString());
+                writer.flush();
+                writer.close();
             }
+
+        }catch(IOException | ParseException e){
+            System.out.println(e);
         }
     }
 }
