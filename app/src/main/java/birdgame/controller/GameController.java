@@ -1,7 +1,6 @@
 package birdgame.controller;
 
 import birdgame.model.Bird;
-import birdgame.model.Score;
 import birdgame.model.BirdFlock;
 import birdgame.model.Game;
 import birdgame.ui.LevelPanel;
@@ -21,17 +20,14 @@ public class GameController implements Runnable{
     private BirdController birdController;
     private BirdFlock birdFlock;
     private WindowController windowController;
-    private Score score;
-    private ScoreController scoreController;
     private Game game;
 
     private Image backgroundImage;
     private Image levelMask;
     
-    public GameController(WindowController windowController, Game game){
-        this.game = game;
-        this.score = new Score();
-        this.scoreController = new ScoreController(this.score);
+    public GameController(WindowController windowController){
+        
+        this.game = new Game();
         this.birdFlock = new BirdFlock();
         this.birdController = new BirdController(this.birdFlock);
         this.windowController = windowController;
@@ -59,10 +55,11 @@ public class GameController implements Runnable{
                 loadImages(game.getLevel3Image(),game.getLevel3Mask());
                 break;
         }
-        spawnBirds(level);
+        birdController.spawnBirds(level);
+        
         levelPanel = new LevelPanel(this.windowController, this, level, 
-                this.backgroundImage, this.levelMask, this.scoreController, 
-                this.birdFlock, this.score, this.game);
+                this.backgroundImage, this.levelMask, 
+                this.birdFlock, this.game);
     }
 
     private void loadImages(String imagePath, String maskPath){
@@ -74,16 +71,6 @@ public class GameController implements Runnable{
         }
     }
 
-    public void spawnBirds(int level){
-        switch(level){
-            case 1:
-                for(Vec2 pos : Constants.Level1.birdsPos){
-                    birdFlock.addBird(new Bird(pos.x, pos.y, Constants.Level1.BIRD_WIDTH, Constants.Level1.BIRD_HEIGHT));
-                }
-                break;
-        }
-    }
-    
     public void update(){
         birdController.update();
     }

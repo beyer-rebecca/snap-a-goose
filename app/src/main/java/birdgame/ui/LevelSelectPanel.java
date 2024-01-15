@@ -13,16 +13,17 @@ import javax.swing.JPanel;
 import birdgame.controller.GameController;
 import birdgame.controller.WindowController;
 import birdgame.model.Game;
+import birdgame.model.WindowModel;
 
 import javax.imageio.ImageIO;
 
 
 public class LevelSelectPanel extends JPanel{
-    private WindowView windowView;
+    private WindowModel windowModel;
     private WindowController windowController;
 
-    public LevelSelectPanel(WindowView windowView, WindowController windowController){
-        this.windowView = windowView;
+    public LevelSelectPanel(WindowModel windowModel, WindowController windowController){
+        this.windowModel = windowModel;
         this.windowController = windowController;
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -43,31 +44,28 @@ public class LevelSelectPanel extends JPanel{
         }
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Game game = new Game();     
-                GameController gameController = new GameController(windowController,game);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
+                GameController gameController = new GameController(windowController);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
                 gameController.loadLevel(1);
                 windowController.navTo(gameController.getLevelPanel());
             }
         });
         level2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Game game = new Game();
-                GameController gameController = new GameController(windowController,game);
+                GameController gameController = new GameController(windowController);
                 gameController.loadLevel(2);
                 windowController.navTo(gameController.getLevelPanel());
             }
         });
         level3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Game game = new Game();
-                GameController gameController = new GameController(windowController,game);
+                GameController gameController = new GameController(windowController);
                 gameController.loadLevel(3);
                 windowController.navTo(gameController.getLevelPanel());
             }
         });
         back.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                windowController.navTo(windowView.getMenuPanel());
+                windowController.navTo(windowModel.getMenuPanel());
 
             } 
         });

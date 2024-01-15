@@ -27,18 +27,18 @@ public class WindowView extends JFrame{
     }
 
     
-    public void setController(WindowController windowController) {
+    // public void setController(WindowController windowController) {
         // needs to be called after initializing the Class
         
-        menuPanel = new MenuPanel(this, windowController);
-        levelSelectPanel = new LevelSelectPanel(this, windowController);
-        loginPanel = new LoginPanel(this, windowController);
-        highscorePanel = new HighscorePanel(this, windowController);
-        creditsPanel = new CreditsPanel(this, windowController);
-        this.windowController = windowController;
-        setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
-        setPanel(loginPanel);
-    }
+        // menuPanel = new MenuPanel(this, windowController);
+        // levelSelectPanel = new LevelSelectPanel(this, windowController);
+        // loginPanel = new LoginPanel(this, windowController);
+        // highscorePanel = new HighscorePanel(this, windowController);
+        // creditsPanel = new CreditsPanel(this, windowController);
+        // this.windowController = windowController;
+        // setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
+        // setPanel(loginPanel);
+    // }
 
     public void setPanel(JPanel panel){
         this.currentPanel = panel;

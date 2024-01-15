@@ -12,9 +12,6 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
         
-        WindowModel windowModel = new WindowModel();
-        WindowView windowView = new WindowView();
-        WindowController windowController = new WindowController(windowView,windowModel);
-        windowView.setController(windowController);
+        new WindowController();
     }
 }

@@ -13,16 +13,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import birdgame.controller.WindowController;
+import birdgame.model.WindowModel;
 import birdgame.controller.AuthenticationController;
 
 public class LoginPanel extends JPanel {
-    private WindowView windowView;
+    private WindowModel windowModel;
     private WindowController windowController;
     private Font font = new Font("TimesRoman", Font.PLAIN, 30);
 
     
-    public LoginPanel(WindowView windowView, WindowController windowController){
-        this.windowView = windowView;
+    public LoginPanel(WindowModel windowModel, WindowController windowController){
+        this.windowModel = windowModel;
         this.windowController = windowController;
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -65,7 +66,7 @@ public class LoginPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(AuthenticationController.verifyPassword(nameInput.getText(), new String(passwordInput.getPassword()))){
-                    windowController.navTo(windowView.getMenuPanel());
+                    windowController.navTo(windowModel.getMenuPanel());
                 }else{
                     System.out.println("Login not woring");
                 }
@@ -140,7 +141,7 @@ public class LoginPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 AuthenticationController.storeData(nameInput.getText(), emailInput.getText(), new String(passwordInput.getPassword()));
-                windowController.navTo(windowView.getMenuPanel());
+                windowController.navTo(windowModel.getMenuPanel());
 
             }
         });

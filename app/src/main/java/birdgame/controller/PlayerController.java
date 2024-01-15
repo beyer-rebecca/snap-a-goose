@@ -13,9 +13,13 @@ public class PlayerController {
     private BirdFlock birdFlock;
 
 
-    public PlayerController(ScoreController scoreController, BirdFlock birdFlock){
-        this.scoreController = scoreController;
+    public PlayerController(BirdFlock birdFlock){
+        this.scoreController = new ScoreController();
         this.birdFlock = birdFlock;
+    }
+
+    public ScoreController getScoreController(){
+        return this.scoreController;
     }
 
     

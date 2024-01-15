@@ -5,8 +5,8 @@ import birdgame.model.Score;
 public class ScoreController {
     private Score score;
 
-    public ScoreController(Score score){
-        this.score = score;
+    public ScoreController(){
+        this.score = new Score();
     }
 
     public int getCurrentScore(){
@@ -25,5 +25,9 @@ public class ScoreController {
 
     public void resetScore(){
         score.setCurrentScore(0);
+    }
+
+    public Score getScoreModel(){
+        return this.score;
     }
 }

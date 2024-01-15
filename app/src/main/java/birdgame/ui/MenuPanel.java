@@ -11,15 +11,16 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import birdgame.controller.WindowController;
+import birdgame.model.WindowModel;
 
 
 public class MenuPanel extends JPanel{
-    private WindowView windowView;
+    private WindowModel windowModel;
     private WindowController windowController;
 
 
-    public MenuPanel(WindowView windowView, WindowController windowController){
-        this.windowView = windowView;
+    public MenuPanel(WindowModel windowModel, WindowController windowController){
+        this.windowModel = windowModel;
         this.windowController = windowController;
 
         setLayout(new GridBagLayout());
@@ -35,7 +36,7 @@ public class MenuPanel extends JPanel{
                 // cause thats how game(loop) and level setup should be done
                 // Level1 level1 = new Level1();
                 // Game game = new Game(level1);
-                windowController.navTo(windowView.getLevelSelectPanel());
+                windowController.navTo(windowModel.getLevelSelectPanel());
 
             } 
         });
@@ -44,14 +45,14 @@ public class MenuPanel extends JPanel{
         CButton creditsButton = new CButton("Credits");
         creditsButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                windowController.navTo(windowView.getCreditsPanel());
+                windowController.navTo(windowModel.getCreditsPanel());
             }
         });
 
         CButton highscoreButton = new CButton("Highscores");
         highscoreButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                windowController.navTo(windowView.getHighscorePanel());
+                windowController.navTo(windowModel.getHighscorePanel());
             }
         });
 

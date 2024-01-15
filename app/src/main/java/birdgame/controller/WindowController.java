@@ -9,9 +9,11 @@ public class WindowController {
     private WindowView windowView;
     private WindowModel windowModel;
 
-    public WindowController(WindowView windowView,WindowModel windowModel){
-        this.windowView  = windowView;
-        this.windowModel = windowModel;
+    public WindowController(){
+        this.windowView  = new WindowView();
+        this.windowModel = new WindowModel(this);
+        windowView.setSize(windowModel.getWINDOW_WIDHT(), windowModel.getWINDOW_HEIGHT());
+        windowView.setPanel(windowModel.getLoginPanel());
     }
 
     public void setWindowView(WindowView windowView) {
@@ -19,16 +21,13 @@ public class WindowController {
     }
 
     public void navTo(JPanel panel){
-        windowView.setPanel(panel);
+        windowView.setContentPane(panel);
+        windowView.repaint();
+        windowView.revalidate();
     }
 
-    public int getWINDOW_WIDHT(){
-        return windowModel.getWINDOW_WIDHT();
+    public WindowModel getWindowModel(){
+        return this.windowModel;
     }
-
-    public int getWINDOW_HEIGHT(){
-        return windowModel.getWINDOW_HEIGHT();
-    }
-
 
 }

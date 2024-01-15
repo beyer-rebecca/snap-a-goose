@@ -1,11 +1,11 @@
 package birdgame.ui;
 
 import birdgame.controller.WindowController;
+import birdgame.model.WindowModel;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
@@ -13,18 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JComponent;
 import javax.swing.Box;
-import javax.imageio.ImageIO;
 
 public class HighscorePanel extends JPanel {
-    private WindowView windowView;
-    private WindowController windowController;
 
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
     private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
 
-    public HighscorePanel(WindowView windowView, WindowController windowController ){
-        this.windowView = windowView;
-        this.windowController = windowController;
+    public HighscorePanel(WindowModel windowModel, WindowController windowController ){
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
@@ -33,7 +28,7 @@ public class HighscorePanel extends JPanel {
         CButton backButton = new CButton("<--");
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                windowController.navTo(windowView.getMenuPanel());
+                windowController.navTo(windowModel.getMenuPanel());
             } 
         });
 

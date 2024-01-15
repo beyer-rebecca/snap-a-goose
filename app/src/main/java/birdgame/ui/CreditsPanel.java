@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.JPanel;
 
 import birdgame.controller.WindowController;
+import birdgame.model.WindowModel;
 
 import javax.swing.JLabel;
 import javax.swing.JComponent;
@@ -17,15 +18,11 @@ import javax.swing.Box;
 import javax.imageio.ImageIO;
 
 public class CreditsPanel extends JPanel{
-    private WindowView windowView;
-    private WindowController windowController;
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
     private Font smallFont = new Font("TimesRoman", Font.PLAIN, 15);  
     private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
 
-    public CreditsPanel(WindowView windowView, WindowController windowController){
-        this.windowView = windowView;
-        this.windowController = windowController;
+    public CreditsPanel(WindowModel windowModel, WindowController windowController){
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -41,7 +38,7 @@ public class CreditsPanel extends JPanel{
 
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                windowController.navTo(windowView.getMenuPanel());
+                windowController.navTo(windowModel.getMenuPanel());
             } 
         });
 

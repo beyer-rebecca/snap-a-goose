@@ -1,6 +1,7 @@
 package birdgame.controller;
 
 import birdgame.model.Bird;
+import birdgame.utils.Constants;
 import birdgame.utils.Vec2;
 
 import javax.imageio.ImageIO;
@@ -62,6 +63,16 @@ public class BirdController{
                     bird.setIsAllowedMove(false);
                 }
             } 
+        }
+    }
+
+    public void spawnBirds(int level){
+        switch(level){
+            case 1:
+                for(Vec2 pos : Constants.Level1.birdsPos){
+                    birdFlock.addBird(new Bird(pos.x, pos.y, Constants.Level1.BIRD_WIDTH, Constants.Level1.BIRD_HEIGHT));
+                }
+                break;
         }
     }
 }

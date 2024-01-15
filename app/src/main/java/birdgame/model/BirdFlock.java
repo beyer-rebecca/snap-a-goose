@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BirdFlock {
-    private List<Bird> birds;
-
-    public BirdFlock() {
-        this.birds = new ArrayList<Bird>();
-    }
+    private List<Bird> birds = new ArrayList<Bird>();
 
     public void addBird(Bird bird) {
         this.birds.add(bird);
