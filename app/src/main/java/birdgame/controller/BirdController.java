@@ -35,7 +35,7 @@ public class BirdController{
                 try {
                     String birdImage = bird.getImageHit();
                     BufferedImage _img = ImageIO.read(getClass().getClassLoader().getResource(birdImage));
-                    Image img = _img.getScaledInstance(bird.getWidth(), bird.getHeight(), Image.SCALE_SMOOTH);
+                    Image img = _img.getScaledInstance(45,30, Image.SCALE_SMOOTH);
                     Vec2 birdPos = bird.getPos();
                     g.drawImage(img, birdPos.x, birdPos.y, null);
                 } catch(Exception e){
