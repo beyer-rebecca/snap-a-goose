@@ -85,9 +85,11 @@ public class GameController implements Runnable{
 
     public void gameFinished(){
         gameThread.interrupt();
+        this.windowController.navTo(windowController.getWindowModel().getGameOverPanel());
         HighscoreController.updateHighscore(this.windowController.getWindowModel().getUserName(), this.level, this.playerController.getScoreController().getScoreModel().getCurrentScore());
         this.windowController.getWindowModel().getHighscorePanel().repaint();
-        this.windowController.navTo(windowController.getWindowModel().getMenuPanel());
+        //this.windowController.navTo(windowController.getWindowModel().getMenuPanel());
+        
     }
 
     public void render(Graphics g){
