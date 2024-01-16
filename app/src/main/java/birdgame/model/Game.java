@@ -7,6 +7,8 @@ public class Game {
     private final int maxTime = 60;
     private int time;
 
+    private int levelNumber;
+
     private final String level1Image = "level1.jpg";
     private final String level1Mask ="level1_mask.png";
 
@@ -18,6 +20,11 @@ public class Game {
 
     public Game(){
         this.time = maxTime;
+        this.levelNumber = levelNumber;
+    }
+
+    public int getLevelNumber(){
+        return this.levelNumber;
     }
 
     public int getFPS_SET(){

@@ -45,21 +45,24 @@ public class LevelSelectPanel extends JPanel{
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameController gameController = new GameController(windowController);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
-                gameController.loadLevel(1);
+                windowModel.setLevel(1);
+                gameController.loadLevel();
                 windowController.navTo(gameController.getLevelPanel());
             }
         });
         level2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameController gameController = new GameController(windowController);
-                gameController.loadLevel(2);
+                windowModel.setLevel(2);
+                gameController.loadLevel();
                 windowController.navTo(gameController.getLevelPanel());
             }
         });
         level3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameController gameController = new GameController(windowController);
-                gameController.loadLevel(3);
+                windowModel.setLevel(3);
+                gameController.loadLevel();
                 windowController.navTo(gameController.getLevelPanel());
             }
         });

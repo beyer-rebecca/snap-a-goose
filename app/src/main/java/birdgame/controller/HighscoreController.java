@@ -28,14 +28,14 @@ public class HighscoreController {
             Object obj = parser.parse(reader);
             JSONObject combinedObject = (JSONObject) obj;
             JSONObject innerObject = (JSONObject) combinedObject.get(username);
-            if(innerObject == null || innerObject.get("scoreLevel" + level) == null) return -1;
+            if(innerObject == null || innerObject.get("scoreLevel" + level) == null) return 0;
             return Integer.valueOf(innerObject.get("scoreLevel" + level).toString());
 
         }catch(IOException | ParseException e){
             System.out.println(e);
         }
 
-        return -1;
+        return 0;
         
     }
     

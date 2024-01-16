@@ -14,6 +14,7 @@ public class WindowView extends JFrame{
     private LoginPanel loginPanel;
     private HighscorePanel highscorePanel;
     private CreditsPanel creditsPanel;
+    private GameOverPanel gameOverPanel;
 
     private JPanel currentPanel;
 
@@ -64,6 +65,10 @@ public class WindowView extends JFrame{
 
     public HighscorePanel getHighscorePanel(){
         return this.highscorePanel;
+    }
+
+    public GameOverPanel getgameOverPanel(){
+        return this.gameOverPanel;
     }
 
 }
