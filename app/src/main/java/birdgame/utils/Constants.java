@@ -13,11 +13,17 @@ public class Constants {
                 new Vec2(new Vec2(667, 538), new Vec2(667, 695)),
                 new Vec2(new Vec2(452, 287), new Vec2(452, 485))
                 );
-        public static int birdsSize = birdsPos.size();
-        public static int BIRD_WIDTH = 20;
-        public static int BIRD_HEIGHT = 40;
-
     }
 
+    public class Level2 {
+        public static List<Vec2> birdsPos = Arrays.asList(
+                new Vec2(new Vec2(128, 374), new Vec2(122, 187)), 
+                new Vec2(new Vec2(176, 86), new Vec2(126, 226)),
+                new Vec2(new Vec2(1157, 275), new Vec2(1147, 1247)),
+                new Vec2(new Vec2(1049, 441), new Vec2(1037, 1088)),
+                new Vec2(new Vec2(850, 395), new Vec2(844, 894)),
+                new Vec2(new Vec2(562, 530), new Vec2(558, 585))
+                );
+    }
     
 }
