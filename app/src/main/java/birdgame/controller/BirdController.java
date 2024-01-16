@@ -65,14 +65,20 @@ public class BirdController{
                 if(bird.getTreeRight() + bird.getBIRD_MOVEMENT_LIMIT() <  bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
+                    bird.setBirdIsOutOfTree(false);
                 }   
                 if(bird.getTreeLeft() - bird.getBIRD_MOVEMENT_LIMIT() > bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
+                    bird.setBirdIsOutOfTree(false);
                 }
-                if(bird.getOrigX() == bird.getPosX()){
+                if(!bird.getBirdIsOutOfTree() && (bird.getPosX() > bird.getTreeLeft() && 
+                        bird.getPosX() + bird.gethitWidth() <
+                        bird.getTreeRight() || bird.getPosX() > bird.getTreeLeft() &&
+                        bird.getPosX() + bird.getWidth() < bird.getTreeRight())){
                     bird.setIsAllowedMove(false);
                     bird.setIsHit(false);
+                    bird.setBirdIsOutOfTree(true);
                 }
             } 
         }

@@ -25,6 +25,7 @@ public class Bird {
     // private int hitHeight = 30;
     private float x,y;
     private int treeLeft, treeRight;
+    private boolean birdIsOutOfTree = true;
 
 
     public Bird(float x, float y, int treeLeft, int treeRight){
@@ -36,6 +37,13 @@ public class Bird {
         
         this.moveTime = new Random().nextInt(MAX_MOVEMENT_TIME - MIN_MOVEMENT_TIME + 1) + MIN_MOVEMENT_TIME;  
         this.moveTimeUpdate = this.moveTime;
+    }
+
+    public boolean getBirdIsOutOfTree(){
+        return this.birdIsOutOfTree;
+    }
+    public void setBirdIsOutOfTree(boolean bool){
+        this.birdIsOutOfTree = bool;
     }
     public int getTreeLeft(){
         return this.treeLeft;
