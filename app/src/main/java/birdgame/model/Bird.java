@@ -5,7 +5,7 @@ import birdgame.utils.Vec2;
 
 import java.util.Random;
 
-public class Bird extends Entity {
+public class Bird {
     private static final int MIN_MOVEMENT_TIME = 5;
     private static final int MAX_MOVEMENT_TIME = 20;
     private static final int BIRD_MOVEMENT_LIMIT = 50;
@@ -18,13 +18,34 @@ public class Bird extends Entity {
     private float origX;
     private int moveTime;
     private int moveTimeUpdate;
-    
 
-    public Bird(float x, float y, int width, int height){
-        super(x,y,width,height);
+    private int width = 20;
+    private int height = 40;
+    private int hitWidth = 45;
+    // private int hitHeight = 30;
+    private float x,y;
+    private int treeLeft, treeRight;
+
+
+    public Bird(float x, float y, int treeLeft, int treeRight){
         this.origX = x;
+        this.x = x;
+        this.y = y;
+        this.treeLeft = treeLeft;
+        this.treeRight = treeRight;
+        
         this.moveTime = new Random().nextInt(MAX_MOVEMENT_TIME - MIN_MOVEMENT_TIME + 1) + MIN_MOVEMENT_TIME;  
         this.moveTimeUpdate = this.moveTime;
+    }
+    public int getTreeLeft(){
+        return this.treeLeft;
+    }
+
+    public int getTreeRight(){
+        return this.treeRight;
+    }
+    public int gethitWidth(){
+        return this.hitWidth;
     }
 
     public int getWidth(){

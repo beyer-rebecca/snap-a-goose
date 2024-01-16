@@ -62,11 +62,11 @@ public class BirdController{
                 bird.setPosX(bird.getPosX() + bird.getBirdSpeed());
 
             
-                if(bird.getOrigX() + bird.getBIRD_MOVEMENT_LIMIT() <  bird.getPosX()){
+                if(bird.getTreeRight() + bird.getBIRD_MOVEMENT_LIMIT() <  bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
                 }   
-                if(bird.getOrigX() - bird.getBIRD_MOVEMENT_LIMIT() > bird.getPosX()){
+                if(bird.getTreeLeft() - bird.getBIRD_MOVEMENT_LIMIT() > bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
                 }
@@ -81,8 +81,8 @@ public class BirdController{
     public void spawnBirds(int level){
         switch(level){
             case 1:
-                for(Vec2 pos : Constants.Level1.birdsPos){
-                    birdFlock.addBird(new Bird(pos.x, pos.y, Constants.Level1.BIRD_WIDTH, Constants.Level1.BIRD_HEIGHT));
+                for(Vec2 vec : Constants.Level1.birdsPos){
+                    birdFlock.addBird(new Bird(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
                 }
                 break;
         }
