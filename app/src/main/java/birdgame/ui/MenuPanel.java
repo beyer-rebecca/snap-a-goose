@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import birdgame.controller.LoginController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
@@ -61,6 +62,13 @@ public class MenuPanel extends JPanel{
         CButton sound = new CButton("Sound");
         CButton music = new CButton("Music");
         CButton logout = new CButton("Logout");
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                MenuPanel.this.windowController.navTo(windowModel.getLoginPanel());
+                LoginController.loadLogin(windowModel.getLoginPanel());
+            }
+        });
         try {
             BufferedImage img = ImageIO.read(getClass().getClassLoader().getResource("sound.png"));
             sound = new CButton(img);
