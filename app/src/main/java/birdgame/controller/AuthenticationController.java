@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,8 +15,20 @@ import org.apache.commons.lang3.SystemUtils;
 
 public class AuthenticationController{
 
+    private static boolean verifyEmail(String email){
+        String regex = "^[a-zA-Z0-9_+&*-] + (?:\\.[a-zA-Z0-9_+&*-]+ )*@(?:[a-zA-Z0-9-]+\\.) + [a-zA-Z]{2, 7}$";
 
-    public static boolean verifyPassword (String username, String rawPassword) {
+        regex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(email).matches();
+
+        
+    }
+
+    public static boolean verifyLogin (String username, String rawPassword) {
 
         JSONParser parser = new JSONParser();
         JSONObject combinedObject;
@@ -33,6 +46,7 @@ public class AuthenticationController{
             Object obj = parser.parse(reader);
             combinedObject = (JSONObject) obj;
             JSONObject innerObject = (JSONObject) combinedObject.get(username);
+            if(innerObject == null) return false;
             String password = innerObject.get("password").toString();
 
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -48,13 +62,16 @@ public class AuthenticationController{
     }
 
     @SuppressWarnings("unchecked")
-    public static void storeData(String username, String email, String password){
+    public static boolean storeData(String username, String email, String password){
         FileWriter file;
         JSONParser parser = new JSONParser();
         
         JSONObject innerObject= new JSONObject();
-        innerObject.put("email", email);
-        
+        if(verifyEmail(email)){
+            innerObject.put("email", email);
+        }else{
+            return false;
+        }        
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String pas = encoder.encode(password);
         innerObject.put("password", pas);
@@ -97,8 +114,10 @@ public class AuthenticationController{
 
             file.flush();
             file.close();
+            return true;
         }catch(IOException | org.json.simple.parser.ParseException e){
             System.out.println(e);
         }
+        return false;
     }
 }
