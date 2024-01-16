@@ -96,6 +96,11 @@ public class BirdController{
                     birdFlock.addBird(new Bird(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
                 }
                 break;
+            case 3:
+                for(Vec2 vec : Constants.Level3.birdsPos){
+                    birdFlock.addBird(new Bird(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
+                }
+                break;
         }
     }
 }

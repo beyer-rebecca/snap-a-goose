@@ -26,4 +26,14 @@ public class Constants {
                 );
     }
     
+    public class Level3 {
+        public static List<Vec2> birdsPos = Arrays.asList(
+                new Vec2(new Vec2(70, 624), new Vec2(0, 81)), 
+                new Vec2(new Vec2(186, 393), new Vec2(177, 279)),
+                new Vec2(new Vec2(437, 92), new Vec2(427, 543)),
+                new Vec2(new Vec2(870, 429), new Vec2(860, 965)),
+                new Vec2(new Vec2(1148, 279), new Vec2(1136, 1280))
+                // new Vec2(new Vec2(562, 530), new Vec2(558, 585))
+                );
+    }
 }
