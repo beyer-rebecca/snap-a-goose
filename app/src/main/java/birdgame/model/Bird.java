@@ -12,6 +12,7 @@ public class Bird extends Entity {
     
     private float birdSpeed = .2f;
     private String birdImage = "goose.png";
+    private String birdImageHit = "gooseHit.png";
     private boolean isAllowedMove = false;
     private boolean isHit = false;
     private float origX;
@@ -88,6 +89,10 @@ public class Bird extends Entity {
 
     public String getImage(){
         return birdImage;
+    }
+
+    public String getImageHit(){
+        return birdImageHit;
     }
 
     public void setIsHit(Boolean isHit){

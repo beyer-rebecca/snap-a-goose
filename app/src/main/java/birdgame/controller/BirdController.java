@@ -31,6 +31,17 @@ public class BirdController{
                     System.out.println(e);
                 }
             }
+            if(bird.getIsMoving() && bird.getIsHit()){
+                try {
+                    String birdImage = bird.getImageHit();
+                    BufferedImage _img = ImageIO.read(getClass().getClassLoader().getResource(birdImage));
+                    Image img = _img.getScaledInstance(bird.getWidth(), bird.getHeight(), Image.SCALE_SMOOTH);
+                    Vec2 birdPos = bird.getPos();
+                    g.drawImage(img, birdPos.x, birdPos.y, null);
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+            }
         }
     }
 
@@ -61,6 +72,7 @@ public class BirdController{
                 }
                 if(bird.getOrigX() == bird.getPosX()){
                     bird.setIsAllowedMove(false);
+                    bird.setIsHit(false);
                 }
             } 
         }

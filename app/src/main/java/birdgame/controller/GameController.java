@@ -78,7 +78,7 @@ public class GameController implements Runnable{
     public void update(){
         birdController.update();
 
-        if(this.game.getTime() <= 0 || this.playerController.getScoreController().getScoreModel().getCurrentScore() == 150){
+        if(this.game.getTime() <= 0){
             gameFinished();
         }
     }
