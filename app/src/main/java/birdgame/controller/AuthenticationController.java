@@ -34,11 +34,28 @@ public class AuthenticationController{
         JSONObject combinedObject;
         
         String path;
+        String dir;
         if(SystemUtils.IS_OS_WINDOWS){
             path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
+            dir = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame";
         }
         else{
             path = System.getProperty("user.home") + "/.local/share/birdgame/" + "birdgame.json";
+            dir = System.getProperty("user.home") + "/.local/share/birdgame/";
+        }
+        
+        File f = new File(path);
+        if(!f.exists()) { 
+            try{
+                new File(dir).mkdirs();
+                f.createNewFile();
+                FileWriter writer = new FileWriter(f);
+                writer.write("{\"Axel Muster\":{\"scoreLevel1\":100,\"password\":\"$2a$10$C6F9NwYdz60f0AQE\\/WWOCOVMkcdDYjAZcjXsoAL5XCXxgXl2xS2uK\",\"email\":\"axel@muster.com\"},\"Kim Beispiel\":{\"scoreLevel1\":1,\"password\":\"$2a$10$oDrX2AOBxWl9qeqj6S966uSTctOsvofy0j0gLNuK94qowm4dC7awa\",\"email\":\"kim@beispiel.com\"}}");
+                writer.flush();
+                writer.close();
+            }catch(IOException e){
+                System.out.println(e);
+            }
         }
         
         try(FileReader reader = new FileReader(path))
@@ -96,7 +113,7 @@ public class AuthenticationController{
             try{
                 f.createNewFile();
                 FileWriter writer = new FileWriter(f);
-                writer.write("{}");
+                writer.write("{\"Axel Muster\":{\"scoreLevel1\":100,\"password\":\"$2a$10$C6F9NwYdz60f0AQE\\/WWOCOVMkcdDYjAZcjXsoAL5XCXxgXl2xS2uK\",\"email\":\"axel@muster.com\"},\"Kim Beispiel\":{\"scoreLevel1\":1,\"password\":\"$2a$10$oDrX2AOBxWl9qeqj6S966uSTctOsvofy0j0gLNuK94qowm4dC7awa\",\"email\":\"kim@beispiel.com\"}}");
                 writer.flush();
                 writer.close();
             }catch(IOException e){

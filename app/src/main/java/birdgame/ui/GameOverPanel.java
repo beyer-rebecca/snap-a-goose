@@ -27,6 +27,7 @@ public class GameOverPanel extends JPanel{
     private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
 
 
+    /*Erzeugt GameOverPanel*/
     public GameOverPanel(WindowModel windowModel, WindowController windowController, ScoreController scoreController){
         this.windowModel = windowModel;
         this.windowController = windowController;

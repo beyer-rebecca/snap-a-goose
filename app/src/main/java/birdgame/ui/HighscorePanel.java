@@ -53,7 +53,7 @@ public class HighscorePanel extends JPanel {
         
 
         // show level1 highscore
-        int highscoreLevel1 = HighscoreController.getHighscore(windowModel.getUserName(), 1);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
+        int highscoreLevel1 = HighscoreController.getHighscore(windowModel.getUserName(), 1);
         scoreLevel1Label = new JLabel(Integer.toString(highscoreLevel1));
         scoreLevel1Label.setFont(normalFont);
         
@@ -64,16 +64,16 @@ public class HighscorePanel extends JPanel {
         
 
         // show level2 Highscore
-        int highscoreLevel2 = HighscoreController.getHighscore(windowModel.getUserName(), 2);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
+        int highscoreLevel2 = HighscoreController.getHighscore(windowModel.getUserName(), 2); 
         scoreLevel2Label = new JLabel(Integer.toString(highscoreLevel2));
         scoreLevel2Label.setFont(normalFont);
         
-        //show lebel3 name
+        //show level3 name
         JLabel level3Label = new JLabel("Mountains");
         level3Label.setFont(normalFont);
 
         // show level3 Highscore
-        int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
+        int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);  
         scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
         scoreLevel3Label.setFont(normalFont);
 

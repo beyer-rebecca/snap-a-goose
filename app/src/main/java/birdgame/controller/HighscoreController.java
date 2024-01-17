@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import org.apache.commons.lang3.SystemUtils;
 
-// Verwaltet Highscores (ändert highscores fügt neue users dazu, liiest highscores), wird bei Anwendungs-Start initialisiert
+// Verwaltet Highscores (ändert highscores fügt neue users dazu, liest highscores), wird bei Anwendungs-Start initialisiert
 public class HighscoreController {
 
     public static int getHighscore(String username, int level){
@@ -35,7 +35,7 @@ public class HighscoreController {
             System.out.println(e);
         }
 
-        return 0;
+        return -1;
         
     }
     
