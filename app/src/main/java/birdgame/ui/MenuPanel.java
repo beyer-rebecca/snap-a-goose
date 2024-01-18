@@ -21,6 +21,7 @@ import birdgame.model.WindowModel;
 
 
 
+
 public class MenuPanel extends JPanel{
     private WindowModel windowModel;
     private WindowController windowController;
@@ -40,7 +41,7 @@ public class MenuPanel extends JPanel{
         System.out.println(backgroundWidth+ ", "+backgroundHeight);
 
         try{
-            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("app_background.jpg"));
+            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackground.jpg"));
         }catch(IOException e){
             e.printStackTrace();
         }
