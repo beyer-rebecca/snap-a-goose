@@ -59,7 +59,7 @@ public class HighscorePanel extends JPanel {
         
 
         //show lebel2 name
-        JLabel level2Label = new JLabel("Sea");
+        JLabel level2Label = new JLabel("Winter");
         level2Label.setFont(normalFont);
         
 
@@ -69,13 +69,14 @@ public class HighscorePanel extends JPanel {
         scoreLevel2Label.setFont(normalFont);
         
         //show lebel3 name
-        JLabel level3Label = new JLabel("Mountains");
+        JLabel level3Label = new JLabel("Night");
         level3Label.setFont(normalFont);
 
         // show level3 Highscore
         int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);  //nachdem highscoreController,userController eingebaut: =highscoreController.getHighscore(level1, user.getUsername)
         scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
         scoreLevel3Label.setFont(normalFont);
+
 
 
         c.insets = new Insets(10, 10, 5, 10);
@@ -85,14 +86,14 @@ public class HighscorePanel extends JPanel {
         c.anchor = GridBagConstraints.NORTHWEST;
         this.add(backButton, c);
 
-        c.insets = new Insets(0, 10, 150, 10);
+        c.insets = new Insets(30, 10, 170, 10);
         c.gridx = 0; c.gridy = 0; 
         c.gridwidth = GridBagConstraints.REMAINDER; 
         c.weightx = 1; 
         c.anchor = GridBagConstraints.NORTH; 
         this.add(highscoreTitle, c);
 
-        c.insets = new Insets(35,35,0,35);
+        c.insets = new Insets(35,20,0,20);
         c.gridx = 1; c.gridy = 1; c.gridwidth = 1;
         this.add(level1Label,c);
 
