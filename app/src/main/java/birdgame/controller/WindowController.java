@@ -13,7 +13,8 @@ public class WindowController {
         this.windowView  = new WindowView();
         this.windowModel = new WindowModel(this);
         windowView.setSize(windowModel.getWINDOW_WIDTH(), windowModel.getWINDOW_HEIGHT());
-        windowView.setPanel(windowModel.getLoginPanel());
+        //windowView.setPanel(windowModel.getLoginPanel());
+        windowView.setPanel(windowModel.getLevelSelectPanel());
     }
 
     public void setWindowView(WindowView windowView) {
