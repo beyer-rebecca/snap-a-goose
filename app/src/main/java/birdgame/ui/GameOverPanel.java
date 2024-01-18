@@ -6,11 +6,14 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Graphics;
 
 import birdgame.controller.HighscoreController;
 import birdgame.controller.ScoreController;
@@ -18,10 +21,14 @@ import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
 
+
 public class GameOverPanel extends JPanel{
     private WindowModel windowModel;
     private WindowController windowController;
     private ScoreController scoreController;
+    private final int backgroundWidth;
+    private final int backgroundHeight;
+    private Image backgroundImage;
 
     private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
     private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
@@ -31,7 +38,15 @@ public class GameOverPanel extends JPanel{
         this.windowModel = windowModel;
         this.windowController = windowController;
         this.scoreController = scoreController;
+        this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
+        this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
 
+
+        try{
+            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackgroundBlurred.jpg"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -42,10 +57,10 @@ public class GameOverPanel extends JPanel{
         gameOverLabel.setFont(titleFont);
 
 
-        JLabel scoreLabel = new JLabel("Score:" + scoreController.getScoreModel().getCurrentScore());  //+ scoreController.getCurrentSCore()
+        JLabel scoreLabel = new JLabel("Score:   " + scoreController.getScoreModel().getCurrentScore());  //+ scoreController.getCurrentSCore()
         scoreLabel.setFont(normalFont);
 
-        JLabel highscoreLabel = new JLabel("Highscore:" + HighscoreController.getHighscore(windowModel.getUserName(), windowModel.getLevel()));  //+ highscoreController.int getHighscore(String username, int level)
+        JLabel highscoreLabel = new JLabel("Highscore:   " + HighscoreController.getHighscore(windowModel.getUserName(), windowModel.getLevel()));  //+ highscoreController.int getHighscore(String username, int level)
         highscoreLabel.setFont(normalFont);
 
         //CButton replayButton = new CButton("Replay");
@@ -94,13 +109,14 @@ public class GameOverPanel extends JPanel{
         c.insets = new Insets(10, 20,20,0);
         add(menuButton, c);
 
+    }
 
-
-
-
-
-
-
+    @Override
+    protected void paintComponent(Graphics arg0) {
+        super.paintComponent(arg0);
+        if (this.backgroundImage != null) {
+            arg0.drawImage(this.backgroundImage, 0, 0, backgroundWidth, backgroundHeight, this);
+           }
     }
 
 }
