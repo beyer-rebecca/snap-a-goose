@@ -55,7 +55,7 @@ public class MenuPanel extends JPanel{
         gameTitle.setFont(gameTitleFont);
 
         // CButton buttonlevel = new CButton("Level");
-        CButton buttonlevel = new CButton("Level");
+        CButton buttonlevel = new CButton("Play");
         buttonlevel.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 // leave it be until level and game are implemented
