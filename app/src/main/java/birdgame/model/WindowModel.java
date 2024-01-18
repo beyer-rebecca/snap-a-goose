@@ -6,7 +6,7 @@ import birdgame.ui.*;
 
 
 public class WindowModel {
-    public static int WINDOW_WIDHT = 1280;
+    public static int WINDOW_WIDTH = 1280;
     public static int WINDOW_HEIGHT = 720;
 
     private MenuPanel menuPanel;
@@ -42,8 +42,8 @@ public class WindowModel {
         return this.username;
     }
 
-    public int getWINDOW_WIDHT(){
-        return WINDOW_WIDHT;
+    public int getWINDOW_WIDTH(){
+        return WINDOW_WIDTH;
     }
 
     public int getWINDOW_HEIGHT(){

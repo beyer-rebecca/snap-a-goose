@@ -51,7 +51,7 @@ public class LevelPanel extends JPanel {
         this.scoreController = playerController.getScoreController();
         this.score = scoreController.getScoreModel();
         this.time = gameController.getTime();
-        this.backgroundWidth = windowController.getWindowModel().getWINDOW_WIDHT();
+        this.backgroundWidth = windowController.getWindowModel().getWINDOW_WIDTH();
         this.backgroundHeight = windowController.getWindowModel().getWINDOW_HEIGHT();
         this.background = background;
         this.mask = mask;
