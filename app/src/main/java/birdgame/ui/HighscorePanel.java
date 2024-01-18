@@ -97,7 +97,8 @@ public class HighscorePanel extends JPanel {
         scoreLevel3Label.setFont(normalFont);
 
         c.insets = new Insets(30, 10, 170, 10);
-        c.gridx = 0; c.gridy = 0; 
+        c.gridx = 0; 
+        c.gridy = 0; 
         c.gridwidth = GridBagConstraints.REMAINDER; 
         c.weightx = 1; 
         c.anchor = GridBagConstraints.NORTH; 
