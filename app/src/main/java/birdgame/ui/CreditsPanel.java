@@ -55,8 +55,8 @@ public class CreditsPanel extends JPanel{
 
 
         // create headline Credits
-        JLabel creditsTitle = new JLabel("Credits");
-        creditsTitle.setFont(titleFont);
+        JLabel titleLabel = new JLabel("Credits");
+        titleLabel.setFont(titleFont);
         
         // create individual Credits
         // credits for programming
@@ -105,7 +105,7 @@ public class CreditsPanel extends JPanel{
         c.gridwidth = GridBagConstraints.REMAINDER; 
         c.weightx = 1; 
         c.anchor = GridBagConstraints.NORTH; 
-        this.add(creditsTitle, c);
+        this.add(titleLabel, c);
         c.gridx = 0; 
         c.gridy++; 
         c.weighty = 1;
