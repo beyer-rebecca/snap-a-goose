@@ -1,4 +1,4 @@
-package birdgame.ui;
+package birdgame.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,7 +37,7 @@ public class WindowView extends JFrame{
         // highscorePanel = new HighscorePanel(this, windowController);
         // creditsPanel = new CreditsPanel(this, windowController);
         // this.windowController = windowController;
-        // setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
+        // setSize(windowController.getWINDOW_WIDTH(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
         // setPanel(loginPanel);
     // }
 

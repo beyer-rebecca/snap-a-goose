@@ -1,12 +1,11 @@
 package birdgame.model;
 
-import birdgame.ui.MenuPanel;
 import birdgame.controller.WindowController;
-import birdgame.ui.*;
+import birdgame.view.*;
 
 
 public class WindowModel {
-    public static int WINDOW_WIDHT = 1280;
+    public static int WINDOW_WIDTH = 1280;
     public static int WINDOW_HEIGHT = 720;
 
     private MenuPanel menuPanel;
@@ -14,6 +13,7 @@ public class WindowModel {
     private LoginPanel loginPanel;
     private HighscorePanel highscorePanel;
     private CreditsPanel creditsPanel;
+    private ManualPanel manualPanel;
     // private GameOverPanel gameOverPanel;
     private String username;
     private int level;
@@ -24,6 +24,8 @@ public class WindowModel {
         this.loginPanel = new LoginPanel(this, windowController);
         this.highscorePanel = new HighscorePanel(this, windowController);
         this.creditsPanel = new CreditsPanel(this, windowController);
+        this.manualPanel = new ManualPanel(this, windowController);
+
         // this.gameOverPanel = new GameOverPanel(this, windowController);
     }
     public void setLevel(int level){
@@ -42,8 +44,8 @@ public class WindowModel {
         return this.username;
     }
 
-    public int getWINDOW_WIDHT(){
-        return WINDOW_WIDHT;
+    public int getWINDOW_WIDTH(){
+        return WINDOW_WIDTH;
     }
 
     public int getWINDOW_HEIGHT(){
@@ -68,6 +70,12 @@ public class WindowModel {
     public HighscorePanel getHighscorePanel(){
         return this.highscorePanel;
     }
+
+    public ManualPanel getManualPanel(){
+        return this.manualPanel;
+    }
+
+
 
     // public GameOverPanel getGameOverPanel(){
     //     return this.gameOverPanel;

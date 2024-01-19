@@ -1,30 +1,45 @@
-package birdgame.ui;
+package birdgame.view;
 
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import java.awt.Image;
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
 
 import birdgame.controller.GameController;
 import birdgame.controller.WindowController;
 import birdgame.model.Game;
 import birdgame.model.WindowModel;
 
-import javax.imageio.ImageIO;
-
 
 public class LevelSelectPanel extends JPanel{
     private WindowModel windowModel;
     private WindowController windowController;
+    private final int backgroundWidth;
+    private final int backgroundHeight;
+    private Image backgroundImage;
 
     public LevelSelectPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
         this.windowController = windowController;
+        this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
+        this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
+
+        try{
+            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackgroundBlurred.jpg"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -33,7 +48,7 @@ public class LevelSelectPanel extends JPanel{
         CButton level1 = new CButton();
         CButton level2 = new CButton();
         CButton level3 = new CButton();
-        CButton back = new CButton("<--");
+        CButton backButton = new CButton("Back");
         try {
             BufferedImage img = ImageIO.read(getClass().getClassLoader().getResource("pol.png"));
             level1 = new CButton(img);
@@ -66,14 +81,14 @@ public class LevelSelectPanel extends JPanel{
                 windowController.navTo(gameController.getLevelPanel());
             }
         });
-        back.addActionListener(new ActionListener() { 
+        backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 windowController.navTo(windowModel.getMenuPanel());
 
             } 
         });
 
-        c.insets = new Insets(0, 0, 0, 0);
+        c.insets = new Insets(200, 0, 0, 0);
         c.gridy=1;
         c.gridx = 1;
         c.weighty = 1;
@@ -88,14 +103,21 @@ public class LevelSelectPanel extends JPanel{
         c.gridy=1;
         c.gridx = 3;
         c.anchor = GridBagConstraints.NORTHWEST;
-        add(level3,c);
+        add(level3,c); 
         c.ipady = 0;
-        c.insets = new Insets(10,10,10,10);
-        c.anchor = GridBagConstraints.NORTHWEST;
-        c.gridy=0;
-        c.gridx = 1;
-        add(back, c);
-       
-        
+        c.gridx = 0; 
+        c.gridy = 2; 
+        c.gridwidth = GridBagConstraints.REMAINDER;
+        c.anchor = GridBagConstraints.SOUTHWEST;
+        c.insets = new Insets(0, 35, 30, 0); 
+        add(backButton, c);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+       super.paintComponent(g);
+      if (this.backgroundImage != null) {
+         g.drawImage(this.backgroundImage, 0, 0, backgroundWidth, backgroundHeight, this);
+        }
     }
 }
