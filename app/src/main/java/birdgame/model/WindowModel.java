@@ -1,8 +1,7 @@
 package birdgame.model;
 
-import birdgame.ui.MenuPanel;
 import birdgame.controller.WindowController;
-import birdgame.ui.*;
+import birdgame.view.*;
 
 
 public class WindowModel {

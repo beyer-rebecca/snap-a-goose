@@ -1,4 +1,4 @@
-package birdgame.ui;
+package birdgame.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

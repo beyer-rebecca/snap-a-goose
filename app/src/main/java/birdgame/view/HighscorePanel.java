@@ -1,4 +1,4 @@
-package birdgame.ui;
+package birdgame.view;
 
 import birdgame.controller.HighscoreController;
 import birdgame.controller.WindowController;

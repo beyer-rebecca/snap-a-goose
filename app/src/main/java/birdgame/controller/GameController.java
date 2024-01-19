@@ -3,10 +3,10 @@ package birdgame.controller;
 import birdgame.model.Bird;
 import birdgame.model.BirdFlock;
 import birdgame.model.Game;
-import birdgame.ui.GameOverPanel;
-import birdgame.ui.LevelPanel;
 import birdgame.utils.Constants;
 import birdgame.utils.Vec2;
+import birdgame.view.GameOverPanel;
+import birdgame.view.LevelPanel;
 
 import java.awt.Graphics;
 import java.awt.Image;

@@ -1,6 +1,6 @@
 package birdgame.controller;
 
-import birdgame.ui.LoginPanel;
+import birdgame.view.LoginPanel;
 
 public class LoginController {
     public static void loadRegister(LoginPanel loginPanel){

@@ -1,7 +1,7 @@
 package birdgame;
 
-import birdgame.ui.WindowView;
 import birdgame.model.WindowModel;
+import birdgame.view.WindowView;
 import birdgame.controller.WindowController;
 
 public class App {

@@ -1,7 +1,7 @@
 package birdgame.controller;
 
 import birdgame.model.WindowModel;
-import birdgame.ui.WindowView;
+import birdgame.view.WindowView;
 
 import javax.swing.JPanel;
 

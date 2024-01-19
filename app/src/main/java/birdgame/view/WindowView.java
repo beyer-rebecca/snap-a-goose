@@ -1,4 +1,4 @@
-package birdgame.ui;
+package birdgame.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
