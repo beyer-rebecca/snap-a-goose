@@ -13,6 +13,7 @@ public class WindowModel {
     private LoginPanel loginPanel;
     private HighscorePanel highscorePanel;
     private CreditsPanel creditsPanel;
+    private ManualPanel manualPanel;
     // private GameOverPanel gameOverPanel;
     private String username;
     private int level;
@@ -23,6 +24,8 @@ public class WindowModel {
         this.loginPanel = new LoginPanel(this, windowController);
         this.highscorePanel = new HighscorePanel(this, windowController);
         this.creditsPanel = new CreditsPanel(this, windowController);
+        this.manualPanel = new ManualPanel(this, windowController);
+
         // this.gameOverPanel = new GameOverPanel(this, windowController);
     }
     public void setLevel(int level){
@@ -67,6 +70,12 @@ public class WindowModel {
     public HighscorePanel getHighscorePanel(){
         return this.highscorePanel;
     }
+
+    public ManualPanel getManualPanel(){
+        return this.manualPanel;
+    }
+
+
 
     // public GameOverPanel getGameOverPanel(){
     //     return this.gameOverPanel;

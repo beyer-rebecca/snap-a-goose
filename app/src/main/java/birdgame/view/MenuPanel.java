@@ -83,9 +83,16 @@ public class MenuPanel extends JPanel{
         });
 
 
-        CButton manuel = new CButton("Manuel");
-        //CButton sound = new CButton("Sound");
-        //CButton music = new CButton("Music");
+        CButton manualButton = new CButton("Manual");
+        manualButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                windowController.navTo(windowModel.getManualPanel());
+            }
+        });
+
+
+
+
         CButton logout = new CButton("Logout");
         logout.addActionListener(new ActionListener() {
             @Override
@@ -125,7 +132,7 @@ public class MenuPanel extends JPanel{
         add(buttonlevel, c);
         c.gridx = 0;
         c.gridy = 3;
-        add(manuel, c);
+        add(manualButton, c);
         c.gridx = 0;
         c.gridy = 4;
         add(highscoreButton, c);
