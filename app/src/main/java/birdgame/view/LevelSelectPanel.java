@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
 import java.awt.Image;
 import java.awt.Graphics;
@@ -16,11 +15,11 @@ import javax.imageio.ImageIO;
 
 import birdgame.controller.GameController;
 import birdgame.controller.WindowController;
-import birdgame.model.Game;
 import birdgame.model.WindowModel;
 
 
 public class LevelSelectPanel extends JPanel{
+    private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
     private WindowModel windowModel;
     private WindowController windowController;
     private final int backgroundWidth;
@@ -34,21 +33,19 @@ public class LevelSelectPanel extends JPanel{
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
 
         try{
-            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackgroundBlurred.jpg"));
+            this.backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         }catch(IOException e){
             e.printStackTrace();
         }
         
-
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-
-        
 
         CButton level1 = new CButton();
         CButton level2 = new CButton();
         CButton level3 = new CButton();
         CButton backButton = new CButton("Back");
+
         try {
             BufferedImage img = ImageIO.read(getClass().getClassLoader().getResource("pol.png"));
             level1 = new CButton(img);
@@ -57,33 +54,37 @@ public class LevelSelectPanel extends JPanel{
         } catch (Exception ex) {
             System.out.println("Error loading button image: "+ex);
         }
+
         level1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GameController gameController = new GameController(windowController);   // vlt nur 1 GameController in ganzen spiel, in App erstellen?
+                GameController gameController = new GameController(windowController);  
                 windowModel.setLevel(1);
                 gameController.loadLevel();
-                windowController.navTo(gameController.getLevelPanel());
+                windowController.navigateToPanel(gameController.getLevelPanel());
             }
         });
+
         level2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameController gameController = new GameController(windowController);
                 windowModel.setLevel(2);
                 gameController.loadLevel();
-                windowController.navTo(gameController.getLevelPanel());
+                windowController.navigateToPanel(gameController.getLevelPanel());
             }
         });
+
         level3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameController gameController = new GameController(windowController);
                 windowModel.setLevel(3);
                 gameController.loadLevel();
-                windowController.navTo(gameController.getLevelPanel());
+                windowController.navigateToPanel(gameController.getLevelPanel());
             }
         });
+
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                windowController.navTo(windowModel.getMenuPanel());
+                windowController.navigateToPanel(windowModel.getMenuPanel());
 
             } 
         });

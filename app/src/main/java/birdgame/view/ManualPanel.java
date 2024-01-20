@@ -3,32 +3,30 @@ package birdgame.view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JPanel;
-
-import birdgame.controller.WindowController;
-import birdgame.model.WindowModel;
-
 import javax.swing.JLabel;
-import javax.swing.JComponent;
-import javax.swing.Box;
 import javax.imageio.ImageIO;
 import java.awt.Image;
 import java.awt.Graphics;
 
-    public class ManualPanel extends JPanel {
+import birdgame.controller.WindowController;
+import birdgame.model.WindowModel;
+
+public class ManualPanel extends JPanel {
+    private final static Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
+    private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
+    private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
+
     private WindowModel windowModel;
     private WindowController windowController;
+
     private final int backgroundWidth;
     private final int backgroundHeight;
     private Image backgroundImage;
-    private Font titleFont = new Font("TimesRoman", Font.BOLD, 30);
-    private Font smallFont = new Font("TimesRoman", Font.PLAIN, 15);  
-    private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
 
     public ManualPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
@@ -36,29 +34,27 @@ import java.awt.Graphics;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
         
-        try{
-            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackgroundBlurred.jpg"));
-        }catch(IOException e){
+        try {
+            this.backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
+        } catch(IOException e){
             e.printStackTrace();
         }
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        // Backbutton
         CButton backButton = new CButton("Back");
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                windowController.navTo(windowModel.getMenuPanel());
+                windowController.navigateToPanel(windowModel.getMenuPanel());
             } 
         });
 
-        // create headline Credits
-        JLabel titleLabel = new JLabel("Manual");
-        titleLabel.setFont(titleFont);
 
+        JLabel titleLabel = new JLabel("Manual");
+        titleLabel.setFont(TITLE_FONT);
         JLabel instructionsLabel = new JLabel("here enter instructions");
-        instructionsLabel.setFont(normalFont);
+        instructionsLabel.setFont(NORMAL_FONT);
 
 
         c.insets = new Insets(40, 10, 35, 10);
@@ -79,10 +75,7 @@ import java.awt.Graphics;
         c.weightx = 0; 
         c.anchor = GridBagConstraints.SOUTHWEST;
         this.add(backButton, c);
-
-
     }
-
 
      @Override
      protected void paintComponent(Graphics g) {
@@ -91,6 +84,4 @@ import java.awt.Graphics;
           g.drawImage(this.backgroundImage, 0, 0, backgroundWidth, backgroundHeight, this);
          }
      }
-
-
 }

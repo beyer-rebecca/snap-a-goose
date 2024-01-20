@@ -4,31 +4,29 @@ import birdgame.view.LoginPanel;
 
 public class LoginController {
     public static void loadRegister(LoginPanel loginPanel){
-        loginPanel.removeAll();
-        loginPanel.revalidate();
-        loginPanel.repaint();
+        preparePanel(loginPanel);
         loginPanel.registerView();
     }
     
     public static void loadLogin(LoginPanel loginPanel){
-        loginPanel.removeAll();
-        loginPanel.revalidate();
-        loginPanel.repaint();
+        preparePanel(loginPanel);
         loginPanel.loginView();
     }
 
     public static void loadLoginFail(LoginPanel loginPanel){
-        loginPanel.removeAll();
-        loginPanel.revalidate();
-        loginPanel.repaint();
+        preparePanel(loginPanel);
         loginPanel.loginFailView();
         
     }
     public static void loadRegisterFail(LoginPanel loginPanel){
+        preparePanel(loginPanel);
+        loginPanel.registerFailView();
+    }
+
+    private static void preparePanel(LoginPanel loginPanel) {
         loginPanel.removeAll();
         loginPanel.revalidate();
         loginPanel.repaint();
-        loginPanel.registerFailView();
     }
         
 }

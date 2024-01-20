@@ -10,10 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.Image;
 import java.awt.Graphics;
-
 import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -25,18 +22,17 @@ import birdgame.controller.AuthenticationController;
 import birdgame.controller.LoginController;
 
 public class LoginPanel extends JPanel {
+    private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
+    private final static Font SMALL_FONT = new Font("TimesRoman", Font.PLAIN, 15);  
+    private final static Font gameTITLE_FONT = new Font("TimesRoman", Font.BOLD, 50);
+    private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
+
     private WindowModel windowModel;
     private WindowController windowController;
     private LoginPanel loginPanel;
     private final int backgroundWidth;
     private final int backgroundHeight;
     private Image backgroundImage;
-    private Font normalFont = new Font("TimesRoman", Font.BOLD, 20);
-    private Font font = new Font("TimesRoman", Font.BOLD, 20);
-    private Font smallFont = new Font("TimesRoman", Font.PLAIN, 15);  
-    private Font gameTitleFont = new Font("TimesRoman", Font.BOLD, 50);
-
-
     
     public LoginPanel(WindowModel windowModel, WindowController windowController){
         this.loginPanel = this;
@@ -44,8 +40,9 @@ public class LoginPanel extends JPanel {
         this.windowController = windowController;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
+
         try{
-            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackgroundBlurred.jpg"));
+            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -60,17 +57,17 @@ public class LoginPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
-        gameLabel.setFont(gameTitleFont);
+        gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
-        name.setFont(smallFont);
+        name.setFont(SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(normalFont);
+        nameInput.setFont(NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(smallFont);
+        password.setFont(SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(normalFont);
+        passwordInput.setFont(NORMAL_FONT);
         JLabel newAccountLabel = new JLabel("Create new Account");
-        newAccountLabel.setFont(smallFont);
+        newAccountLabel.setFont(SMALL_FONT);
 
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
@@ -87,7 +84,7 @@ public class LoginPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(AuthenticationController.verifyLogin(nameInput.getText(), new String(passwordInput.getPassword()))){
                     windowModel.setUserName(nameInput.getText());
-                    windowController.navTo(windowModel.getMenuPanel());
+                    windowController.navigateToPanel(windowModel.getMenuPanel());
                 }else{
                     LoginController.loadLoginFail(loginPanel);
                 }
@@ -144,17 +141,17 @@ public class LoginPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
-        gameLabel.setFont(gameTitleFont);
+        gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
-        name.setFont(smallFont);
+        name.setFont(SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(font);
+        nameInput.setFont(NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(smallFont);
+        password.setFont(SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(font);
+        passwordInput.setFont(NORMAL_FONT);
         JLabel newAccountLabel = new JLabel("Create new Account");
-        newAccountLabel.setFont(smallFont);
+        newAccountLabel.setFont(SMALL_FONT);
 
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
@@ -172,7 +169,7 @@ public class LoginPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(AuthenticationController.verifyLogin(nameInput.getText(), new String(passwordInput.getPassword()))){
                     windowModel.setUserName(nameInput.getText());
-                    windowController.navTo(windowModel.getMenuPanel());
+                    windowController.navigateToPanel(windowModel.getMenuPanel());
                 }else{
                     LoginController.loadLoginFail(loginPanel);
                 }
@@ -180,40 +177,10 @@ public class LoginPanel extends JPanel {
             }
 
         });
-
-
         
         JLabel error = new JLabel("Login failed!");
-        error.setFont(font);
+        error.setFont(NORMAL_FONT);
         error.setForeground(Color.RED);
-
-        /* 
-        c.insets = new Insets(10,10,10,10);
-        c.anchor = GridBagConstraints.WEST;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 2;
-        add(error, c);
-        c.gridwidth = 1;
-        c.gridx = 0;
-        c.gridy = 1;
-        add(name, c);
-        c.gridx = 1;
-        c.gridy = 1;
-        add(nameInput, c);
-        c.gridx = 0;
-        c.gridy = 2;
-        add(password, c);
-        c.gridx = 1;
-        c.gridy = 2;
-        add(passwordInput, c);
-        c.gridx = 0;
-        c.gridy = 3;
-        add(register, c);
-        c.gridx = 1;
-        c.gridy = 3;
-        add(login, c);
-        */
 
         c.gridx = 0; 
         c.gridy = 0; 
@@ -262,25 +229,25 @@ public class LoginPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
-        gameLabel.setFont(gameTitleFont);
+        gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
-        name.setFont(smallFont);
+        name.setFont(SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(font);
+        nameInput.setFont(NORMAL_FONT);
         JLabel email = new JLabel("E-Mail");
-        email.setFont(smallFont);
+        email.setFont(SMALL_FONT);
         JTextField emailInput = new JTextField(10);
-        emailInput.setFont(font);
+        emailInput.setFont(NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(smallFont);
+        password.setFont(SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(font);
+        passwordInput.setFont(NORMAL_FONT);
 
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
 
         JLabel newAccountLabel = new JLabel("Already have an account?");
-        newAccountLabel.setFont(smallFont);
+        newAccountLabel.setFont(SMALL_FONT);
 
         login.addActionListener(new ActionListener() {
             @Override
@@ -295,44 +262,13 @@ public class LoginPanel extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 if(AuthenticationController.storeData(nameInput.getText(), emailInput.getText(), new String(passwordInput.getPassword()))){
                     windowModel.setUserName(nameInput.getText());
-                    windowController.navTo(windowModel.getMenuPanel());
+                    windowController.navigateToPanel(windowModel.getMenuPanel());
                 }else{
                     LoginController.loadRegisterFail(loginPanel);
                 }
 
             }
         });
-
-        
-        /* 
-        c.insets = new Insets(10,10,10,10);
-        c.anchor = GridBagConstraints.WEST;
-        c.gridx = 0;
-        c.gridy = 0;
-        add(name, c);
-        c.gridx = 1;
-        c.gridy = 0;
-        add(nameInput, c);
-        c.gridx = 0;
-        c.gridy = 1;
-        add(email, c);
-        c.gridx = 1;
-        c.gridy = 1;
-        add(emailInput, c);
-        c.gridx = 0;
-        c.gridy = 2;
-        add(password, c);
-        c.gridx = 1;
-        c.gridy = 2;
-        add(passwordInput, c);
-        c.gridx = 0;
-        c.gridy = 3;
-        add(login, c);
-        c.gridx = 1;
-        c.gridy = 3;
-        add(register, c);
-        */
-
 
         c.gridx = 0; 
         c.gridy = 0; 
@@ -386,25 +322,25 @@ public class LoginPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         
         JLabel name = new JLabel("Name:");
-        name.setFont(smallFont);
+        name.setFont(SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(font);
+        nameInput.setFont(NORMAL_FONT);
         JLabel email = new JLabel("E-Mail");
-        email.setFont(smallFont);
+        email.setFont(SMALL_FONT);
         JTextField emailInput = new JTextField(10);
-        emailInput.setFont(font);
+        emailInput.setFont(NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(smallFont);
+        password.setFont(SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(font);
+        passwordInput.setFont(NORMAL_FONT);
 
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
 
         JLabel newAccountLabel = new JLabel("Already have an account?");
-        newAccountLabel.setFont(smallFont);
+        newAccountLabel.setFont(SMALL_FONT);
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
-        gameLabel.setFont(gameTitleFont);
+        gameLabel.setFont(gameTITLE_FONT);
 
         login.addActionListener(new ActionListener() {
             @Override
@@ -422,7 +358,7 @@ public class LoginPanel extends JPanel {
                             new String(passwordInput.getPassword()))){
                     
                     windowModel.setUserName(nameInput.getText());
-                    windowController.navTo(windowModel.getMenuPanel());
+                    windowController.navigateToPanel(windowModel.getMenuPanel());
                 }else{
                     LoginController.loadRegisterFail(loginPanel);
                 }
@@ -431,41 +367,8 @@ public class LoginPanel extends JPanel {
         });
 
         JLabel error = new JLabel("Registration failed!");
-        error.setFont(font);
+        error.setFont(NORMAL_FONT);
         error.setForeground(Color.RED);
-
-        /* 
-        c.insets = new Insets(10,10,10,10);
-        c.anchor = GridBagConstraints.WEST;
-        c.gridy = 0;
-        c.gridwidth = 2;
-        add(error, c);
-        c.gridwidth = 1;
-        c.gridx = 0;
-        c.gridy = 1;
-        add(name, c);
-        c.gridx = 1;
-        c.gridy = 1;
-        add(nameInput, c);
-        c.gridx = 0;
-        c.gridy = 2;
-        add(email, c);
-        c.gridx = 1;
-        c.gridy = 2;
-        add(emailInput, c);
-        c.gridx = 0;
-        c.gridy = 3;
-        add(password, c);
-        c.gridx = 1;
-        c.gridy = 3;
-        add(passwordInput, c);
-        c.gridx = 0;
-        c.gridy = 4;
-        add(login, c);
-        c.gridx = 1;
-        c.gridy = 4;
-        add(register, c);
-        */
 
         c.gridx = 0; 
         c.gridy = 0; 

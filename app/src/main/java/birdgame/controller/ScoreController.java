@@ -17,10 +17,8 @@ public class ScoreController {
         score.setCurrentScore(newScore);
     }
 
-
     public void increaseScore(int points){
-        int newScore = score.getCurrentScore() + points;
-        score.setCurrentScore(newScore);
+        score.setCurrentScore(score.getCurrentScore() + points);
     }
 
     public void resetScore(){

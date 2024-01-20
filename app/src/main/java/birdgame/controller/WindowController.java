@@ -12,7 +12,7 @@ public class WindowController {
     public WindowController(){
         this.windowView  = new WindowView();
         this.windowModel = new WindowModel(this);
-        windowView.setSize(windowModel.getWINDOW_WIDTH(), windowModel.getWINDOW_HEIGHT());
+        windowView.setSize(windowModel.WINDOW_WIDTH, windowModel.WINDOW_HEIGHT);
         windowView.setPanel(windowModel.getLoginPanel());
     }
 
@@ -20,7 +20,7 @@ public class WindowController {
         this.windowView = windowView;
     }
 
-    public void navTo(JPanel panel){
+    public void navigateToPanel(JPanel panel){
         windowView.setContentPane(panel);
         windowView.repaint();
         windowView.revalidate();

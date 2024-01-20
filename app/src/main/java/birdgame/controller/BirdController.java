@@ -35,7 +35,7 @@ public class BirdController{
                 try {
                     String birdImage = bird.getImageHit();
                     BufferedImage _img = ImageIO.read(getClass().getClassLoader().getResource(birdImage));
-                    Image img = _img.getScaledInstance(45,30, Image.SCALE_SMOOTH);
+                    Image img = _img.getScaledInstance(bird.getHitWidth(), bird.getHitHeight(), Image.SCALE_SMOOTH);
                     Vec2 birdPos = bird.getPos();
                     g.drawImage(img, birdPos.x, birdPos.y, null);
                 } catch(Exception e){
@@ -73,7 +73,7 @@ public class BirdController{
                     bird.setBirdIsOutOfTree(false);
                 }
                 if(!bird.getBirdIsOutOfTree() && (bird.getPosX() > bird.getTreeLeft() && 
-                        bird.getPosX() + bird.gethitWidth() <
+                        bird.getPosX() + bird.getHitWidth() <
                         bird.getTreeRight() || bird.getPosX() > bird.getTreeLeft() &&
                         bird.getPosX() + bird.getWidth() < bird.getTreeRight())){
                     bird.setIsAllowedMove(false);

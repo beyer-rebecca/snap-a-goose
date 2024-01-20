@@ -5,10 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.Image;
-
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,17 +18,15 @@ import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
 
-
-
 public class MenuPanel extends JPanel{
+    private Font gameTITLE_FONT = new Font("TimesRoman", Font.BOLD, 40);
+    private static final String BACKGROUND_IMAGE_PATH = "appBackground.jpg";
+
     private WindowModel windowModel;
     private WindowController windowController;
     private final int backgroundWidth;
     private final int backgroundHeight;
     private Image backgroundImage;
-
-    private Font gameTitleFont = new Font("TimesRoman", Font.BOLD, 40);
-
 
     public MenuPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
@@ -38,11 +34,9 @@ public class MenuPanel extends JPanel{
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
 
-        System.out.println(backgroundWidth+ ", "+backgroundHeight);
-
-        try{
-            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource("appBackground.jpg"));
-        }catch(IOException e){
+        try {
+            this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
+        } catch (IOException e){
             e.printStackTrace();
         }
 
@@ -50,35 +44,28 @@ public class MenuPanel extends JPanel{
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.RELATIVE;
 
-
         JLabel gameTitle = new JLabel("SNAP A GOOSE");
-        gameTitle.setFont(gameTitleFont);
+        gameTitle.setFont(gameTITLE_FONT);
 
-        // CButton buttonlevel = new CButton("Level");
         CButton buttonlevel = new CButton("Play");
         buttonlevel.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                // leave it be until level and game are implemented
-                // cause thats how game(loop) and level setup should be done
-                // Level1 level1 = new Level1();
-                // Game game = new Game(level1);
-                windowController.navTo(windowModel.getLevelSelectPanel());
+                windowController.navigateToPanel(windowModel.getLevelSelectPanel());
 
             } 
         });
 
-
         CButton creditsButton = new CButton("Credits");
         creditsButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                windowController.navTo(windowModel.getCreditsPanel());
+                windowController.navigateToPanel(windowModel.getCreditsPanel());
             }
         });
 
         CButton highscoreButton = new CButton("Highscores");
         highscoreButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                windowController.navTo(windowModel.getHighscorePanel());
+                windowController.navigateToPanel(windowModel.getHighscorePanel());
             }
         });
 
@@ -86,32 +73,18 @@ public class MenuPanel extends JPanel{
         CButton manualButton = new CButton("Manual");
         manualButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                windowController.navTo(windowModel.getManualPanel());
+                windowController.navigateToPanel(windowModel.getManualPanel());
             }
         });
-
-
-
 
         CButton logout = new CButton("Logout");
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                MenuPanel.this.windowController.navTo(windowModel.getLoginPanel());
+                MenuPanel.this.windowController.navigateToPanel(windowModel.getLoginPanel());
                 LoginController.loadLogin(windowModel.getLoginPanel());
             }
         });
-        
-        //try {
-        //    BufferedImage img = ImageIO.read(getClass().getClassLoader().getResource("sound.png"));
-        //    sound = new CButton(img);
-         //   img = ImageIO.read(getClass().getClassLoader().getResource("musik.png"));
-         //   music = new CButton(img, 50, 50);
-        //} catch (Exception ex) {
-         //   System.out.println(ex);
-        //}
-
-        
 
         c.insets = new Insets(50, 10, 50, 10);
         c.gridx = 0; 
@@ -121,7 +94,6 @@ public class MenuPanel extends JPanel{
         c.weighty = 7;
         c.anchor = GridBagConstraints.NORTH; 
         this.add(gameTitle, c);
-
         c.insets = new Insets(5, 100, 20, 5);
         c.fill = GridBagConstraints.RELATIVE;
         c.anchor = GridBagConstraints.WEST;
@@ -145,16 +117,6 @@ public class MenuPanel extends JPanel{
         c.gridy = 6;
         c.insets = new Insets(0, 100, 30, 30);
         add(logout, c);
-        //c.weighty = 0;
-        //c.anchor = GridBagConstraints.NORTHEAST;
-        //c.gridx = 1;
-        //c.gridy = 0;
-        //add(sound, c);
-        //c.weighty = .75;
-        //c.gridx = 1;
-        //c.gridy = 1;
-        //add(music, c);
-        
     }
 
     @Override
