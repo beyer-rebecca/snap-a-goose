@@ -10,18 +10,35 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.apache.commons.lang3.SystemUtils;
 
+
+/**
+ * The AuthenticationController handles authentication processes such as verifying email,
+ * login credentials and storing user data.
+ */
 public class AuthenticationController{
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                                               "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final String WINDOWS_PATH = "\\AppData\\Roaming\\birdgame\\birdgame.json";
     private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
 
-
+    /**
+     * Verifies if the given email is valid based on the specified email regex pattern.
+     *
+     * @param email The email string to be verified.
+     * @return true if the email is valid, false otherwise.
+     */
     private static boolean verifyEmail(String email){
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         return pattern.matcher(email).matches();
     }
 
+    /**
+     * Verifies user login credentials.
+     *
+     * @param username The username of the user.
+     * @param rawPassword The unhashed password of the user.
+     * @return true if the credentials are valid, false otherwise.
+     */
     public static boolean verifyLogin (String username, String rawPassword) {
         JSONParser parser = new JSONParser();
         JSONObject combinedObject;
@@ -43,6 +60,11 @@ public class AuthenticationController{
         return false;
     }
 
+    /**
+     * Retrieves the path to store or retrieve the user data file based on the operating system.
+     *
+     * @return The file path as a string.
+     */
     private static String getPath() {
         if (SystemUtils.IS_OS_WINDOWS) {
             return System.getProperty("user.home") + WINDOWS_PATH;
@@ -51,7 +73,14 @@ public class AuthenticationController{
         }
     }
 
-
+    /**
+     * Stores user data including username, email, and an encrypted password.
+     *
+     * @param username The username of the user.
+     * @param email The email of the user.
+     * @param password The raw unhashed password of the user to be encrypted.
+     * @return true if the data is successfully stored, false otherwise.
+     */
     @SuppressWarnings("unchecked")
     public static boolean storeData(String username, String email, String password){
         FileWriter file;
@@ -74,11 +103,12 @@ public class AuthenticationController{
         System.out.println(outerObject.toString());
 
         String path;
-        if(SystemUtils.IS_OS_WINDOWS){
+
+        if (SystemUtils.IS_OS_WINDOWS){
             path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
             new File(System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame").mkdirs();
         }
-        else{
+        else {
             path = System.getProperty("user.home") + "/.local/share/birdgame/" + "birdgame.json";
             new File(System.getProperty("user.home") + "/.local/share/birdgame").mkdirs();
         }
@@ -96,7 +126,7 @@ public class AuthenticationController{
             }
         }
 
-        try(FileReader reader = new FileReader(path))
+        try (FileReader reader = new FileReader(path))
         {
             Object obj = parser.parse(reader);
             JSONObject combinedObject = (JSONObject) obj;
@@ -107,9 +137,13 @@ public class AuthenticationController{
             file.flush();
             file.close();
             return true;
-        }catch(IOException | org.json.simple.parser.ParseException e){
+        } catch(IOException | org.json.simple.parser.ParseException e){
             System.out.println(e);
         }
         return false;
     }
+
+
+
+
 }
