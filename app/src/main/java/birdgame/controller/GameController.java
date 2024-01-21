@@ -14,7 +14,12 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-// class manages the game loop
+/**
+ * The GameController class manages controls the game loop and orchestrates the overall game flow. It manages the
+ * interaction between different game components such as the game model, view, and
+ * bird control. Responsible for handling level loading, updating bird movement, game timing, transitions between game states
+ * and rendering.
+ */
 public class GameController implements Runnable{
     private Thread gameThread;
     private LevelPanel levelPanel;
@@ -28,6 +33,12 @@ public class GameController implements Runnable{
     private Image backgroundImage;
     private Image levelMask;
     
+    /**
+     * Initializes the GameController with a reference to the WindowController.
+     * It sets up the game, bird flock, bird controller, and player controller.
+     *
+     * @param windowController The controller for managing UI windows.
+     */
     public GameController(WindowController windowController){
         
         this.game = new Game();
@@ -37,16 +48,28 @@ public class GameController implements Runnable{
         this.windowController = windowController;
     }
 
-
+    /**
+     * Starts the game loop running on a separate thread.
+     */
     public void startGameLoop(){
         gameThread = new Thread(this);
         gameThread.start();
     }
 
+    /**
+     * Retrieves the LevelPanel associated with the current game session.
+     *
+     * @return The current LevelPanel.
+     */
     public LevelPanel getLevelPanel(){
         return levelPanel;
     }
 
+    /**
+     * Loads resources for the current level, including background images and bird
+     * positions. Initializes the LevelPanel with the loaded resources and configures
+     * the bird flock according to the level.
+     */
     public void loadLevel(){
         this.level = windowController.getWindowModel().getLevel();
         switch(level){
@@ -67,6 +90,7 @@ public class GameController implements Runnable{
                 this.birdFlock, this.game, this.playerController);
     }
 
+
     private void loadImages(String imagePath, String maskPath){
         try{
             backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(imagePath));
@@ -76,6 +100,10 @@ public class GameController implements Runnable{
         }
     }
 
+    /**
+     * Updates the game state, including bird movements and game timer.
+     * Checks if the game time has run out and triggers game completion if necessary.
+     */
     public void update(){
         birdController.update();
 
@@ -84,6 +112,10 @@ public class GameController implements Runnable{
         }
     }
 
+    /**
+     * Finalizes the game session. This is called when the game timer reaches zero,
+     * updating the highscore and transitioning to the GameOverPanel.
+     */
     public void gameFinished(){
         gameThread.interrupt();
         HighscoreController.updateHighscore(this.windowController.getWindowModel().getUserName(), this.level, this.playerController.getScoreController().getScoreModel().getCurrentScore());
@@ -92,31 +124,58 @@ public class GameController implements Runnable{
         
     }
 
+    /**
+     * Renders the current state of the game on the provided graphics context.
+     * This includes drawing birds, background, and other game elements.
+     *
+     * @param g The Graphics context for drawing.
+     */
     public void render(Graphics g){
         birdController.render(g);
         levelPanel.render();
     }
 
+    /**
+     * Updates the game timer every second, decreasing the remaining game time.
+     */
     public void updateTimer(){
         int newTime = game.getTime() -1; 
         game.setTime(newTime);
     }
 
+
+    /**
+     * Returns the remaining game time.
+     *
+     * @return The remaining time in the game.
+     */
     public int getTime(){
         return game.getTime();
     }
 
+    /**
+     * Sets the game time to a specified value.
+     *
+     * @param time The time value to set.
+     */
     public void setTime(int time){
         game.setTime(time);
     }
     
+    /**
+     * Updates the game state every second. This includes updating the timer and 
+     * performing necessary actions that occur on a per-second basis.
+     */
     public void updateSec(){
         updateTimer(); 
         birdController.updateSec();
     }
 
 
-    // gameLoop
+    /**
+     * The main game loop that controls update and render cycles, maintaining
+     * a consistent frame rate and update rate across different systems.
+     */
     @Override
     public void run() {
 
