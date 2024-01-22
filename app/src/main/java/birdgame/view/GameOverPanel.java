@@ -18,6 +18,11 @@ import birdgame.controller.ScoreController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
+/**
+ * Panel to display the game over screen in the Bird Game.
+ * This panel shows the player's score of the played level, the high score for the level, and provides
+ * an option to return to the main menu.
+ */
 public class GameOverPanel extends JPanel{
     private WindowModel windowModel;
     private WindowController windowController;
@@ -28,21 +33,33 @@ public class GameOverPanel extends JPanel{
     private static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
+    /**
+     * Constructs a GameOverPanel with references to the window model, window controller,
+     * and score controller. It initializes the panel layout, loads the background image,
+     * and sets up the user interface components including labels and buttons.
+     *
+     * @param windowModel The model of the application window.
+     * @param windowController The controller for managing the application window.
+     * @param scoreController The controller for managing the game score.
+     */
     public GameOverPanel(WindowModel windowModel, WindowController windowController, ScoreController scoreController){
         this.windowModel = windowModel;
         this.windowController = windowController;
         this.scoreController = scoreController;
 
+        // load background image
         try {
             this.backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         } catch (IOException e){
             e.printStackTrace();
         }
 
+        // set Layout 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.RELATIVE;
 
+        // creates and configures Labels for game over, score and highscore
         JLabel gameOverLabel = new JLabel ("Thank you for Playing!");
         gameOverLabel.setFont(TITLE_FONT);
         JLabel scoreLabel = new JLabel("Score:   " + scoreController.getScoreModel().getCurrentScore());  
@@ -51,12 +68,14 @@ public class GameOverPanel extends JPanel{
         highscoreLabel.setFont(NORMAL_FONT);
         CButton menuButton = new CButton("Menu");
 
+        // Implementation of component Listener and Performer for Menu Button
         menuButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 windowController.navigateToPanel(windowModel.getMenuPanel());
             } 
         });
 
+        // Add components to the panel
         c.insets = new Insets(5, 0, 40, 0);
         c.fill = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.CENTER;
@@ -75,6 +94,11 @@ public class GameOverPanel extends JPanel{
         add(menuButton, c);
     }
 
+    /**
+     * Paints the background image for this panel.
+     *
+     * @param arg0 The Graphics object used for drawing.
+     */
     @Override
     protected void paintComponent(Graphics arg0) {
         super.paintComponent(arg0);

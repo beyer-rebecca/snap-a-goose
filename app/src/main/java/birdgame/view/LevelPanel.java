@@ -19,6 +19,12 @@ import birdgame.controller.ScoreController;
 import birdgame.model.BirdFlock;
 import birdgame.model.Game;
 
+/**
+ * The LevelPanel class represents the main game view in the Bird Game application.
+ * This panel displays the levels's background, birds, and game information such as score and time.
+ * It also handles mouse interactions for taking photos within the game.
+ */
+
 public class LevelPanel extends JPanel {
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
 
@@ -37,6 +43,18 @@ public class LevelPanel extends JPanel {
     private JLabel scoreDisplay;
     private JLabel timeField;
 
+     /**
+     * Constructs a LevelPanel with the necessary controllers, game model, background and mask images.
+     *
+     * @param windowController The controller for managing window operations.
+     * @param gameController The controller responsible for managing the game's logic and flow.
+     * @param level The current level of the game.
+     * @param background The background image for the level.
+     * @param mask The mask image used for hiding birds in the game.
+     * @param birdFlock The model representing the birds in the game.
+     * @param game The game model containing the game state.
+     * @param playerController The controller managing player interactions.
+     */
     public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
                       BirdFlock birdFlock, Game game, PlayerController playerController){
         this.gameController = gameController;
@@ -48,9 +66,11 @@ public class LevelPanel extends JPanel {
         this.mask = mask;
         this.game = game;
 
+        // Setting the layout for the panel
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
+        // Creating and configuring the score display label
         scoreDisplay = new JLabel("0");
         scoreDisplay.setFont(TITLE_FONT);
         scoreDisplay.setForeground(Color.WHITE);
@@ -61,6 +81,8 @@ public class LevelPanel extends JPanel {
         c.weightx = 1;
         c.insets = new Insets(10, 10, 10, 10);
         add(scoreDisplay, c);
+
+        // Creating and configuring the time display label
         timeField = new JLabel(String.valueOf(game.getTime()));
         timeField.setFont(TITLE_FONT);
         timeField.setForeground(Color.WHITE); 
@@ -72,6 +94,7 @@ public class LevelPanel extends JPanel {
         c.insets = new Insets(10, 10, 10, 10);
         add(timeField, c);
 
+        // Adding mouse listener for photo taking interaction
         addMouseListener(new MouseAdapter(){
             @Override 
             public void mousePressed(MouseEvent e){
@@ -79,10 +102,19 @@ public class LevelPanel extends JPanel {
             }
         });
 
+        // Starting the game loop
         gameController.startGameLoop();
     
     }
 
+    /**
+     * Overridden method from JPanel to handle custom painting on the panel.
+     * This method is called automatically whenever the panel needs to be redrawn.
+     * Paints the level's background, the game elements (handled by the GameController),
+     * and the mask image over the game elements.
+     *
+     * @param g The Graphics object to paint on.
+     */
     @Override 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -94,7 +126,10 @@ public class LevelPanel extends JPanel {
         g.drawImage(this.mask, 0,0, backgroundWidth, backgroundHeight, null);
     }
 
-
+    /**
+     * Updates the game's score and time display.
+     * This method will be called to refresh the view with the latest game data.
+     */
     public void render(){
         scoreDisplay.setText(String.valueOf(scoreController.getScoreModel().getCurrentScore()));
         timeField.setText(String.valueOf(game.getTime()));

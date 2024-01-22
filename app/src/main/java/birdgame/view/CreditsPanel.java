@@ -20,7 +20,7 @@ import birdgame.model.WindowModel;
 
 /**
  * Represents the credits panel in the Bird Game application.
- * This class extends JPanel and displays the credits for the game, including the names of contributors.
+ * This class extends JPanel and displays the credits for the game, including the names of contributors and a back Button.
  */
 public class CreditsPanel extends JPanel{
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
