@@ -26,6 +26,7 @@ public class LevelSelectPanel extends JPanel{
     private final int backgroundHeight;
     private Image backgroundImage;
 
+    
     public LevelSelectPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
         this.windowController = windowController;
