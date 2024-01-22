@@ -16,6 +16,11 @@ import java.awt.Graphics;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
+/**
+ * Represents the game manual screen to the user. 
+ * It displays the game instructions and a back button
+ * for navigation. The panel's graphical user interface is designed with {@link java.awt.GridBagLayout}.
+ */
 public class ManualPanel extends JPanel {
     private final static Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
     private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
@@ -28,21 +33,33 @@ public class ManualPanel extends JPanel {
     private final int backgroundHeight;
     private Image backgroundImage;
 
+    /**
+     * Constructs a new MenualPanel.
+     * This constructor initializes the panel, sets up the background image, sets the layout and adds labels and a back button to the menu.
+     * Action listeners are assigned to handle user interactions with the back button.
+     * The layout of components is managed using GridBagLayout.
+     * 
+     * @param windowModel The model containing window properties.
+     * @param windowController The controller responsible for navigation between panels.
+     */
     public ManualPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
         this.windowController = windowController;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
         
+        // load background images
         try {
             this.backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         } catch(IOException e){
             e.printStackTrace();
         }
 
+        // set layout
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
+        // Intiate and Set action Listener for back Button 
         CButton backButton = new CButton("Back");
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
@@ -50,13 +67,13 @@ public class ManualPanel extends JPanel {
             } 
         });
 
-
+        // Initalize Lables
         JLabel titleLabel = new JLabel("Manual");
         titleLabel.setFont(TITLE_FONT);
         JLabel instructionsLabel = new JLabel("here enter instructions");
         instructionsLabel.setFont(NORMAL_FONT);
 
-
+        // Add components to the panel
         c.insets = new Insets(40, 10, 35, 10);
         c.gridx = 0; 
         c.gridy = 0; 

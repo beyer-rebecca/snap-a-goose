@@ -20,7 +20,7 @@ import birdgame.model.BirdFlock;
 import birdgame.model.Game;
 
 /**
- * The LevelPanel class represents the main game view in the Bird Game application.
+ * Displays the main game view in the Bird Game application.
  * This panel displays the levels's background, birds, and game information such as score and time.
  * It also handles mouse interactions for taking photos within the game.
  */
@@ -70,7 +70,7 @@ public class LevelPanel extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
-        // Creating and configuring the score display label
+        // Add components to the panel
         scoreDisplay = new JLabel("0");
         scoreDisplay.setFont(TITLE_FONT);
         scoreDisplay.setForeground(Color.WHITE);

@@ -68,7 +68,7 @@ public class GameOverPanel extends JPanel{
         highscoreLabel.setFont(NORMAL_FONT);
         CButton menuButton = new CButton("Menu");
 
-        // Implementation of component Listener and Performer for Menu Button
+        // Set action Listener  for Menu Button
         menuButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 windowController.navigateToPanel(windowModel.getMenuPanel());

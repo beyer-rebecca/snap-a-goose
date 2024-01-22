@@ -80,7 +80,7 @@ public class CreditsPanel extends JPanel{
         audioName2Label.setFont(NORMAL_FONT);
         JComponent glue = (JComponent) Box.createVerticalGlue();
 
-        // Implementation of component listeners and actions
+        // Set action listeners for back button
         backButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 windowController.navigateToPanel(windowModel.getMenuPanel());

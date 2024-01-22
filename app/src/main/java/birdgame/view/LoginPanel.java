@@ -21,6 +21,10 @@ import birdgame.model.WindowModel;
 import birdgame.controller.AuthenticationController;
 import birdgame.controller.LoginController;
 
+/**
+ * Provides user interface for the login and registration processes 
+ * in the Bird Game application. It includes fields for user input and navigation buttons.
+ */
 public class LoginPanel extends JPanel {
     private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private final static Font SMALL_FONT = new Font("TimesRoman", Font.PLAIN, 15);  
@@ -34,6 +38,14 @@ public class LoginPanel extends JPanel {
     private final int backgroundHeight;
     private Image backgroundImage;
     
+    /**
+     * Constructs a new LoginPanel.
+     * This constructor initializes the panel, sets up the background image, and displays the login view.
+     * It includes text fields for username and password, and buttons for login and registration.
+     * 
+     * @param windowModel The model containing window properties.
+     * @param windowController The controller responsible for navigation between panels.
+     */
     public LoginPanel(WindowModel windowModel, WindowController windowController){
         this.loginPanel = this;
         this.windowModel = windowModel;
@@ -41,21 +53,28 @@ public class LoginPanel extends JPanel {
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
 
+        // load background images
         try{
             this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         }catch(IOException e){
             e.printStackTrace();
         }
 
+        // Initializes the login view
         loginView();
         
     }
 
+    /**
+     * Sets up the UI components for the login view.
+     */
     public void loginView(){
 
+        // set layout
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
+        // Initalize Lables, TextFields, Buttons andPasswordField
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
@@ -72,6 +91,7 @@ public class LoginPanel extends JPanel {
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
 
+        // Set action Listener for login and register buttons
         register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,7 +113,7 @@ public class LoginPanel extends JPanel {
 
         });
 
-
+        // Add components to the panel
         c.gridx = 0; 
         c.gridy = 0; 
         c.insets = new Insets(40, 10, 70, 10);
@@ -135,11 +155,15 @@ public class LoginPanel extends JPanel {
         
     }
 
+    /**
+     *  Adjusts the UI to display a login failure message.
+     */
     public void loginFailView(){
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
+        // Initalize Lables, TextFields, Buttons andPasswordField
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
@@ -152,10 +176,13 @@ public class LoginPanel extends JPanel {
         passwordInput.setFont(NORMAL_FONT);
         JLabel newAccountLabel = new JLabel("Create new Account");
         newAccountLabel.setFont(SMALL_FONT);
-
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
+        JLabel error = new JLabel("Login failed!");
+        error.setFont(NORMAL_FONT);
+        error.setForeground(Color.RED);
 
+        // Set action Listener for login and register buttons
         register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -178,10 +205,8 @@ public class LoginPanel extends JPanel {
 
         });
         
-        JLabel error = new JLabel("Login failed!");
-        error.setFont(NORMAL_FONT);
-        error.setForeground(Color.RED);
-
+    
+        // Add components to the panel
         c.gridx = 0; 
         c.gridy = 0; 
         c.insets = new Insets(40, 10, 60, 10);
@@ -224,10 +249,14 @@ public class LoginPanel extends JPanel {
         add(register,c);
     }
 
+    /**
+     * Sets up the UI components for the registration view.
+     */
     public void registerView(){
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
+        // Initalize Lables, TextFields, Buttons andPasswordField
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
@@ -242,13 +271,12 @@ public class LoginPanel extends JPanel {
         password.setFont(SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
         passwordInput.setFont(NORMAL_FONT);
-
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
-
         JLabel newAccountLabel = new JLabel("Already have an account?");
         newAccountLabel.setFont(SMALL_FONT);
 
+        // Set action Listener for login and register buttons
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -270,6 +298,7 @@ public class LoginPanel extends JPanel {
             }
         });
 
+        // Add components to the panel
         c.gridx = 0; 
         c.gridy = 0; 
         c.anchor = GridBagConstraints.NORTH;
@@ -317,10 +346,14 @@ public class LoginPanel extends JPanel {
         
     }
     
+    /**
+     * Adjusts the UI to display a registration failure message.
+     */
     public void registerFailView(){
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
+        // Initialize Labels, TextFields, PasswordField and Buttons
         JLabel name = new JLabel("Name:");
         name.setFont(SMALL_FONT);
         JTextField nameInput = new JTextField(10);
@@ -333,15 +366,17 @@ public class LoginPanel extends JPanel {
         password.setFont(SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
         passwordInput.setFont(NORMAL_FONT);
-
-        CButton register = new CButton("Register");
-        CButton login = new CButton("Login");
-
         JLabel newAccountLabel = new JLabel("Already have an account?");
         newAccountLabel.setFont(SMALL_FONT);
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
+        CButton register = new CButton("Register");
+        CButton login = new CButton("Login");
+        JLabel error = new JLabel("Registration failed!");
+        error.setFont(NORMAL_FONT);
+        error.setForeground(Color.RED);
 
+        // Set action Listener for Menu Button 
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -366,10 +401,8 @@ public class LoginPanel extends JPanel {
             }
         });
 
-        JLabel error = new JLabel("Registration failed!");
-        error.setFont(NORMAL_FONT);
-        error.setForeground(Color.RED);
 
+        // Add components to the panel
         c.gridx = 0; 
         c.gridy = 0; 
         c.insets = new Insets(40, 10, 40, 10);

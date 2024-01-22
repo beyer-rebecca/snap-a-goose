@@ -15,10 +15,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * The GameController class manages controls the game loop and orchestrates the overall game flow. It manages the
- * interaction between different game components such as the game model, view, and
- * bird control. Responsible for handling level loading, updating bird movement, game timing, transitions between game states
- * and rendering.
+ * The GameController class manages controls the game loop and orchestrates the overall game flow. 
+ * It manages the interaction between different game components such as the game model, view, 
+ * and bird control. Responsible for handling level loading, updating bird movement, 
+ * game timing, transitions between game states and rendering.
  */
 public class GameController implements Runnable{
     private Thread gameThread;

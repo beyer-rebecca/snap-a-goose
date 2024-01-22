@@ -20,14 +20,13 @@ import java.awt.Image;
 import java.awt.Graphics;
 
 /**
- * Constructs a HighscorePanel which displays the high scores for different levels.
- *
- * The panel is constructed with references to the window model and window controller.
- * It initializes and sets up the layout, background image, labels for highscores of each level,
- * and the back button with its action listener. The layout is managed with GridBagLayout.
- *
- * @param windowModel The model of the application window providing access to user data and game settings.
- * @param windowController The controller for managing navigation between different panels of the application.
+ * Represents a panel in the Bird Game application's user interface,
+ * which displays high scores for different levels. The panel is part of the game's view
+ * and interacts with the game's model and controller layers to retrieve and display user data.
+ * 
+ * This class manages the layout and presentation of high score information, including
+ * the creation and positioning of labels and buttons. It also handles user interactions
+ * for navigation within the application.
  */
 public class HighscorePanel extends JPanel {
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);

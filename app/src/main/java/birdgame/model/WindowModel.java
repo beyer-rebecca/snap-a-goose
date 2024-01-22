@@ -63,71 +63,30 @@ public class WindowModel {
         this.username = username;
     }
 
-    /**
-     * Retrieves the username of the player.
-     *
-     * @return The player's username.
-     */
     public String getUserName(){
         return this.username;
     }
     
-    /**
-     * Retrieves the LoginPanel instance.
-     * This panel is used for user authentication processes.
-     *
-     * @return The LoginPanel instance.
-     */
     public LoginPanel getLoginPanel(){
         return this.loginPanel;
     }
 
-    /**
-     * Retrieves the MenuPanel instance.
-     * This panel displays the main menu options of the game.
-     *
-     * @return The MenuPanel instance.
-     */
     public MenuPanel getMenuPanel(){
         return this.menuPanel;
     }
 
-    /**
-     * Retrieves the LevelSelectPanel instance.
-     * This panel allows players to select the level they wish to play.
-     *
-     * @return The LevelSelectPanel instance.
-     */
     public LevelSelectPanel getLevelSelectPanel(){
         return this.levelSelectPanel;
     }
 
-    /**
-     * Retrieves the CreditsPanel instance.
-     * This panel displays the credits and acknowledgements for the game.
-     *
-     * @return The CreditsPanel instance.
-     */
     public CreditsPanel getCreditsPanel(){
         return this.creditsPanel;
     }
 
-    /**
-     * Retrieves the HighscorePanel instance.
-     * This panel displays the high scores achieved by the player.
-     *
-     * @return The HighscorePanel instance.
-     */
     public HighscorePanel getHighscorePanel(){
         return this.highscorePanel;
     }
 
-    /**
-     * Retrieves the ManualPanel instance.
-     * This panel provides instructions and information about how to play the game.
-     *
-     * @return The ManualPanel instance.
-     */
     public ManualPanel getManualPanel(){
         return this.manualPanel;
     }
