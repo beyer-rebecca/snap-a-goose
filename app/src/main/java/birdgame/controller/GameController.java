@@ -3,10 +3,10 @@ package birdgame.controller;
 import birdgame.model.Bird;
 import birdgame.model.BirdFlock;
 import birdgame.model.Game;
-import birdgame.ui.GameOverPanel;
-import birdgame.ui.LevelPanel;
 import birdgame.utils.Constants;
 import birdgame.utils.Vec2;
+import birdgame.view.GameOverPanel;
+import birdgame.view.LevelPanel;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -88,7 +88,7 @@ public class GameController implements Runnable{
         gameThread.interrupt();
         HighscoreController.updateHighscore(this.windowController.getWindowModel().getUserName(), this.level, this.playerController.getScoreController().getScoreModel().getCurrentScore());
         this.windowController.getWindowModel().getHighscorePanel().repaint();
-        this.windowController.navTo(new GameOverPanel(this.windowController.getWindowModel(), this.windowController, this.playerController.getScoreController()));
+        this.windowController.navigateToPanel(new GameOverPanel(this.windowController.getWindowModel(), this.windowController, this.playerController.getScoreController()));
         
     }
 

@@ -1,4 +1,4 @@
-package birdgame.ui;
+package birdgame.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JComponent;
 
 public class CButton extends JComponent implements MouseListener {
@@ -23,7 +22,6 @@ public class CButton extends JComponent implements MouseListener {
     private int MAX_HEIGHT = 300;
     private int MIN_WIDTH = 40;
     private int MIN_HEIGHT = 40;
-
     private Font font = new Font("TimesRoman", Font.BOLD, 20);
 
     private boolean mouseEntered = false;

@@ -3,28 +3,19 @@ package birdgame.model;
 public class Game {
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
-
-    private final int maxTime = 60;
-    private int time;
-
-    private int levelNumber;
+    private final int MAX_TIME = 60;
 
     private final String level1Image = "level1.jpg";
     private final String level1Mask ="level1_mask.png";
-
     private final String level2Image="level2.jpg";
     private final String level2Mask= "level2_mask.png";
-
     private final String level3Image="level3.jpg";
     private final String level3Mask ="level3_mask.png";
 
-    public Game(){
-        this.time = maxTime;
-        this.levelNumber = levelNumber;
-    }
+    private int time;
 
-    public int getLevelNumber(){
-        return this.levelNumber;
+    public Game(){
+        this.time = MAX_TIME;
     }
 
     public int getFPS_SET(){
@@ -44,7 +35,7 @@ public class Game {
     }
 
     public void resetTime(){
-        this.time = maxTime;
+        this.time = MAX_TIME;
     }
 
     public String getLevel1Image() {

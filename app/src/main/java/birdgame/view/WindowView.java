@@ -1,4 +1,4 @@
-package birdgame.ui;
+package birdgame.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,24 +22,9 @@ public class WindowView extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("Bird Game");
-        
         // needs to be last
         setVisible(true);
     }
-
-    
-    // public void setController(WindowController windowController) {
-        // needs to be called after initializing the Class
-        
-        // menuPanel = new MenuPanel(this, windowController);
-        // levelSelectPanel = new LevelSelectPanel(this, windowController);
-        // loginPanel = new LoginPanel(this, windowController);
-        // highscorePanel = new HighscorePanel(this, windowController);
-        // creditsPanel = new CreditsPanel(this, windowController);
-        // this.windowController = windowController;
-        // setSize(windowController.getWINDOW_WIDHT(), windowController.getWINDOW_HEIGHT());  //windowView soll auf bestimmtes windowModel object zugreife nicht alggemein
-        // setPanel(loginPanel);
-    // }
 
     public void setPanel(JPanel panel){
         this.currentPanel = panel;

@@ -9,16 +9,15 @@ public class Bird {
     private static final int MIN_MOVEMENT_TIME = 5;
     private static final int MAX_MOVEMENT_TIME = 20;
     private static final int BIRD_MOVEMENT_LIMIT = 50;
+    private static final String BIRD_IMAGE = "goose.png";
+    private static final String BIRD_IMAGE_HIT = "gooseHit.png";
     
     private float birdSpeed = .2f;
-    private String birdImage = "goose.png";
-    private String birdImageHit = "gooseHit.png";
     private boolean isAllowedMove = false;
     private boolean isHit = false;
     private float origX;
     private int moveTime;
     private int moveTimeUpdate;
-
     private int width = 20;
     private int height = 40;
     private int hitWidth = 45;
@@ -51,8 +50,12 @@ public class Bird {
     public int getTreeRight(){
         return this.treeRight;
     }
-    public int gethitWidth(){
+    public int getHitWidth(){
         return this.hitWidth;
+    }
+
+    public int getHitHeight(){
+        return this.hitHeight;
     }
 
     public int getWidth(){
@@ -116,14 +119,14 @@ public class Bird {
     }
 
     public String getImage(){
-        return birdImage;
+        return BIRD_IMAGE;
     }
 
     public String getImageHit(){
-        return birdImageHit;
+        return BIRD_IMAGE_HIT;
     }
 
-    public void setIsHit(Boolean isHit){
+    public void setIsHit(boolean isHit){
         this.isHit = isHit;
     }
     
