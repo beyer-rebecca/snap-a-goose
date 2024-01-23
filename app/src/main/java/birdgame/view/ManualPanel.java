@@ -94,6 +94,10 @@ public class ManualPanel extends JPanel {
         this.add(backButton, c);
     }
 
+     
+     /** 
+      * @param g
+      */
      @Override
      protected void paintComponent(Graphics g) {
         super.paintComponent(g);

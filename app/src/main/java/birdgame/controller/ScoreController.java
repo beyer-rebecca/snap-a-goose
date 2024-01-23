@@ -16,14 +16,26 @@ public class ScoreController {
         this.score = new Score();
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getCurrentScore(){
         return score.getCurrentScore();
     }
 
+    
+    /** 
+     * @param newScore
+     */
     public void setCurrentScore(int newScore){
         score.setCurrentScore(newScore);
     }
 
+    
+    /** 
+     * @param points
+     */
     public void increaseScore(int points){
         score.setCurrentScore(score.getCurrentScore() + points);
     }

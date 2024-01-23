@@ -63,10 +63,18 @@ public class WindowModel {
         this.username = username;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getUserName(){
         return this.username;
     }
     
+    
+    /** 
+     * @return LoginPanel
+     */
     public LoginPanel getLoginPanel(){
         return this.loginPanel;
     }

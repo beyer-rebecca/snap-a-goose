@@ -454,6 +454,10 @@ public class LoginPanel extends JPanel {
         
     }
 
+    
+    /** 
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
        super.paintComponent(g);

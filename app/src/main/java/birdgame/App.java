@@ -7,6 +7,10 @@ import birdgame.controller.WindowController;
  * It initializes the game and starts the user interface.
  */
 public class App {
+    
+    /** 
+     * @return String
+     */
     public String getGreeting() {
         return "Game starting...";
     }

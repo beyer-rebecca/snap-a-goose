@@ -52,13 +52,25 @@ public class WindowView extends JFrame{
         revalidate();
     }
 
+    
+    /** 
+     * @return LoginPanel
+     */
     public LoginPanel getLoginPanel(){
         return this.loginPanel;
     }
 
+    
+    /** 
+     * @return MenuPanel
+     */
     public MenuPanel getMenuPanel(){
         return this.menuPanel;
     }
+    
+    /** 
+     * @return LevelSelectPanel
+     */
     public LevelSelectPanel getLevelSelectPanel(){
         return this.levelSelectPanel;
     }
