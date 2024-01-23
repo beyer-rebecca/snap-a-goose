@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.apache.commons.lang3.SystemUtils;
 
 
+
 /**
  * The AuthenticationController handles authentication processes such as verifying email,
  * login credentials and storing user data.

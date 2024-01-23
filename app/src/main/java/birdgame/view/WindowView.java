@@ -75,6 +75,10 @@ public class WindowView extends JFrame{
         return this.levelSelectPanel;
     }
 
+    
+    /** 
+     * @return CreditsPanel
+     */
     public CreditsPanel getCreditsPanel(){
         return this.creditsPanel;
     }

@@ -79,6 +79,10 @@ public class WindowModel {
         return this.loginPanel;
     }
 
+    
+    /** 
+     * @return MenuPanel
+     */
     public MenuPanel getMenuPanel(){
         return this.menuPanel;
     }
