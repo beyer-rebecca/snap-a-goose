@@ -17,7 +17,11 @@ import birdgame.controller.LoginController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
-
+/**
+ * Responsible for displaying the main menu of the Bird Game.
+ * It offers options to navigate to different parts of the game: playing, viewing highscores, viewing credits, 
+ * accessing the game manual, and logout.
+ */
 public class MenuPanel extends JPanel{
     private Font gameTITLE_FONT = new Font("TimesRoman", Font.BOLD, 40);
     private static final String BACKGROUND_IMAGE_PATH = "appBackground.jpg";
@@ -28,25 +32,38 @@ public class MenuPanel extends JPanel{
     private final int backgroundHeight;
     private Image backgroundImage;
 
+    /**
+     * Constructs a new MenuPanel.
+     * 
+     * <p>This constructor initializes the panel with a background image and adds all necessary UI components
+     * like buttons for navigation to different game panels. It sets the layout and adds action listeners to buttons.
+     * 
+     * @param windowModel The model containing window properties.
+     * @param windowController The controller responsible for navigation between panels.
+     */
     public MenuPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
         this.windowController = windowController;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
 
+        // load background images
         try {
             this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         } catch (IOException e){
             e.printStackTrace();
         }
 
+        // set layout
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.RELATIVE;
 
+        // Initalize Lables
         JLabel gameTitle = new JLabel("SNAP A GOOSE");
         gameTitle.setFont(gameTITLE_FONT);
 
+         // Intiate and Set action Listener for Buttons
         CButton buttonlevel = new CButton("Play");
         buttonlevel.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
@@ -86,6 +103,7 @@ public class MenuPanel extends JPanel{
             }
         });
 
+        // add components to panel
         c.insets = new Insets(50, 10, 50, 10);
         c.gridx = 0; 
         c.gridy = 0; 
@@ -119,6 +137,14 @@ public class MenuPanel extends JPanel{
         add(logout, c);
     }
 
+    /**
+     * Paints the components of the panel.
+     * 
+     * <p>This method is overridden to draw the background image and delegate the drawing of other components
+     * to the superclass.
+     *
+     * @param g the Graphics object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
        super.paintComponent(g);

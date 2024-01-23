@@ -14,6 +14,11 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 
+/**
+ * Custom button component for the Bird Game application.
+ * This class extends JComponent and implements MouseListener to provide a customizable button
+ * that can display text and/or images and respond to mouse events.
+ */
 public class CButton extends JComponent implements MouseListener {
 
     private int WIDTH = 120;
@@ -32,12 +37,22 @@ public class CButton extends JComponent implements MouseListener {
 
     private String text = "";
     
+    /**
+     * Default constructor for CButton.
+     */
     public CButton(){
         super();
         enableInputMethods(true);
         addMouseListener(this);
     }
 
+    /**
+     * Constructor for CButton with text and specific dimensions.
+     *
+     * @param text The text to be displayed on the button.
+     * @param width The width of the button.
+     * @param height The height of the button.
+     */
     public CButton(String text, int width, int height){
         super();
         this.text = text;
@@ -48,6 +63,11 @@ public class CButton extends JComponent implements MouseListener {
         HEIGHT = height;
     }
     
+    /**
+     * Constructor for CButton with text.
+     *
+     * @param text The text to be displayed on the button.
+     */
     public CButton(String text){
         super();
         this.text = text;
@@ -56,6 +76,11 @@ public class CButton extends JComponent implements MouseListener {
         hasText = true;
     }
 
+    /**
+     * Constructor for CButton with an image.
+     *
+     * @param img The BufferedImage to be displayed on the button.
+     */
     public CButton(BufferedImage img){
         super();
         enableInputMethods(true);
@@ -68,6 +93,13 @@ public class CButton extends JComponent implements MouseListener {
         HEIGHT = imgHEIGHT;
     }
     
+    /**
+     * Constructor for CButton with an image and specific dimensions.
+     *
+     * @param img The BufferedImage to be displayed on the button.
+     * @param width The width of the button.
+     * @param height The height of the button.
+     */
     public CButton(BufferedImage img, int width, int height){
         super();
         enableInputMethods(true);
@@ -78,18 +110,37 @@ public class CButton extends JComponent implements MouseListener {
         HEIGHT = height;
     }
 
+    /**
+     * Gets the preferred size for the button.
+     * @return A Dimension object representing the preferred size.
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(this.WIDTH, this.HEIGHT);
     }
+
+    /**
+     * Gets the minimum size for the button.
+     * @return A Dimension object representing the minimum size.
+     */
     @Override
     public Dimension getMinimumSize() {
         return new Dimension(this.MIN_WIDTH, this.MIN_HEIGHT);
     }
+
+    /**
+     * Gets the maximum size for the button.
+     * @return A Dimension object representing the maximum size.
+     */
     @Override
     public Dimension getMaximumSize() {
         return new Dimension(this.MAX_WIDTH, this.MAX_HEIGHT);
     }
+
+    /**
+     * Paints the component with its current state.
+     * @param g The Graphics object to paint on.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -134,41 +185,69 @@ public class CButton extends JComponent implements MouseListener {
         }
     }
 
+    /**
+     * Invoked when the mouse exits the component.
+     * @param e The MouseEvent associated with the mouse exit.
+     */
     @Override
     public void mouseExited(MouseEvent e) {
         mouseEntered = false;
         repaint();
-
     }
 
+    /**
+     * Invoked when the mouse clicks on the component.
+     * @param e The MouseEvent associated with the mouse click.
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         mouseEntered = false;
         repaint();
         performeAction(e);
-
     }
+
+    /**
+     * Invoked when the mouse enters the component.
+     * @param e The MouseEvent associated with the mouse entry.
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
         mouseEntered = true;
         repaint();
-
     }
+
+    /**
+     * Invoked when a mouse button has been pressed on the component.
+     * @param e The MouseEvent associated with the mouse press.
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-
     }
+
+    /**
+     * Invoked when a mouse button has been released on the component.
+     * @param e The MouseEvent associated with the mouse release.
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-
     }
+
+    /**
+     * Adds an ActionListener to this button.
+     * 
+     * @param listener The ActionListener to be added.
+     */
     public void addActionListener(ActionListener listener){
-        // listeners.add(listener);
         listenerList.add(ActionListener.class, listener);
     }
 
+    /**
+     * Performs an action on mouse click by notifying all registered listeners.
+     * 
+     * @param e The MouseEvent that triggered the action.
+     */
     private void performeAction(MouseEvent e){
         ActionListener[] listeners = listenerList.getListeners(ActionListener.class);
         if (listeners != null) {

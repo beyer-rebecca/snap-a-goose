@@ -44,6 +44,13 @@ application {
     mainClass = 'birdgame.App'
 }
 
+javadoc {
+    destinationDir = file("$buildDir/docs/javadoc")
+    // Optional: Weitere Konfigurationen wie Titel, Autor etc.
+}
+
+
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()

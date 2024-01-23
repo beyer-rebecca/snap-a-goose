@@ -18,6 +18,10 @@ import java.io.IOException;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
 
+/**
+ * Represents the credits panel in the Bird Game application.
+ * This class extends JPanel and displays the credits for the game, including the names of contributors and a back Button.
+ */
 public class CreditsPanel extends JPanel{
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
     private static final Font SMALL_FONT = new Font("TimesRoman", Font.PLAIN, 15);  
@@ -28,6 +32,16 @@ public class CreditsPanel extends JPanel{
     private WindowController windowController;
     private Image backgroundImage;
 
+    /**
+     * Constructs a CreditsPanel with specified WindowModel and WindowController.
+     * Initializes the panel with a background image, sets the layout,
+     * and adds labels and a back button.
+     * Action listeners are assigned to handle user interactions with the back button.
+     * The layout of components is managed using GridBagLayout.
+     *
+     * @param windowModel The model of the application's window, containing necessary data.
+     * @param windowController The controller of the application's window, used for event handling.
+     */
     public CreditsPanel(WindowModel windowModel, WindowController windowController){
         this.windowModel = windowModel;
         this.windowController = windowController;
@@ -38,17 +52,12 @@ public class CreditsPanel extends JPanel{
             e.printStackTrace();
         }
 
+        // Initialization and layout setup
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        // Backbutton
+        // Implementation of components
         CButton backButton = new CButton("Back");
-        backButton.addActionListener(new ActionListener() { 
-            public void actionPerformed(ActionEvent e) { 
-                windowController.navigateToPanel(windowModel.getMenuPanel());
-            } 
-        });
-
         JLabel titleLabel = new JLabel("Credits");
         titleLabel.setFont(TITLE_FONT);
         JLabel programLabel = new JLabel("Programming");
@@ -71,6 +80,14 @@ public class CreditsPanel extends JPanel{
         audioName2Label.setFont(NORMAL_FONT);
         JComponent glue = (JComponent) Box.createVerticalGlue();
 
+        // Set action listeners for back button
+        backButton.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+                windowController.navigateToPanel(windowModel.getMenuPanel());
+            } 
+        });
+
+        // Positioning of the components
         c.insets = new Insets(40, 10, 35, 10);
         c.gridx = 0; 
         c.gridy = 0; 
@@ -122,6 +139,10 @@ public class CreditsPanel extends JPanel{
         this.add(backButton, c);
     }
 
+    /**
+     * Paints the background image of the panel.
+     * @param g The Graphics object to paint on.
+     */
     @Override
     protected void paintComponent(Graphics g) {
        super.paintComponent(g);
