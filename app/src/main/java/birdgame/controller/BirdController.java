@@ -11,13 +11,28 @@ import java.awt.image.BufferedImage;
 
 import birdgame.model.BirdFlock;
 
+/**
+ * The BirdController class is responsible for managing the rendering and updating
+ * of birds within the game. It handles bird movements, animations, and interactions.
+ */
 public class BirdController{
     private BirdFlock birdFlock;
 
+    /**
+     * Constructs a new BirdController with a specified BirdFlock.
+     *
+     * @param birdFlock The flock of birds that this controller manages.
+     */
     public BirdController(BirdFlock birdFlock){
         this.birdFlock = birdFlock;
     }
  
+    /**
+     * Renders all birds in the bird flock on the provided graphics context.
+     * This method handles displaying different bird images based on their state (moving or hit).
+     *
+     * @param g The Graphics context on which to render the birds.
+     */
     public void render(Graphics g){
         for (Bird bird : birdFlock.getBirds()){
             if(bird.getIsMoving() && !bird.getIsHit()){
@@ -45,6 +60,11 @@ public class BirdController{
         }
     }
 
+
+    /**
+     * Updates the state of each bird per second. This method is responsible for
+     * managing the movement timers of the birds.
+     */
     public void updateSec() {
         for (Bird bird : birdFlock.getBirds()){
             if (bird.getMoveTimeUpdate() != 0){
@@ -56,6 +76,17 @@ public class BirdController{
         }
     }
 
+     /**
+     * Updates the position and state of each bird in the flock. This method handles the movement logic of birds,
+     * adjusting their positions based on their speed and movement limits within the game environment.
+     *
+     * Key functionalities include:
+     * - If a bird is allowed to move, its position is updated based on its current speed.
+     * - When the bird has reached the movement limits set by the game environment its speed is reversed, and it changes direction
+     * - The method also checks if the bird is within the bounds of its designated tree area.
+     *    If the bird is outside these bounds, it is allowed to move until it re-enters the area.
+     *    Once inside, the bird's movement is restricted, and it stays within the tree bounds
+     */
     public void update(){
         for (Bird bird : birdFlock.getBirds()){
             if(bird.getIsAllowedMove()){
@@ -84,6 +115,12 @@ public class BirdController{
         }
     }
 
+    /**
+     * Spawns birds based on the specified level. This method determines the initial
+     * positions and configurations of birds for different levels.
+     *
+     * @param level The game level for which birds need to be spawned.
+     */
     public void spawnBirds(int level){
         switch(level){
             case 1:

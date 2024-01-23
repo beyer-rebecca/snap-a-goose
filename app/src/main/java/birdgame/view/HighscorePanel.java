@@ -19,6 +19,15 @@ import javax.swing.Box;
 import java.awt.Image;
 import java.awt.Graphics;
 
+/**
+ * Represents a panel in the Bird Game application's user interface,
+ * which displays high scores for different levels. The panel is part of the game's view
+ * and interacts with the game's model and controller layers to retrieve and display user data.
+ * 
+ * This class manages the layout and presentation of high score information, including
+ * the creation and positioning of labels and buttons. It also handles user interactions
+ * for navigation within the application.
+ */
 public class HighscorePanel extends JPanel {
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
     private static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
@@ -32,28 +41,33 @@ public class HighscorePanel extends JPanel {
     private JLabel scoreLevel2Label;
     private JLabel scoreLevel3Label;
 
+    /**
+     * Constructs a HighscorePanel which displays the high scores for different levels.
+     *
+     * The panel is constructed with references to the window model and window controller.
+     * It initializes and sets up the layout, background image, labels for highscores of each level,
+     * and the back button with its action listener. The layout is managed with GridBagLayout.
+     *
+     * @param windowModel The model of the application window providing access to user data and game settings.
+     * @param windowController The controller for managing navigation between different panels of the application.
+     */
     public HighscorePanel(WindowModel windowModel, WindowController windowController ){
         this.windowModel = windowModel;
         this.windowController = windowController;
 
+        // Load background image
         try{
             this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));
         }catch(IOException e){
             e.printStackTrace();
         }
 
-
+         // Configure layout for the panel
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
-
-        CButton backButton = new CButton("Back");
-        backButton.addActionListener(new ActionListener() { 
-            public void actionPerformed(ActionEvent e) { 
-                windowController.navigateToPanel(windowModel.getMenuPanel());
-            } 
-        });
-
+        
+        // creates and configures Labels and Buttons
         JLabel highscoreTitle = new JLabel("Highscores");
         highscoreTitle.setFont(TITLE_FONT);
         JLabel level1Label = new JLabel("Forest");
@@ -71,7 +85,16 @@ public class HighscorePanel extends JPanel {
         int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);
         scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
         scoreLevel3Label.setFont(NORMAL_FONT);
+        CButton backButton = new CButton("Back");
 
+        // Implementation of component Listener and Performer for Back Button
+        backButton.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+                windowController.navigateToPanel(windowModel.getMenuPanel());
+            } 
+        });
+
+        // Add components to the panel using GridBagLayout
         c.insets = new Insets(30, 10, 170, 10);
         c.gridx = 0; 
         c.gridy = 0; 
@@ -125,6 +148,11 @@ public class HighscorePanel extends JPanel {
         this.add(backButton, c);
     }
 
+     /**
+     * Paints the background image for this panel and gets the Highscores for each level.
+     *
+     * @param arg0 The Graphics object used for drawing.
+     */
     @Override
     protected void paintComponent(Graphics arg0) {
         super.paintComponent(arg0);
