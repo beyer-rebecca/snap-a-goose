@@ -26,6 +26,15 @@ public class ManualPanel extends JPanel {
     private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
+    private final String INSTRUCTIONS_TEXT = """
+        <html>Dein Ziel in Snap a Goose ist es, so viele Gänse wie möglich zu <br> 
+        erwischen, in dem du den Mauszeiger über sie bewegest und sie mit der <br>
+        linken Maustaste fotografierst, um Punkte zu sammeln. <br> Die Vögel 
+        erscheinen nach einer gewissen Zeit und dann beginnt der Spaß. <br>
+        Sollte das erste Level zu einfach sein, probiere eines der anderen aus.</html>
+        """;
+
+
     private WindowModel windowModel;
     private WindowController windowController;
 
@@ -70,7 +79,7 @@ public class ManualPanel extends JPanel {
         // Initalize Lables
         JLabel titleLabel = new JLabel("Manual");
         titleLabel.setFont(TITLE_FONT);
-        JLabel instructionsLabel = new JLabel("here enter instructions");
+        JLabel instructionsLabel = new JLabel(INSTRUCTIONS_TEXT);
         instructionsLabel.setFont(NORMAL_FONT);
 
         // Add components to the panel
