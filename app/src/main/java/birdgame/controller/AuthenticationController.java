@@ -21,8 +21,10 @@ public class AuthenticationController{
                                               "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final String WINDOWS_PATH = "\\AppData\\Roaming\\birdgame\\birdgame.json";
     private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
+    private static final String MACOS_PATH = "/Library/Preferences/birdgame/birdgame.json";
     private static final String WINDOWS_DIR = "\\AppData\\Roaming\\birdgame";
     private static final String OTHER_OS_DIR = "/.local/share/birdgame/";
+    private static final String MACOS_DIR = "/Library/Preferences/birdgame/";
 
 
 
@@ -32,7 +34,7 @@ public class AuthenticationController{
      * @param email The email string to be verified.
      * @return true if the email is valid, false otherwise.
      */
-    public static boolean verifyEmail(String email){
+    private static boolean verifyEmail(String email){
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         return pattern.matcher(email).matches();
     }
@@ -88,6 +90,8 @@ public class AuthenticationController{
     private static String getPath() {
         if (SystemUtils.IS_OS_WINDOWS) {
             return System.getProperty("user.home") + WINDOWS_PATH;
+        } else if(SystemUtils.IS_OS_MAC){
+            return System.getProperty("user.home") + MACOS_PATH;
         } else {
             return System.getProperty("user.home") + OTHER_OS_PATH;
         }
@@ -101,8 +105,9 @@ public class AuthenticationController{
     private static String getDir(){
         if(SystemUtils.IS_OS_WINDOWS){
             return System.getProperty("user.home") + WINDOWS_DIR;
-        }
-        else{
+        } else if(SystemUtils.IS_OS_MAC){
+            return System.getProperty("user.home") + MACOS_DIR;
+        }else{
             return System.getProperty("user.home") + OTHER_OS_DIR;
         }
     }
