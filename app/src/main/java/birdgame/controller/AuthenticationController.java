@@ -18,8 +18,8 @@ import org.apache.commons.lang3.SystemUtils;
 public class AuthenticationController{
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                                               "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-    private static final String WINDOWS_PATH = "\\AppData\\Roaming\\birdgame\\birdgame.json";
-    private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
+    private static final String WINDOWS_DIR = "\\AppData\\Roaming\\birdgame\\birdgame.json";
+    private static final String OTHER_OS_DIR = "/.local/share/birdgame/birdgame.json";
 
     /**
      * Verifies if the given email is valid based on the specified email regex pattern.
@@ -65,13 +65,15 @@ public class AuthenticationController{
      *
      * @return The file path as a string.
      */
-    private static String getPath() {
-        if (SystemUtils.IS_OS_WINDOWS) {
-            return System.getProperty("user.home") + WINDOWS_PATH;
-        } else {
-            return System.getProperty("user.home") + OTHER_OS_PATH;
+    private static String getDir(){
+        if(SystemUtils.IS_OS_WINDOWS){
+            return System.getProperty("user.home") + WINDOWS_DIR;
+        }
+        else{
+            return System.getProperty("user.home") + OTHER_OS_DIR;
         }
     }
+
 
     /**
      * Stores user data including username, email, and an encrypted password.
@@ -102,8 +104,8 @@ public class AuthenticationController{
 
         System.out.println(outerObject.toString());
 
-        String path;
-
+        String path = getPath();
+        String dir = getDir();
         if (SystemUtils.IS_OS_WINDOWS){
             path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
             new File(System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame").mkdirs();
