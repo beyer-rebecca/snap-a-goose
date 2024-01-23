@@ -32,7 +32,7 @@ public class AuthenticationController{
      * @param email The email string to be verified.
      * @return true if the email is valid, false otherwise.
      */
-    private static boolean verifyEmail(String email){
+    public static boolean verifyEmail(String email){
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         return pattern.matcher(email).matches();
     }
@@ -139,14 +139,6 @@ public class AuthenticationController{
 
         String path = getPath();
         String dir = getDir();
-        if (SystemUtils.IS_OS_WINDOWS){
-            path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
-            new File(System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame").mkdirs();
-        }
-        else {
-            path = System.getProperty("user.home") + "/.local/share/birdgame/" + "birdgame.json";
-            new File(System.getProperty("user.home") + "/.local/share/birdgame").mkdirs();
-        }
 
         File f = new File(path);
         if(!f.exists()) { 
