@@ -18,17 +18,12 @@ import org.apache.commons.lang3.SystemUtils;
 public class AuthenticationController{
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
                                               "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-<<<<<<< HEAD
-    private static final String WINDOWS_DIR = "\\AppData\\Roaming\\birdgame\\birdgame.json";
-    private static final String OTHER_OS_DIR = "/.local/share/birdgame/birdgame.json";
-=======
     private static final String WINDOWS_PATH = "\\AppData\\Roaming\\birdgame\\birdgame.json";
     private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
     private static final String WINDOWS_DIR = "\\AppData\\Roaming\\birdgame";
     private static final String OTHER_OS_DIR = "/.local/share/birdgame/";
 
 
->>>>>>> main
 
     /**
      * Verifies if the given email is valid based on the specified email regex pattern.
@@ -89,15 +84,19 @@ public class AuthenticationController{
      *
      * @return The file path as a string.
      */
-    private static String getDir(){
-        if(SystemUtils.IS_OS_WINDOWS){
-            return System.getProperty("user.home") + WINDOWS_DIR;
-        }
-        else{
-            return System.getProperty("user.home") + OTHER_OS_DIR;
+    private static String getPath() {
+        if (SystemUtils.IS_OS_WINDOWS) {
+            return System.getProperty("user.home") + WINDOWS_PATH;
+        } else {
+            return System.getProperty("user.home") + OTHER_OS_PATH;
         }
     }
 
+    /**
+     * Retrieves the directory to store or retrieve the user data file based on the operating system.
+     *
+     * @return The directory as a string.
+     */
     private static String getDir(){
         if(SystemUtils.IS_OS_WINDOWS){
             return System.getProperty("user.home") + WINDOWS_DIR;
@@ -139,11 +138,7 @@ public class AuthenticationController{
 
         String path = getPath();
         String dir = getDir();
-<<<<<<< HEAD
         if (SystemUtils.IS_OS_WINDOWS){
-=======
-        if(SystemUtils.IS_OS_WINDOWS){
->>>>>>> main
             path = System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame\\" + "birdgame.json";
             new File(System.getProperty("user.home") + "\\AppData\\Roaming\\birdgame").mkdirs();
         }

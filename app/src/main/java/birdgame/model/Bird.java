@@ -25,13 +25,9 @@ public class Bird {
     private int width = 20;
     private int height = 40;
     private int hitWidth = 45;
-<<<<<<< HEAD
     private int hitHeight = 30;
     private float posX;
     private float posY;
-=======
-    private float x,y;
->>>>>>> main
     private int treeLeft, treeRight;
     private boolean birdIsOutOfTree = true;
 
