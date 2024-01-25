@@ -15,9 +15,10 @@ import org.apache.commons.lang3.SystemUtils;
  * reading and updating highscores, adding new users, and initializing highscores at application start.
  */
 public class HighscoreController {
-    private static final String FILE_PATH_WINDOWS = "\\AppData\\Roaming\\birdgame\\birdgame.json";
-    private static final String FILE_PATH_OTHER = "/.local/share/birdgame/birdgame.json";
-
+    private static final String WINDOWS_PATH = "\\AppData\\Roaming\\birdgame\\birdgame.json";
+    private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
+    private static final String MACOS_PATH = "/Library/Preferences/birdgame/birdgame.json";
+    
     /**
      * Retrieves the file path for storing highscore data based on the operating system.
      *
@@ -25,9 +26,11 @@ public class HighscoreController {
      */
     private static String getFilePath() {
         if (SystemUtils.IS_OS_WINDOWS) {
-            return System.getProperty("user.home") + FILE_PATH_WINDOWS;
+            return System.getProperty("user.home") + WINDOWS_PATH;
+        } else if(SystemUtils.IS_OS_MAC){
+            return System.getProperty("user.home") + MACOS_PATH;
         } else {
-            return System.getProperty("user.home") + FILE_PATH_OTHER;
+            return System.getProperty("user.home") + OTHER_OS_PATH;
         }
     }
 

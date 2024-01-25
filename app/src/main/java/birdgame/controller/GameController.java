@@ -150,24 +150,6 @@ public class GameController implements Runnable{
 
 
     /**
-     * Returns the remaining game time.
-     *
-     * @return The remaining time in the game.
-     */
-    public int getTime(){
-        return game.getTime();
-    }
-
-    /**
-     * Sets the game time to a specified value.
-     *
-     * @param time The time value to set.
-     */
-    public void setTime(int time){
-        game.setTime(time);
-    }
-    
-    /**
      * Updates the game state every second. This includes updating the timer and 
      * performing necessary actions that occur on a per-second basis.
      */
