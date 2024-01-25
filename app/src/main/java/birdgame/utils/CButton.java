@@ -24,7 +24,7 @@ public class CButton extends JComponent implements MouseListener {
     private int WIDTH = 120;
     private int HEIGHT = 60;
     private int MAX_WIDTH = 300;
-    private int MAX_HEIGHT = 300;
+    private int MAX_HEIGHT = 269;
     private int MIN_WIDTH = 40;
     private int MIN_HEIGHT = 40;
     private Font font = new Font("TimesRoman", Font.BOLD, 20);
@@ -34,6 +34,7 @@ public class CButton extends JComponent implements MouseListener {
     private boolean hasText = false;
 
     private Image img;
+    private Image imgHover;
 
     private String text = "";
     
@@ -80,36 +81,23 @@ public class CButton extends JComponent implements MouseListener {
      * Constructor for CButton with an image.
      *
      * @param img The BufferedImage to be displayed on the button.
+     * @param imgHover The BufferedImage to be displayed on hover.
      */
-    public CButton(BufferedImage img){
+    public CButton(BufferedImage img, BufferedImage imgHover){
         super();
         enableInputMethods(true);
         addMouseListener(this);
         int imgWIDTH = img.getWidth();
         int imgHEIGHT = img.getHeight();
         this.img = img.getScaledInstance(imgWIDTH,imgHEIGHT, Image.SCALE_SMOOTH);
+        this.imgHover = imgHover.getScaledInstance(imgWIDTH,imgHEIGHT, Image.SCALE_SMOOTH);
         hasImage = true;
+        // System.out.println(imgWIDTH);
+        // System.out.println(imgHEIGHT);
         WIDTH = imgWIDTH;
-        HEIGHT = imgHEIGHT;
+        HEIGHT = imgWIDTH-22;
     }
     
-    /**
-     * Constructor for CButton with an image and specific dimensions.
-     *
-     * @param img The BufferedImage to be displayed on the button.
-     * @param width The width of the button.
-     * @param height The height of the button.
-     */
-    public CButton(BufferedImage img, int width, int height){
-        super();
-        enableInputMethods(true);
-        addMouseListener(this);
-        this.img = img.getScaledInstance(width,height, Image.SCALE_SMOOTH);
-        hasImage = true;
-        WIDTH = width;
-        HEIGHT = height;
-    }
-
     /**
      * Gets the preferred size for the button.
      * @return A Dimension object representing the preferred size.
@@ -123,19 +111,19 @@ public class CButton extends JComponent implements MouseListener {
      * Gets the minimum size for the button.
      * @return A Dimension object representing the minimum size.
      */
-    @Override
-    public Dimension getMinimumSize() {
-        return new Dimension(this.MIN_WIDTH, this.MIN_HEIGHT);
-    }
+    // @Override
+    // public Dimension getMinimumSize() {
+    //     return new Dimension(this.MIN_WIDTH, this.MIN_HEIGHT);
+    // }
 
     /**
      * Gets the maximum size for the button.
      * @return A Dimension object representing the maximum size.
      */
-    @Override
-    public Dimension getMaximumSize() {
-        return new Dimension(this.MAX_WIDTH, this.MAX_HEIGHT);
-    }
+    // @Override
+    // public Dimension getMaximumSize() {
+    //     return new Dimension(this.MAX_WIDTH, this.MAX_HEIGHT);
+    // }
 
     /**
      * Paints the component with its current state.
@@ -175,9 +163,7 @@ public class CButton extends JComponent implements MouseListener {
                     HEIGHT/2 + g.getFontMetrics(font).getHeight()/4);
         }else if(hasImage){
             if(mouseEntered){
-                g.setColor(Color.RED);
-                g.fillRect(0,0,WIDTH, HEIGHT);
-                g.drawImage(img, 0,0, null);
+                g.drawImage(imgHover, 0,0, null);
                 
             }else{
                 g.drawImage(img, 0,0, null);

@@ -60,12 +60,15 @@ public class LevelSelectPanel extends JPanel{
         // Load the button images and set up the buttons
         try {
             BufferedImage img = ImageIO.read(getClass().getClassLoader().getResource("pol1.png"));
-            level1 = new CButton(img);
+            BufferedImage imgHover = ImageIO.read(getClass().getClassLoader().getResource("pol1Hover.png"));
+            level1 = new CButton(img, imgHover);
             img = ImageIO.read(getClass().getClassLoader().getResource("pol2.png"));
-            level2 = new CButton(img);
+            imgHover = ImageIO.read(getClass().getClassLoader().getResource("pol2Hover.png"));
+            level2 = new CButton(img, imgHover);
             img = ImageIO.read(getClass().getClassLoader().getResource("pol3.png"));
-            level3 = new CButton(img);
-        } catch (Exception ex) {
+            imgHover = ImageIO.read(getClass().getClassLoader().getResource("pol3Hover.png"));
+            level3 = new CButton(img, imgHover);
+        } catch (IOException ex) {
             System.out.println("Error loading button image: "+ex);
         }
 
