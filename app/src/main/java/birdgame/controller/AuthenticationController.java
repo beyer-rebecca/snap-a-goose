@@ -163,6 +163,9 @@ public class AuthenticationController{
         {
             Object obj = parser.parse(reader);
             JSONObject combinedObject = (JSONObject) obj;
+            if(combinedObject.get(username) != null){
+                return false;
+            }
             combinedObject.put(username, innerObject);
             file = new FileWriter(path);
             file.write(combinedObject.toString());
