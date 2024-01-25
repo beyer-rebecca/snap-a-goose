@@ -41,7 +41,7 @@ class AuthenticationControllerTest {
         Method methodToTest = classToTest.getDeclaredMethod("getDir", (Class<?>[]) null);
         methodToTest.setAccessible(true);
     
-        assertEquals(System.getProperty("user.home")+"/.local/share/birdgame/",
+        assertEquals(System.getProperty("user.home")+"\\AppData\\Roaming\\birdgame",
                 methodToTest.invoke(null));
     }
     
@@ -52,7 +52,7 @@ class AuthenticationControllerTest {
         Method methodToTest = classToTest.getDeclaredMethod("getDir", (Class<?>[]) null);
         methodToTest.setAccessible(true);
     
-        assertEquals(System.getProperty("user.home")+"/.local/share/birdgame/",
+        assertEquals(System.getProperty("user.home")+"/Library/Preferences/birdgame/",
                 methodToTest.invoke(null));
     }
 }
