@@ -1,4 +1,4 @@
-package birdgame.view;
+package birdgame.utils;
 
 import java.awt.Color;
 import java.awt.Dimension;

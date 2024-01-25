@@ -9,7 +9,7 @@ import java.util.Random;
  * The Bird class represents a bird in the Bird Game. This class encapsulates the properties and behaviors
  * of a bird, such as its position, movement, and state (hit or not).
  */
-public class Bird {
+public class BirdModel {
     private static final int MIN_MOVEMENT_TIME = 5;
     private static final int MAX_MOVEMENT_TIME = 20;
     private static final int BIRD_MOVEMENT_LIMIT = 50;
@@ -40,7 +40,7 @@ public class Bird {
      * @param treeLeft The x-coordinate of the left boundary of the tree.
      * @param treeRight The x-coordinate of the right boundary of the tree.
      */
-    public Bird(float posX, float posY, int treeLeft, int treeRight){
+    public BirdModel(float posX, float posY, int treeLeft, int treeRight){
         this.origX = posX;
         this.posX = posX;
         this.posY = posY;

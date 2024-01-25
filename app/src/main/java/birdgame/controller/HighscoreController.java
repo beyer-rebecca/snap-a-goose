@@ -66,6 +66,7 @@ public class HighscoreController {
      * @param level The game level for which to update the highscore.
      * @param score The new highscore to set.
      */
+    
     @SuppressWarnings("unchecked")
     public static void updateHighscore(String username, int level, int score){
         String path = getFilePath();

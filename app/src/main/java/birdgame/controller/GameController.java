@@ -1,7 +1,7 @@
 package birdgame.controller;
 
-import birdgame.model.BirdFlock;
-import birdgame.model.Game;
+import birdgame.model.BirdFlockModel;
+import birdgame.model.GameModel;
 import birdgame.view.GameOverPanel;
 import birdgame.view.LevelPanel;
 
@@ -21,10 +21,10 @@ public class GameController implements Runnable{
     private Thread gameThread;
     private LevelPanel levelPanel;
     private BirdController birdController;
-    private BirdFlock birdFlock;
+    private BirdFlockModel birdFlock;
     private WindowController windowController;
     private PlayerController playerController;
-    private Game game;
+    private GameModel game;
     private int level;
 
     private Image backgroundImage;
@@ -38,8 +38,8 @@ public class GameController implements Runnable{
      */
     public GameController(WindowController windowController){
         
-        this.game = new Game();
-        this.birdFlock = new BirdFlock();
+        this.game = new GameModel();
+        this.birdFlock = new BirdFlockModel();
         this.birdController = new BirdController(this.birdFlock);
         this.playerController = new PlayerController(this.birdFlock);
         this.windowController = windowController;

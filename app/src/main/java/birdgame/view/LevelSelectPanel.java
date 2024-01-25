@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import birdgame.controller.GameController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 
 /**
  * Displays the level selection screen in the Bird Game.

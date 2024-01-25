@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 import birdgame.controller.AuthenticationController;
 import birdgame.controller.LoginController;
 

@@ -4,7 +4,7 @@ package birdgame.model;
  * The Score class represents the player's score in the Bird Game.
  * It manages the current score and provides methods to retrieve and update it.
  */
-public class Score {
+public class ScoreModel {
     private int currentScore = 0;
 
     /**

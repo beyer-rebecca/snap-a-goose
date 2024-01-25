@@ -1,19 +1,19 @@
 package birdgame.controller;
 
-import birdgame.model.Score;
+import birdgame.model.ScoreModel;
 
 /**
  * The ScoreController class manages the scoring system for the game. This controller handles operations
  * related to the player's score, such as retrieving, updating, and resetting the score.
  */
 public class ScoreController {
-    private Score score;
+    private ScoreModel score;
 
     /**
      * Constructs a ScoreController with a new Score instance.
      */
     public ScoreController(){
-        this.score = new Score();
+        this.score = new ScoreModel();
     }
 
     
@@ -52,7 +52,7 @@ public class ScoreController {
      *
      * @return The Score model.
      */
-    public Score getScoreModel(){
+    public ScoreModel getScoreModel(){
         return this.score;
     }
 }

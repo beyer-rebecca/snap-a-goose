@@ -17,6 +17,7 @@ import birdgame.controller.HighscoreController;
 import birdgame.controller.ScoreController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 
 /**
  * Panel to display the game over screen in the Bird Game.

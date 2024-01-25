@@ -16,6 +16,7 @@ import java.awt.Font;
 import birdgame.controller.LoginController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 
 /**
  * Responsible for displaying the main menu of the Bird Game.

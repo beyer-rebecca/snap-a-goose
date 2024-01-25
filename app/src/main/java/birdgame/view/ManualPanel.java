@@ -15,6 +15,7 @@ import java.awt.Graphics;
 
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 
 /**
  * Represents the game manual screen to the user. 

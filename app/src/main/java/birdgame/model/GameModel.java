@@ -6,7 +6,7 @@ package birdgame.model;
  * (The masks (representing elements like trees) are in other classes placed in front of the backgrounds,
  * allowing birds to hide behind them.)
  */
-public class Game {
+public class GameModel {
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
     private final int MAX_TIME = 60;
@@ -23,7 +23,7 @@ public class Game {
     /**
      * Constructs a new Game object with the maximum time set.
      */
-    public Game(){
+    public GameModel(){
         this.time = MAX_TIME;
     }
 

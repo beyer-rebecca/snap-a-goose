@@ -1,7 +1,7 @@
 package birdgame.controller;
 
-import birdgame.model.Bird;
-import birdgame.model.BirdFlock;
+import birdgame.model.BirdModel;
+import birdgame.model.BirdFlockModel;
 
 import java.util.Iterator;
 import birdgame.utils.Vec2;
@@ -13,7 +13,7 @@ import birdgame.utils.Vec2;
  */
 public class PlayerController {
     private ScoreController scoreController;
-    private BirdFlock birdFlock;
+    private BirdFlockModel birdFlock;
 
     /**
      * Constructs a PlayerController with a reference to a BirdFlock. Initializes a ScoreController
@@ -21,7 +21,7 @@ public class PlayerController {
      *
      * @param birdFlock The BirdFlock instance that the controller will interact with.
      */
-    public PlayerController(BirdFlock birdFlock){
+    public PlayerController(BirdFlockModel birdFlock){
         this.scoreController = new ScoreController();
         this.birdFlock = birdFlock;
     }
@@ -44,7 +44,7 @@ public class PlayerController {
      * @param posY The y-coordinate of the mouse click where the photo is taken.
      */
     public void takePhoto(int posX, int posY){
-        Bird birdInPhoto = findBirdInPhoto(posX, posY);
+        BirdModel birdInPhoto = findBirdInPhoto(posX, posY);
         if (birdInPhoto != null){
             birdInPhoto.setIsHit(true);
             scoreController.increaseScore(25);
@@ -58,10 +58,10 @@ public class PlayerController {
      * @param posY The y-coordinate of the photo.
      * @return The Bird object if found within the bounds; null otherwise.
      */
-    private Bird findBirdInPhoto(int posX, int posY){
-           Iterator<Bird> birdIterator = birdFlock.getBirds().iterator();
+    private BirdModel findBirdInPhoto(int posX, int posY){
+           Iterator<BirdModel> birdIterator = birdFlock.getBirds().iterator();
             while (birdIterator.hasNext()) {
-                Bird bird = birdIterator.next();
+                BirdModel bird = birdIterator.next();
                 if (isInPhotoBounds(posX, posY, bird) && !bird.getIsHit() && bird.getIsAllowedMove()){
                     return bird; 
                 }
@@ -77,7 +77,7 @@ public class PlayerController {
      * @param bird The Bird object to check the coordinates against.
      * @return true if the coordinates are within the bird's bounds; false otherwise.
      */
-    private boolean isInPhotoBounds(int x, int y, Bird bird) {
+    private boolean isInPhotoBounds(int x, int y, BirdModel bird) {
         Vec2 birdPos = bird.getPos();
         int birdWidth = bird.getWidth();
         int birdHeight = bird.getHeight();

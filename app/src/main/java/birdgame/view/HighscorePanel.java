@@ -3,6 +3,7 @@ package birdgame.view;
 import birdgame.controller.HighscoreController;
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

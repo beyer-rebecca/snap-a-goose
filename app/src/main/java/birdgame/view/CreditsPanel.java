@@ -17,6 +17,7 @@ import java.io.IOException;
 
 import birdgame.controller.WindowController;
 import birdgame.model.WindowModel;
+import birdgame.utils.CButton;
 
 /**
  * Represents the credits panel in the Bird Game application.

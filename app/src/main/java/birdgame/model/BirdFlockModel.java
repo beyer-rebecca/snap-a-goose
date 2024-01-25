@@ -7,15 +7,15 @@ import java.util.List;
  * The BirdFlock class represents a collection of Bird objects.
  * It allows for the addition, removal, and retrieval of birds within the game.
  */
-public class BirdFlock {
-    private List<Bird> birds = new ArrayList<Bird>();
+public class BirdFlockModel {
+    private List<BirdModel> birds = new ArrayList<BirdModel>();
 
     /**
      * Adds a bird to the flock.
      * 
      * @param bird The Bird object to be added to the flock.
      */
-    public void addBird(Bird bird) {
+    public void addBird(BirdModel bird) {
         this.birds.add(bird);
     }
 
@@ -24,7 +24,7 @@ public class BirdFlock {
      * 
      * @param bird The Bird object to be removed from the flock.
      */
-    public void removeBird(Bird bird) {
+    public void removeBird(BirdModel bird) {
         this.birds.remove(bird);
     }
 
@@ -33,8 +33,8 @@ public class BirdFlock {
      * 
      * @return An ArrayList containing all the Bird objects in the flock.
      */
-    public ArrayList<Bird> getBirds() {
-        return new ArrayList<Bird>(this.birds);
+    public ArrayList<BirdModel> getBirds() {
+        return new ArrayList<BirdModel>(this.birds);
     }
 
 

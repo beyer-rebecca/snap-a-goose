@@ -1,7 +1,6 @@
 package birdgame.controller;
 
-import birdgame.model.Bird;
-import birdgame.utils.Constants;
+import birdgame.model.BirdModel;
 import birdgame.utils.Vec2;
 
 import javax.imageio.ImageIO;
@@ -9,21 +8,22 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import birdgame.model.BirdFlock;
+import birdgame.model.BirdFlockModel;
+import birdgame.model.Constants;
 
 /**
  * The BirdController class is responsible for managing the rendering and updating
  * of birds within the game. It handles bird movements, animations, and interactions.
  */
 public class BirdController{
-    private BirdFlock birdFlock;
+    private BirdFlockModel birdFlock;
 
     /**
      * Constructs a new BirdController with a specified BirdFlock.
      *
      * @param birdFlock The flock of birds that this controller manages.
      */
-    public BirdController(BirdFlock birdFlock){
+    public BirdController(BirdFlockModel birdFlock){
         this.birdFlock = birdFlock;
     }
  
@@ -34,7 +34,7 @@ public class BirdController{
      * @param g The Graphics context on which to render the birds.
      */
     public void render(Graphics g){
-        for (Bird bird : birdFlock.getBirds()){
+        for (BirdModel bird : birdFlock.getBirds()){
             if(bird.getIsMoving() && !bird.getIsHit()){
                 try {
                     String birdImage = bird.getImage();
@@ -66,7 +66,7 @@ public class BirdController{
      * managing the movement timers of the birds.
      */
     public void updateSec() {
-        for (Bird bird : birdFlock.getBirds()){
+        for (BirdModel bird : birdFlock.getBirds()){
             if (bird.getMoveTimeUpdate() != 0){
                 bird.setMoveTimeUpdate(bird.getMoveTimeUpdate()-1);
             } else{
@@ -88,7 +88,7 @@ public class BirdController{
      *    Once inside, the bird's movement is restricted, and it stays within the tree bounds
      */
     public void update(){
-        for (Bird bird : birdFlock.getBirds()){
+        for (BirdModel bird : birdFlock.getBirds()){
             if(bird.getIsAllowedMove()){
                 bird.setPosX(bird.getPosX() + bird.getBirdSpeed());
 
@@ -125,17 +125,17 @@ public class BirdController{
         switch(level){
             case 1:
                 for(Vec2 vec : Constants.Level1.birdsPos){
-                    birdFlock.addBird(new Bird(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
+                    birdFlock.addBird(new BirdModel(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
                 }
                 break;
             case 2:
                 for(Vec2 vec : Constants.Level2.birdsPos){
-                    birdFlock.addBird(new Bird(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
+                    birdFlock.addBird(new BirdModel(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
                 }
                 break;
             case 3:
                 for(Vec2 vec : Constants.Level3.birdsPos){
-                    birdFlock.addBird(new Bird(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
+                    birdFlock.addBird(new BirdModel(vec.left.x, vec.left.y, vec.right.x, vec.right.y));
                 }
                 break;
         }

@@ -1,7 +1,9 @@
-package birdgame.utils;
+package birdgame.model;
 
 import java.util.Arrays;
 import java.util.List;
+
+import birdgame.utils.Vec2;
 
 /**
  * The Constants class contains static nested classes for each level of the Bird Game.

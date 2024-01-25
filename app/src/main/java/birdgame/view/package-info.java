@@ -14,7 +14,7 @@
  *   - {@link birdgame.view.CreditsPanel}: Shows the credits for the game.
  *   - {@link birdgame.view.GameOverPanel}: Showed when a game round ends, shows final score of round and highscore.
  *   - {@link birdgame.view.WindowView}: The main window of the application.
- *   - {@link birdgame.view.CButton}: Customized button components.
+ *   - {@link birdgame.utils.CButton}: Customized button components.
  *   - {@link birdgame.view.CTextField}: Customized text field.
  *   - {@link birdgame.view.LevelPanel}: Displays the main game view in the Bird Game application.
  *   - {@link birdgame.view.ManualPanel}: Displays the game manual screen to the user.

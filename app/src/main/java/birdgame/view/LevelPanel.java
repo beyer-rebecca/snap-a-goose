@@ -16,8 +16,8 @@ import birdgame.controller.WindowController;
 import birdgame.controller.GameController;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
-import birdgame.model.BirdFlock;
-import birdgame.model.Game;
+import birdgame.model.BirdFlockModel;
+import birdgame.model.GameModel;
 
 /**
  * Displays the main game view in the Bird Game application.
@@ -30,7 +30,7 @@ public class LevelPanel extends JPanel {
 
     private ScoreController scoreController;
     private GameController gameController;
-    private Game game;
+    private GameModel game;
 
     private Image background;
     private Image mask;
@@ -54,7 +54,7 @@ public class LevelPanel extends JPanel {
      * @param playerController The controller managing player interactions.
      */
     public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
-                      BirdFlock birdFlock, Game game, PlayerController playerController){
+                      BirdFlockModel birdFlock, GameModel game, PlayerController playerController){
         this.gameController = gameController;
         this.scoreController = playerController.getScoreController();
         this.backgroundWidth = windowController.getWindowModel().WINDOW_WIDTH;
