@@ -1,7 +1,5 @@
 package birdgame.model;
 
-import org.checkerframework.common.returnsreceiver.qual.This;
-
 import birdgame.controller.WindowController;
 import birdgame.view.*;
 

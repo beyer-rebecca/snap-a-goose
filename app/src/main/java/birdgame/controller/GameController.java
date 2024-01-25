@@ -1,10 +1,7 @@
 package birdgame.controller;
 
-import birdgame.model.Bird;
 import birdgame.model.BirdFlock;
 import birdgame.model.Game;
-import birdgame.utils.Constants;
-import birdgame.utils.Vec2;
 import birdgame.view.GameOverPanel;
 import birdgame.view.LevelPanel;
 

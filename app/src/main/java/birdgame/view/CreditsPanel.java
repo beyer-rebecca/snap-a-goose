@@ -28,8 +28,6 @@ public class CreditsPanel extends JPanel{
     private static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
-    private WindowModel windowModel;
-    private WindowController windowController;
     private Image backgroundImage;
 
     /**
@@ -43,8 +41,6 @@ public class CreditsPanel extends JPanel{
      * @param windowController The controller of the application's window, used for event handling.
      */
     public CreditsPanel(WindowModel windowModel, WindowController windowController){
-        this.windowModel = windowModel;
-        this.windowController = windowController;
 
         try{
             this. backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(BACKGROUND_IMAGE_PATH));

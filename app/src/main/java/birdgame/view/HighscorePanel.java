@@ -34,7 +34,6 @@ public class HighscorePanel extends JPanel {
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     private WindowModel windowModel;
-    private WindowController windowController;
     private Image backgroundImage;
 
     private JLabel scoreLevel1Label;
@@ -53,7 +52,6 @@ public class HighscorePanel extends JPanel {
      */
     public HighscorePanel(WindowModel windowModel, WindowController windowController ){
         this.windowModel = windowModel;
-        this.windowController = windowController;
 
         // Load background image
         try{

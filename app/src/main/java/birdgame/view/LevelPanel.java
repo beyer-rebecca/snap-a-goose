@@ -28,9 +28,7 @@ import birdgame.model.Game;
 public class LevelPanel extends JPanel {
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
 
-    private PlayerController playerController;
     private ScoreController scoreController;
-    private WindowController windowController;
     private GameController gameController;
     private Game game;
 
@@ -58,7 +56,6 @@ public class LevelPanel extends JPanel {
     public LevelPanel(WindowController windowController, GameController gameController, int level, Image background,Image mask, 
                       BirdFlock birdFlock, Game game, PlayerController playerController){
         this.gameController = gameController;
-        this.playerController = playerController;
         this.scoreController = playerController.getScoreController();
         this.backgroundWidth = windowController.getWindowModel().WINDOW_WIDTH;
         this.backgroundHeight = windowController.getWindowModel().WINDOW_HEIGHT;

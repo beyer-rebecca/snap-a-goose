@@ -26,7 +26,6 @@ public class MenuPanel extends JPanel{
     private Font gameTITLE_FONT = new Font("TimesRoman", Font.BOLD, 40);
     private static final String BACKGROUND_IMAGE_PATH = "appBackground.jpg";
 
-    private WindowModel windowModel;
     private WindowController windowController;
     private final int backgroundWidth;
     private final int backgroundHeight;
@@ -42,7 +41,6 @@ public class MenuPanel extends JPanel{
      * @param windowController The controller responsible for navigation between panels.
      */
     public MenuPanel(WindowModel windowModel, WindowController windowController){
-        this.windowModel = windowModel;
         this.windowController = windowController;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;

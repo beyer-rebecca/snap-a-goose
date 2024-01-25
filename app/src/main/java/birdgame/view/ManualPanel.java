@@ -35,8 +35,6 @@ public class ManualPanel extends JPanel {
         """;
 
 
-    private WindowModel windowModel;
-    private WindowController windowController;
 
     private final int backgroundWidth;
     private final int backgroundHeight;
@@ -52,8 +50,6 @@ public class ManualPanel extends JPanel {
      * @param windowController The controller responsible for navigation between panels.
      */
     public ManualPanel(WindowModel windowModel, WindowController windowController){
-        this.windowModel = windowModel;
-        this.windowController = windowController;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
         

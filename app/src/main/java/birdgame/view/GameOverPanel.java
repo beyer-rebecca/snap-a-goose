@@ -24,9 +24,6 @@ import birdgame.model.WindowModel;
  * an option to return to the main menu.
  */
 public class GameOverPanel extends JPanel{
-    private WindowModel windowModel;
-    private WindowController windowController;
-    private ScoreController scoreController;
     private Image backgroundImage;
 
     private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
@@ -43,9 +40,6 @@ public class GameOverPanel extends JPanel{
      * @param scoreController The controller for managing the game score.
      */
     public GameOverPanel(WindowModel windowModel, WindowController windowController, ScoreController scoreController){
-        this.windowModel = windowModel;
-        this.windowController = windowController;
-        this.scoreController = scoreController;
 
         // load background image
         try {

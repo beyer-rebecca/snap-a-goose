@@ -24,8 +24,6 @@ import birdgame.model.WindowModel;
  */
 public class LevelSelectPanel extends JPanel{
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
-    private WindowModel windowModel;
-    private WindowController windowController;
     private final int backgroundWidth;
     private final int backgroundHeight;
     private Image backgroundImage;
@@ -38,8 +36,6 @@ public class LevelSelectPanel extends JPanel{
      * @param windowController The controller responsible for navigating between panels.
      */
     public LevelSelectPanel(WindowModel windowModel, WindowController windowController){
-        this.windowModel = windowModel;
-        this.windowController = windowController;
         this.backgroundWidth = WindowModel.WINDOW_WIDTH;  
         this.backgroundHeight = WindowModel.WINDOW_HEIGHT;
 

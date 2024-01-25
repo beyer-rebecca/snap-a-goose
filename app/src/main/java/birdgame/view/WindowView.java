@@ -3,7 +3,6 @@ package birdgame.view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import birdgame.controller.WindowController;
 
 /**
  * Represents the main window of the Bird Game application.
@@ -16,7 +15,6 @@ import birdgame.controller.WindowController;
  * window settings such as title, non-resizability, and default close operation.
  */
 public class WindowView extends JFrame{
-    private WindowController windowController;
     
     private MenuPanel menuPanel;
     private LevelSelectPanel levelSelectPanel;
