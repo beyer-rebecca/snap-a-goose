@@ -27,11 +27,14 @@ public class ManualPanel extends JPanel {
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     private final String INSTRUCTIONS_TEXT = """
-        <html>Dein Ziel in Snap a Goose ist es, so viele Gänse wie möglich zu <br> 
-        erwischen, in dem du den Mauszeiger über sie bewegest und sie mit der <br>
-        linken Maustaste fotografierst, um Punkte zu sammeln. <br> Die Vögel 
-        erscheinen nach einer gewissen Zeit und dann beginnt der Spaß. <br>
-        Sollte das erste Level zu einfach sein, probiere eines der anderen aus.</html>
+        <html> Your mission: capture as many geese on camera as you can before time runs out. <br>
+        These geese are tricky, hiding behind trees and appearing briefly. <br>
+        Be quick to aim and snap a photo when they show themselves.<br> <br>
+
+        Here's how to play: direct your cursor to aim at the geese and left-click to take a photo. <br>
+        Each goose you photograph scores you 25 points. <br>
+        Keep an eye on your score at the top right of the screen, <br> and watch the remaining time at the top left. 
+        The game ends when the timer hits zero. <br> <br> Good luck and Happy Snapping! </html>
         """;
 
 
@@ -79,7 +82,7 @@ public class ManualPanel extends JPanel {
         instructionsLabel.setFont(Constants.NORMAL_FONT);
 
         // Add components to the panel
-        c.insets = new Insets(40, 10, 35, 10);
+        c.insets = new Insets(40, 10, 50, 10);
         c.gridx = 0; 
         c.gridy = 0; 
         c.gridwidth = GridBagConstraints.REMAINDER; 
