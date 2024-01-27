@@ -8,18 +8,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.apache.commons.lang3.SystemUtils;
-
 /**
  * The HighscoreController class manages the highscores for the Bird Game application. This controller is responsible for
  * reading and updating highscores, adding new users, and initializing highscores at application start.
  */
 public class HighscoreController {
-    private static final String WINDOWS_PATH = "\\AppData\\Roaming\\birdgame\\birdgame.json";
-    private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
-    private static final String MACOS_PATH = "/Library/Preferences/birdgame/birdgame.json";
-    
-
     /**
      * Retrieves the highscore for a specific user and level.
      *
