@@ -17,6 +17,7 @@ import birdgame.controller.GameController;
 import birdgame.controller.PlayerController;
 import birdgame.controller.ScoreController;
 import birdgame.model.BirdFlockModel;
+import birdgame.model.Constants;
 import birdgame.model.GameModel;
 
 /**
@@ -26,7 +27,6 @@ import birdgame.model.GameModel;
  */
 
 public class LevelPanel extends JPanel {
-    private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
 
     private ScoreController scoreController;
     private GameController gameController;
@@ -69,7 +69,7 @@ public class LevelPanel extends JPanel {
         
         // Add components to the panel
         scoreDisplay = new JLabel("0");
-        scoreDisplay.setFont(TITLE_FONT);
+        scoreDisplay.setFont(Constants.TITLE_FONT);
         scoreDisplay.setForeground(Color.WHITE);
         c.gridx = 1;
         c.gridy = 0;
@@ -81,7 +81,7 @@ public class LevelPanel extends JPanel {
 
         // Creating and configuring the time display label
         timeField = new JLabel(String.valueOf(game.getTime()));
-        timeField.setFont(TITLE_FONT);
+        timeField.setFont(Constants.TITLE_FONT);
         timeField.setForeground(Color.WHITE); 
         c.gridx = 0;
         c.gridy = 0;

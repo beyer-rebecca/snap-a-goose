@@ -14,6 +14,7 @@ import java.awt.Image;
 import java.awt.Graphics;
 
 import birdgame.controller.WindowController;
+import birdgame.model.Constants;
 import birdgame.model.WindowModel;
 import birdgame.utils.CButton;
 
@@ -23,8 +24,6 @@ import birdgame.utils.CButton;
  * for navigation. The panel's graphical user interface is designed with {@link java.awt.GridBagLayout}.
  */
 public class ManualPanel extends JPanel {
-    private final static Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
-    private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     private final String INSTRUCTIONS_TEXT = """
@@ -75,9 +74,9 @@ public class ManualPanel extends JPanel {
 
         // Initalize Lables
         JLabel titleLabel = new JLabel("Manual");
-        titleLabel.setFont(TITLE_FONT);
+        titleLabel.setFont(Constants.TITLE_FONT);
         JLabel instructionsLabel = new JLabel(INSTRUCTIONS_TEXT);
-        instructionsLabel.setFont(NORMAL_FONT);
+        instructionsLabel.setFont(Constants.NORMAL_FONT);
 
         // Add components to the panel
         c.insets = new Insets(40, 10, 35, 10);

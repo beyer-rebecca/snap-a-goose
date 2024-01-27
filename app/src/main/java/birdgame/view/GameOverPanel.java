@@ -16,6 +16,7 @@ import java.awt.Graphics;
 import birdgame.controller.HighscoreController;
 import birdgame.controller.ScoreController;
 import birdgame.controller.WindowController;
+import birdgame.model.Constants;
 import birdgame.model.WindowModel;
 import birdgame.utils.CButton;
 
@@ -27,8 +28,6 @@ import birdgame.utils.CButton;
 public class GameOverPanel extends JPanel{
     private Image backgroundImage;
 
-    private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
-    private static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     /**
@@ -56,11 +55,11 @@ public class GameOverPanel extends JPanel{
 
         // creates and configures Labels for game over, score and highscore
         JLabel gameOverLabel = new JLabel ("Thank you for Playing!");
-        gameOverLabel.setFont(TITLE_FONT);
+        gameOverLabel.setFont(Constants.TITLE_FONT);
         JLabel scoreLabel = new JLabel("Score:   " + scoreController.getScoreModel().getCurrentScore());  
-        scoreLabel.setFont(NORMAL_FONT);
+        scoreLabel.setFont(Constants.NORMAL_FONT);
         JLabel highscoreLabel = new JLabel("Highscore:   " + HighscoreController.getHighscore(windowModel.getUserName(), windowModel.getLevel()));  
-        highscoreLabel.setFont(NORMAL_FONT);
+        highscoreLabel.setFont(Constants.NORMAL_FONT);
         CButton menuButton = new CButton("Menu");
 
         // Set action Listener  for Menu Button

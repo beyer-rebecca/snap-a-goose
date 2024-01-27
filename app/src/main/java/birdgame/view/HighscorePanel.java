@@ -2,6 +2,7 @@ package birdgame.view;
 
 import birdgame.controller.HighscoreController;
 import birdgame.controller.WindowController;
+import birdgame.model.Constants;
 import birdgame.model.WindowModel;
 import birdgame.utils.CButton;
 
@@ -30,8 +31,6 @@ import java.awt.Graphics;
  * for navigation within the application.
  */
 public class HighscorePanel extends JPanel {
-    private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
-    private static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     private WindowModel windowModel;
@@ -68,22 +67,22 @@ public class HighscorePanel extends JPanel {
         
         // creates and configures Labels and Buttons
         JLabel highscoreTitle = new JLabel("Highscores");
-        highscoreTitle.setFont(TITLE_FONT);
+        highscoreTitle.setFont(Constants.TITLE_FONT);
         JLabel level1Label = new JLabel("Forest");
-        level1Label.setFont(NORMAL_FONT);
+        level1Label.setFont(Constants.NORMAL_FONT);
         int highscoreLevel1 = HighscoreController.getHighscore(windowModel.getUserName(), 1);  
         scoreLevel1Label = new JLabel(Integer.toString(highscoreLevel1));
-        scoreLevel1Label.setFont(NORMAL_FONT);
+        scoreLevel1Label.setFont(Constants.NORMAL_FONT);
         JLabel level2Label = new JLabel("Winter");
-        level2Label.setFont(NORMAL_FONT);
+        level2Label.setFont(Constants.NORMAL_FONT);
         int highscoreLevel2 = HighscoreController.getHighscore(windowModel.getUserName(), 2); 
         scoreLevel2Label = new JLabel(Integer.toString(highscoreLevel2));
-        scoreLevel2Label.setFont(NORMAL_FONT);
+        scoreLevel2Label.setFont(Constants.NORMAL_FONT);
         JLabel level3Label = new JLabel("Night");
-        level3Label.setFont(NORMAL_FONT);
+        level3Label.setFont(Constants.NORMAL_FONT);
         int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);
         scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
-        scoreLevel3Label.setFont(NORMAL_FONT);
+        scoreLevel3Label.setFont(Constants.NORMAL_FONT);
         CButton backButton = new CButton("Back");
 
         // Implementation of component Listener and Performer for Back Button

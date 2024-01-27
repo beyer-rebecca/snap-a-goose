@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 
 import birdgame.controller.WindowController;
+import birdgame.model.Constants;
 import birdgame.model.WindowModel;
 import birdgame.utils.CButton;
 
@@ -24,9 +25,6 @@ import birdgame.utils.CButton;
  * This class extends JPanel and displays the credits for the game, including the names of contributors and a back Button.
  */
 public class CreditsPanel extends JPanel{
-    private static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
-    private static final Font SMALL_FONT = new Font("TimesRoman", Font.PLAIN, 15);  
-    private static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     private Image backgroundImage;
@@ -56,27 +54,27 @@ public class CreditsPanel extends JPanel{
         // Implementation of components
         CButton backButton = new CButton("Back");
         JLabel titleLabel = new JLabel("Credits");
-        titleLabel.setFont(TITLE_FONT);
+        titleLabel.setFont(Constants.TITLE_FONT);
         JLabel programLabel = new JLabel("Programming");
-        programLabel.setFont(SMALL_FONT);
+        programLabel.setFont(Constants.SMALL_FONT);
         JLabel programName1Label = new JLabel("Nils Wiemer");
-        programName1Label.setFont(NORMAL_FONT);
+        programName1Label.setFont(Constants.NORMAL_FONT);
         JLabel programName2Label = new JLabel("Rebecca Beyer");
-        programName2Label.setFont(NORMAL_FONT);
+        programName2Label.setFont(Constants.NORMAL_FONT);
         JLabel artLabel = new JLabel("Art");
-        artLabel.setFont(SMALL_FONT);
+        artLabel.setFont(Constants.SMALL_FONT);
         JLabel artName1Label = new JLabel("CraiZenCreations");
-        artName1Label.setFont(NORMAL_FONT);
+        artName1Label.setFont(Constants.NORMAL_FONT);
         JLabel artName2Label = new JLabel("Vectorbox Studio");
-        artName2Label.setFont(NORMAL_FONT);
+        artName2Label.setFont(Constants.NORMAL_FONT);
         JLabel artName3Label = new JLabel("Srabon Arafat");
-        artName3Label.setFont(NORMAL_FONT);
+        artName3Label.setFont(Constants.NORMAL_FONT);
         JLabel artName4Label = new JLabel("joan12345");
-        artName4Label.setFont(NORMAL_FONT);
+        artName4Label.setFont(Constants.NORMAL_FONT);
         JLabel artName5Label = new JLabel("SignalFadingTransmission91881");
-        artName5Label.setFont(NORMAL_FONT);
+        artName5Label.setFont(Constants.NORMAL_FONT);
         JLabel artName6Label = new JLabel("DALEE3");
-        artName6Label.setFont(NORMAL_FONT);
+        artName6Label.setFont(Constants.NORMAL_FONT);
         JComponent glue = (JComponent) Box.createVerticalGlue();
 
         // Set action listeners for back button

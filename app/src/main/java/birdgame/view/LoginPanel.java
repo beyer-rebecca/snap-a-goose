@@ -17,6 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import birdgame.controller.WindowController;
+import birdgame.model.Constants;
 import birdgame.model.WindowModel;
 import birdgame.utils.CButton;
 import birdgame.controller.AuthenticationController;
@@ -27,8 +28,6 @@ import birdgame.controller.LoginController;
  * in the Bird Game application. It includes fields for user input and navigation buttons.
  */
 public class LoginPanel extends JPanel {
-    private final static Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
-    private final static Font SMALL_FONT = new Font("TimesRoman", Font.PLAIN, 15);  
     private final static Font gameTITLE_FONT = new Font("TimesRoman", Font.BOLD, 50);
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
@@ -79,15 +78,15 @@ public class LoginPanel extends JPanel {
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
-        name.setFont(SMALL_FONT);
+        name.setFont(Constants.SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(NORMAL_FONT);
+        nameInput.setFont(Constants.NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(SMALL_FONT);
+        password.setFont(Constants.SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(NORMAL_FONT);
+        passwordInput.setFont(Constants.NORMAL_FONT);
         JLabel newAccountLabel = new JLabel("Create new Account");
-        newAccountLabel.setFont(SMALL_FONT);
+        newAccountLabel.setFont(Constants.SMALL_FONT);
 
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
@@ -168,19 +167,19 @@ public class LoginPanel extends JPanel {
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
-        name.setFont(SMALL_FONT);
+        name.setFont(Constants.SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(NORMAL_FONT);
+        nameInput.setFont(Constants.NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(SMALL_FONT);
+        password.setFont(Constants.SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(NORMAL_FONT);
+        passwordInput.setFont(Constants.NORMAL_FONT);
         JLabel newAccountLabel = new JLabel("Create new Account");
-        newAccountLabel.setFont(SMALL_FONT);
+        newAccountLabel.setFont(Constants.SMALL_FONT);
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
         JLabel error = new JLabel("Login failed!");
-        error.setFont(NORMAL_FONT);
+        error.setFont(Constants.NORMAL_FONT);
         error.setForeground(Color.RED);
 
         // Set action Listener for login and register buttons
@@ -261,21 +260,21 @@ public class LoginPanel extends JPanel {
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         JLabel name = new JLabel("Name");
-        name.setFont(SMALL_FONT);
+        name.setFont(Constants.SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(NORMAL_FONT);
+        nameInput.setFont(Constants.NORMAL_FONT);
         JLabel email = new JLabel("E-Mail");
-        email.setFont(SMALL_FONT);
+        email.setFont(Constants.SMALL_FONT);
         JTextField emailInput = new JTextField(10);
-        emailInput.setFont(NORMAL_FONT);
+        emailInput.setFont(Constants.NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(SMALL_FONT);
+        password.setFont(Constants.SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(NORMAL_FONT);
+        passwordInput.setFont(Constants.NORMAL_FONT);
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
         JLabel newAccountLabel = new JLabel("Already have an account?");
-        newAccountLabel.setFont(SMALL_FONT);
+        newAccountLabel.setFont(Constants.SMALL_FONT);
 
         // Set action Listener for login and register buttons
         login.addActionListener(new ActionListener() {
@@ -356,25 +355,25 @@ public class LoginPanel extends JPanel {
         
         // Initialize Labels, TextFields, PasswordField and Buttons
         JLabel name = new JLabel("Name:");
-        name.setFont(SMALL_FONT);
+        name.setFont(Constants.SMALL_FONT);
         JTextField nameInput = new JTextField(10);
-        nameInput.setFont(NORMAL_FONT);
+        nameInput.setFont(Constants.NORMAL_FONT);
         JLabel email = new JLabel("E-Mail");
-        email.setFont(SMALL_FONT);
+        email.setFont(Constants.SMALL_FONT);
         JTextField emailInput = new JTextField(10);
-        emailInput.setFont(NORMAL_FONT);
+        emailInput.setFont(Constants.NORMAL_FONT);
         JLabel password = new JLabel("Password");
-        password.setFont(SMALL_FONT);
+        password.setFont(Constants.SMALL_FONT);
         JPasswordField passwordInput = new JPasswordField(10);
-        passwordInput.setFont(NORMAL_FONT);
+        passwordInput.setFont(Constants.NORMAL_FONT);
         JLabel newAccountLabel = new JLabel("Already have an account?");
-        newAccountLabel.setFont(SMALL_FONT);
+        newAccountLabel.setFont(Constants.SMALL_FONT);
         JLabel gameLabel = new JLabel("SNAP A GOOSE");
         gameLabel.setFont(gameTITLE_FONT);
         CButton register = new CButton("Register");
         CButton login = new CButton("Login");
         JLabel error = new JLabel("Registration failed!");
-        error.setFont(NORMAL_FONT);
+        error.setFont(Constants.NORMAL_FONT);
         error.setForeground(Color.RED);
 
         // Set action Listener for Menu Button 

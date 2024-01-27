@@ -1,5 +1,6 @@
 package birdgame.model;
 
+import java.awt.Font;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,6 +11,12 @@ import birdgame.utils.Vec2;
  * Each nested class defines the initial positions and boundaries of birds for that specific level.
  */
 public class Constants {
+
+    
+    public static final Font SMALL_FONT = new Font("TimesRoman", Font.PLAIN, 15);
+    public static final Font TITLE_FONT = new Font("TimesRoman", Font.BOLD, 30);
+    public static final Font NORMAL_FONT = new Font("TimesRoman", Font.BOLD, 20);
+    public static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
 
     /**
      * Level1 class contains constants for the first level of the Bird Game.
