@@ -16,13 +16,6 @@ import javax.swing.JPanel;
  */
 public class WindowView extends JFrame{
     
-    private MenuPanel menuPanel;
-    private LevelSelectPanel levelSelectPanel;
-    private LoginPanel loginPanel;
-    private HighscorePanel highscorePanel;
-    private CreditsPanel creditsPanel;
-    private GameOverPanel gameOverPanel;
-
     private JPanel currentPanel;
 
     /**
