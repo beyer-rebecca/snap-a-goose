@@ -62,14 +62,9 @@ public class HighscoreController {
             Object obj = parser.parse(reader);
             JSONObject combinedObject = (JSONObject) obj;
             JSONObject innerObject = (JSONObject) combinedObject.get(username);
-            if(innerObject.get("scoreLevel" + level) != null && Integer.valueOf(innerObject.get("scoreLevel" + level).toString()) < score){
-                innerObject.put("scoreLevel" + level, score);
-                combinedObject.put(username, innerObject);
-                FileWriter writer = new FileWriter(path);
-                writer.write(combinedObject.toString());
-                writer.flush();
-                writer.close();
-            } else if(innerObject.get("scoreLevel" + level) == null){
+            if(innerObject.get("scoreLevel" + level) == null || 
+                    innerObject.get("scoreLevel" + level) != null && 
+                    Integer.valueOf(innerObject.get("scoreLevel" + level).toString()) < score){
                 innerObject.put("scoreLevel" + level, score);
                 combinedObject.put(username, innerObject);
                 FileWriter writer = new FileWriter(path);
