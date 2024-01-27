@@ -49,44 +49,4 @@ public class WindowView extends JFrame{
         repaint();
         revalidate();
     }
-
-    
-    /** 
-     * @return LoginPanel
-     */
-    public LoginPanel getLoginPanel(){
-        return this.loginPanel;
-    }
-
-    
-    /** 
-     * @return MenuPanel
-     */
-    public MenuPanel getMenuPanel(){
-        return this.menuPanel;
-    }
-    
-    /** 
-     * @return LevelSelectPanel
-     */
-    public LevelSelectPanel getLevelSelectPanel(){
-        return this.levelSelectPanel;
-    }
-
-    
-    /** 
-     * @return CreditsPanel
-     */
-    public CreditsPanel getCreditsPanel(){
-        return this.creditsPanel;
-    }
-
-    public HighscorePanel getHighscorePanel(){
-        return this.highscorePanel;
-    }
-
-    public GameOverPanel getgameOverPanel(){
-        return this.gameOverPanel;
-    }
-
 }

@@ -8,7 +8,10 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
 }
+
+version = '1.0.0'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -55,3 +58,22 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+tasks.register('uberJar', Jar) {
+    archiveClassifier = 'uber'
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
+// jar{
+//     manifest{
+//         attributes 'Main-Class': application.mainClass
+//     }
+// }
