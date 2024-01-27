@@ -75,7 +75,7 @@ public class AuthenticationController{
      *
      * @return The file path as a string.
      */
-    private static String getPath() {
+    public static String getPath() {
         if (SystemUtils.IS_OS_WINDOWS) {
             return System.getProperty("user.home") + WINDOWS_PATH;
         } else if(SystemUtils.IS_OS_MAC){

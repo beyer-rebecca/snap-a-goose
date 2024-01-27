@@ -19,20 +19,6 @@ public class HighscoreController {
     private static final String OTHER_OS_PATH = "/.local/share/birdgame/birdgame.json";
     private static final String MACOS_PATH = "/Library/Preferences/birdgame/birdgame.json";
     
-    /**
-     * Retrieves the file path for storing highscore data based on the operating system.
-     *
-     * @return The file path as a string.
-     */
-    private static String getFilePath() {
-        if (SystemUtils.IS_OS_WINDOWS) {
-            return System.getProperty("user.home") + WINDOWS_PATH;
-        } else if(SystemUtils.IS_OS_MAC){
-            return System.getProperty("user.home") + MACOS_PATH;
-        } else {
-            return System.getProperty("user.home") + OTHER_OS_PATH;
-        }
-    }
 
     /**
      * Retrieves the highscore for a specific user and level.
@@ -42,7 +28,7 @@ public class HighscoreController {
      * @return The highscore as an integer, or 0 if not found or on error.
      */
     public static int getHighscore(String username, int level){
-        String path = getFilePath();
+        String path = AuthenticationController.getPath();
 
         try(FileReader reader = new FileReader(path))
         {
@@ -69,7 +55,7 @@ public class HighscoreController {
     
     @SuppressWarnings("unchecked")
     public static void updateHighscore(String username, int level, int score){
-        String path = getFilePath();
+        String path = AuthenticationController.getPath();
         try (FileReader reader = new FileReader(path))
         {
             JSONParser parser = new JSONParser();
