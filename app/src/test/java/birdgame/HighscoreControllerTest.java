@@ -35,12 +35,12 @@ class HighscoreControllerTest {
         writer.close();
 
         
-        assertEquals(1, HighscoreController.getHighscore("Kim Beispiel", 1));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 1));
-        assertEquals(0, HighscoreController.getHighscore("Kim Beispiel", 5));
-        assertEquals(0, HighscoreController.getHighscore("Kim Beispiel", 0));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 0));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 5));
+        assertEquals(1, HighscoreController.getUserHighscore("Kim Beispiel", 1));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 1));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Beispiel", 5));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Beispiel", 0));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 0));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 5));
         
     }
     
@@ -64,12 +64,12 @@ class HighscoreControllerTest {
         writer.close();
 
         
-        assertEquals(1, HighscoreController.getHighscore("Kim Beispiel", 1));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 1));
-        assertEquals(0, HighscoreController.getHighscore("Kim Beispiel", 5));
-        assertEquals(0, HighscoreController.getHighscore("Kim Beispiel", 0));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 0));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 5));
+        assertEquals(1, HighscoreController.getUserHighscore("Kim Beispiel", 1));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 1));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Beispiel", 5));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Beispiel", 0));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 0));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 5));
         
     }
     
@@ -93,12 +93,12 @@ class HighscoreControllerTest {
         writer.close();
 
         
-        assertEquals(1, HighscoreController.getHighscore("Kim Beispiel", 1));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 1));
-        assertEquals(0, HighscoreController.getHighscore("Kim Beispiel", 5));
-        assertEquals(0, HighscoreController.getHighscore("Kim Beispiel", 0));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 0));
-        assertEquals(0, HighscoreController.getHighscore("Kim Muster", 5));
+        assertEquals(1, HighscoreController.getUserHighscore("Kim Beispiel", 1));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 1));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Beispiel", 5));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Beispiel", 0));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 0));
+        assertEquals(0, HighscoreController.getUserHighscore("Kim Muster", 5));
         
     }
 }

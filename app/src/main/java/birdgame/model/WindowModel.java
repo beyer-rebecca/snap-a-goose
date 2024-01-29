@@ -85,18 +85,38 @@ public class WindowModel {
         return this.menuPanel;
     }
 
+    /**
+     * Returns the LevelSelectPanel instance.
+     *
+     * @return The LevelSelectPanel associated with this object.
+     */
     public LevelSelectPanel getLevelSelectPanel(){
         return this.levelSelectPanel;
     }
 
+    /**
+     * Returns the CreditsPanel instance.
+     *
+     * @return The CreditsPanel associated with this object.
+     */
     public CreditsPanel getCreditsPanel(){
         return this.creditsPanel;
     }
 
-    public HighscorePanel getHighscorePanel(){
+    /**
+     * Returns the HighscorePanel instance for the current user.
+     *
+     * @return The HighscorePanel associated with this object.
+     */
+    public HighscorePanel getUserHighscorePanel(){
         return this.highscorePanel;
     }
 
+    /**
+     * Returns the ManualPanel instance.
+     *
+     * @return The ManualPanel associated with this object.
+     */
     public ManualPanel getManualPanel(){
         return this.manualPanel;
     }

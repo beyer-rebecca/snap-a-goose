@@ -15,6 +15,9 @@
  * 
  * - {@link birdgame.model.ScoreModel}: Holds the player's score throughout the game.
  * 
+ * - {@link birdgame.model.Constants}: Provides game constants, including fonts and image paths, and nested 
+ *   classes for level-specific configurations.
+ * 
  * - {@link birdgame.model.WindowModel}: Serves as the data model for the game's user interface,
  *   linking the view components with the underlying game data.
  */

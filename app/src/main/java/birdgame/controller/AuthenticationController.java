@@ -100,6 +100,16 @@ public class AuthenticationController{
         }
     }
 
+
+    /**
+     * Checks if a file exists at the specified path, If not, a new directory and file are created.
+     * Writes a predefined JSON structure into the file.
+     *
+     * @param path Path to the file to be checked.
+     * @param dir Directory to create the file in if it doesn't exist.
+     * 
+     * An IOException is printed to the console if encountered.
+ */
     private static void fileNotExists(String path, String dir){
         File f = new File(path);
         if(!f.exists()) { 
