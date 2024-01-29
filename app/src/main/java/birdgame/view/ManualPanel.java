@@ -6,7 +6,6 @@ import java.awt.Insets;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
@@ -25,7 +24,6 @@ import birdgame.utils.CButton;
  */
 public class ManualPanel extends JPanel {
     private static final String BACKGROUND_IMAGE_PATH = "appBackgroundBlurred.jpg";
-
     private final String INSTRUCTIONS_TEXT = """
         <html> Your mission: capture as many geese on camera as you can before time runs out. <br>
         These geese are tricky, hiding behind trees and appearing briefly. <br>
@@ -36,9 +34,6 @@ public class ManualPanel extends JPanel {
         Keep an eye on your score at the top right of the screen, <br> and watch the remaining time at the top left. 
         The game ends when the timer hits zero. <br> <br> Good luck and Happy Snapping! </html>
         """;
-
-
-
     private final int backgroundWidth;
     private final int backgroundHeight;
     private Image backgroundImage;

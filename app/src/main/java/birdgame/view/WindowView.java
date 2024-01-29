@@ -5,14 +5,8 @@ import javax.swing.JPanel;
 
 
 /**
- * Represents the main window of the Bird Game application.
- * It extends {@code JFrame} and serves as the primary container for the different panels 
- * corresponding to various views in the game: main menu, level selection, login, 
- * highscores, credits, manualand game over screens.
- *
- * <p>This class is responsible for managing the display and switching between different 
- * panels based on user interactions and game state changes. It initializes the main 
- * window settings such as title, non-resizability, and default close operation.
+ * Represents the main window of the Bird Game application. 
+ * This class extends JFrame and manages the different panels (views) that are displayed.
  */
 public class WindowView extends JFrame{
     

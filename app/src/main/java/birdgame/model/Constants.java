@@ -7,8 +7,8 @@ import java.util.List;
 import birdgame.utils.Vec2;
 
 /**
- * The Constants class contains static nested classes for each level of the Bird Game.
- * Each nested class defines the initial positions and boundaries of birds for that specific level.
+ * Provides game constants, including fonts and image paths, and nested classes for level-specific configurations.
+ * Each nested class in Constants defines the initial positions and boundaries of birds for a specific level in the Bird Game.
  */
 public class Constants {
 

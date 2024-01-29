@@ -10,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Font;
 
 import birdgame.controller.WindowController;
 import birdgame.controller.GameController;
