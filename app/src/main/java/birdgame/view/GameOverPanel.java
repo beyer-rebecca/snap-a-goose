@@ -58,7 +58,7 @@ public class GameOverPanel extends JPanel{
         gameOverLabel.setFont(Constants.TITLE_FONT);
         JLabel scoreLabel = new JLabel("Score:   " + scoreController.getScoreModel().getCurrentScore());  
         scoreLabel.setFont(Constants.NORMAL_FONT);
-        JLabel highscoreLabel = new JLabel("Highscore:   " + HighscoreController.getHighscore(windowModel.getUserName(), windowModel.getLevel()));  
+        JLabel highscoreLabel = new JLabel("Highscore:   " + HighscoreController.getUserHighscore(windowModel.getUserName(), windowModel.getLevel()));  
         highscoreLabel.setFont(Constants.NORMAL_FONT);
         CButton menuButton = new CButton("Menu");
 

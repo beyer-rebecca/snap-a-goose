@@ -93,7 +93,7 @@ public class WindowModel {
         return this.creditsPanel;
     }
 
-    public HighscorePanel getHighscorePanel(){
+    public HighscorePanel getUserHighscorePanel(){
         return this.highscorePanel;
     }
 

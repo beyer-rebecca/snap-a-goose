@@ -70,17 +70,17 @@ public class HighscorePanel extends JPanel {
         highscoreTitle.setFont(Constants.TITLE_FONT);
         JLabel level1Label = new JLabel("Forest");
         level1Label.setFont(Constants.NORMAL_FONT);
-        int highscoreLevel1 = HighscoreController.getHighscore(windowModel.getUserName(), 1);  
+        int highscoreLevel1 = HighscoreController.getUserHighscore(windowModel.getUserName(), 1);  
         scoreLevel1Label = new JLabel(Integer.toString(highscoreLevel1));
         scoreLevel1Label.setFont(Constants.NORMAL_FONT);
         JLabel level2Label = new JLabel("Winter");
         level2Label.setFont(Constants.NORMAL_FONT);
-        int highscoreLevel2 = HighscoreController.getHighscore(windowModel.getUserName(), 2); 
+        int highscoreLevel2 = HighscoreController.getUserHighscore(windowModel.getUserName(), 2); 
         scoreLevel2Label = new JLabel(Integer.toString(highscoreLevel2));
         scoreLevel2Label.setFont(Constants.NORMAL_FONT);
         JLabel level3Label = new JLabel("Night");
         level3Label.setFont(Constants.NORMAL_FONT);
-        int highscoreLevel3 = HighscoreController.getHighscore(windowModel.getUserName(), 3);
+        int highscoreLevel3 = HighscoreController.getUserHighscore(windowModel.getUserName(), 3);
         scoreLevel3Label = new JLabel(Integer.toString(highscoreLevel3));
         scoreLevel3Label.setFont(Constants.NORMAL_FONT);
         CButton backButton = new CButton("Back");
@@ -157,8 +157,8 @@ public class HighscorePanel extends JPanel {
         if (this.backgroundImage != null) {
             arg0.drawImage(this.backgroundImage, 0, 0, WindowModel.WINDOW_WIDTH, WindowModel.WINDOW_HEIGHT, this);
            }
-        scoreLevel1Label.setText(Integer.toString(HighscoreController.getHighscore(windowModel.getUserName(), 1)));
-        scoreLevel2Label.setText(Integer.toString(HighscoreController.getHighscore(windowModel.getUserName(), 2)));
-        scoreLevel3Label.setText(Integer.toString(HighscoreController.getHighscore(windowModel.getUserName(), 3)));
+        scoreLevel1Label.setText(Integer.toString(HighscoreController.getUserHighscore(windowModel.getUserName(), 1)));
+        scoreLevel2Label.setText(Integer.toString(HighscoreController.getUserHighscore(windowModel.getUserName(), 2)));
+        scoreLevel3Label.setText(Integer.toString(HighscoreController.getUserHighscore(windowModel.getUserName(), 3)));
     }
 }

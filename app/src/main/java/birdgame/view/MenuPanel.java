@@ -81,7 +81,7 @@ public class MenuPanel extends JPanel{
         CButton highscoreButton = new CButton("Highscores");
         highscoreButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                windowController.navigateToPanel(windowModel.getHighscorePanel());
+                windowController.navigateToPanel(windowModel.getUserHighscorePanel());
             }
         });
 

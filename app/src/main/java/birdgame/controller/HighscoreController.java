@@ -20,7 +20,7 @@ public class HighscoreController {
      * @param level The game level for which to retrieve the highscore.
      * @return The highscore as an integer, or 0 if not found or on error.
      */
-    public static int getHighscore(String username, int level){
+    public static int getUserHighscore(String username, int level){
         String path = AuthenticationController.getPath();
 
         try(FileReader reader = new FileReader(path))
