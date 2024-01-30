@@ -28,6 +28,24 @@ public class GameModel {
     }
 
     /**
+     * Retrieves the frames per second setting.
+     * 
+     * @return The frames per second.
+     */
+    public int getFPS_SET(){
+        return FPS_SET;
+    }
+
+    /**
+     * Retrieves the updates per second setting.
+     * 
+     * @return The updates per second.
+     */
+    public int getUPS_SET(){
+        return UPS_SET;
+    }
+
+    /**
      * Retrieves the current game time.
      * The game time counts down from MAX_TIME to 0 during gameplay.
      *
