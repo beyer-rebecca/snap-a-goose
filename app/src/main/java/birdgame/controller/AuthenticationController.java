@@ -28,12 +28,10 @@ public class AuthenticationController{
 
 
 
-    /**
-     * Verifies if the given email is valid based on the specified email regex pattern.
-     *
-     * @param email The email string to be verified.
-     * @return true if the email is valid, false otherwise.
-     */
+    
+    // Verifies if the given email is valid based on the specified email regex pattern
+    // @param email The email string to be verified.
+    // @return true if the email is valid, false otherwise.
     private static boolean verifyEmail(String email){
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         return pattern.matcher(email).matches();

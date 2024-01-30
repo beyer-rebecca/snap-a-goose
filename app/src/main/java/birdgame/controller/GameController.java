@@ -88,11 +88,8 @@ public class GameController implements Runnable{
     }
 
 
-    
-    /** 
-     * @param imagePath
-     * @param maskPath
-     */
+    // @param imagePath
+    // @param maskPath
     private void loadImages(String imagePath, String maskPath){
         try{
             backgroundImage = ImageIO.read(getClass().getClassLoader().getResource(imagePath));

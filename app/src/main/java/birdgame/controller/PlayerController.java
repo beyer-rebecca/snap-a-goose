@@ -51,13 +51,10 @@ public class PlayerController {
         }
     }
 
-    /**
-     * Searches for a bird within the photo bounds based on the given coordinates.
-     *
-     * @param posX The x-coordinate of the photo.
-     * @param posY The y-coordinate of the photo.
-     * @return The Bird object if found within the bounds; null otherwise.
-     */
+    // Searches for a bird within the photo bounds based on the given coordinates.
+    // @param posX The x-coordinate of the photo.
+    // @param posY The y-coordinate of the photo.
+    // @return The Bird object if found within the bounds; null otherwise.
     private BirdModel findBirdInPhoto(int posX, int posY){
            Iterator<BirdModel> birdIterator = birdFlock.getBirds().iterator();
             while (birdIterator.hasNext()) {
@@ -69,14 +66,11 @@ public class PlayerController {
             return null;
         }
 
-    /**
-     * Checks if the given coordinates are within the bounds of a specified bird.
-     *
-     * @param x The x-coordinate to check against the bird's position.
-     * @param y The y-coordinate to check against the bird's position.
-     * @param bird The Bird object to check the coordinates against.
-     * @return true if the coordinates are within the bird's bounds; false otherwise.
-     */
+    // Checks if the given coordinates are within the bounds of a specified bird.
+    //  @param x The x-coordinate to check against the bird's position.
+    // @param y The y-coordinate to check against the bird's position.
+    // @param bird The Bird object to check the coordinates against.
+    // @return true if the coordinates are within the bird's bounds; false otherwise.
     private boolean isInPhotoBounds(int x, int y, BirdModel bird) {
         Vec2 birdPos = bird.getPos();
         int birdWidth = bird.getWidth();
