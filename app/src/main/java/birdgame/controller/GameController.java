@@ -199,7 +199,7 @@ public class GameController implements Runnable{
             if(System.currentTimeMillis() - lastCheck >= 1000){
                 lastCheck = System.currentTimeMillis();
                 updateSec();
-                System.out.println("Fps: " + frames + "UPS: " + updates);
+                // System.out.println("Fps: " + frames + "UPS: " + updates);
                 frames = 0;
                 updates = 0;
             }
