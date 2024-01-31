@@ -160,17 +160,17 @@ public class GameController implements Runnable{
     @Override
     public void run() {
 
-        double timePerFrame = 1000000000.0 / game.getFPS_SET();
-        double timePerUpdate = 1000000000.0 / game.getUPS_SET();
+        double timePerFrame = 1000000000.0 / game.getFPS_SET();  // Zeit ein Frame bekommt in Nanosekunden
+        double timePerUpdate = 1000000000.0 / game.getUPS_SET(); // Zeit ein Update bekommt in Nanosekunden
 
-        long previousTime = System.nanoTime();
+        long previousTime = System.nanoTime();  // Zeit seit letzten loop run
 
         int frames = 0;
         int updates = 0;
-        long lastCheck = System.currentTimeMillis();
-
-        double deltaU = 0;
-        double deltaF = 0;
+        long lastCheck = System.currentTimeMillis();  
+ 
+        double deltaU = 0;  // Zeitabstand zwischen Updates  
+        double deltaF = 0;  // Zeitabstand zwischen Frames
 
         while(!gameThread.isInterrupted()){
             long currentTime = System.nanoTime();
@@ -180,6 +180,9 @@ public class GameController implements Runnable{
             deltaF += (currentTime - previousTime)/timePerFrame;
             previousTime = currentTime;
 
+            // wenn deltaU/F >= 1 dann ist die zeit seit dem letzten update 
+            // größer als timePerUpdate/Frame
+            // wenn zeit größer als timePerUpdate/Frame dann update/render
             if(deltaU >= 1){
                 update();
                 updates++;
@@ -193,10 +196,10 @@ public class GameController implements Runnable{
                 deltaF--;
             }
 
+            // nach jeder Skeunde reset
             if(System.currentTimeMillis() - lastCheck >= 1000){
                 lastCheck = System.currentTimeMillis();
                 updateSec();
-                // System.out.println("Fps: " + frames + "UPS: " + updates);
                 frames = 0;
                 updates = 0;
             }

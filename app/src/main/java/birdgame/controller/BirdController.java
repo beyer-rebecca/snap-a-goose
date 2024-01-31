@@ -35,6 +35,7 @@ public class BirdController{
      */
     public void render(Graphics g){
         for (BirdModel bird : birdFlock.getBirds()){
+            // wenn Bird sich bewegt und nicht fotografiert wurde, aktualisiert Position von Gans
             if(bird.getIsMoving() && !bird.getIsHit()){
                 try {
                     String birdImage = bird.getImage();
@@ -46,6 +47,7 @@ public class BirdController{
                     System.out.println(e);
                 }
             }
+            // wenn Bird sich bewegt und fotografiert wurde, aktualisiert Position von fotografierter Gans 
             if(bird.getIsMoving() && bird.getIsHit()){
                 try {
                     String birdImage = bird.getImageHit();
@@ -92,7 +94,7 @@ public class BirdController{
             if(bird.getIsAllowedMove()){
                 bird.setPosX(bird.getPosX() + bird.getBirdSpeed());
 
-            
+                // changes direction if over turn threshold 
                 if(bird.getTreeRight() + bird.getBIRD_MOVEMENT_LIMIT() <  bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
@@ -103,6 +105,7 @@ public class BirdController{
                     bird.setBirdSpeed(newSpeed);
                     bird.setBirdIsOutOfTree(false);
                 }
+                //bewegt sich nicht mehr wenn wieder hinter Baum ist
                 if(!bird.getBirdIsOutOfTree() && (bird.getPosX() > bird.getTreeLeft() && 
                         bird.getPosX() + bird.getHitWidth() <
                         bird.getTreeRight() || bird.getPosX() > bird.getTreeLeft() &&
