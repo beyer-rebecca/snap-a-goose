@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import birdgame.model.BirdFlockModel;
 import birdgame.model.Constants;
@@ -43,7 +44,7 @@ public class BirdController{
                     Image img = _img.getScaledInstance(bird.getWidth(), bird.getHeight(), Image.SCALE_SMOOTH);
                     Vec2 birdPos = bird.getPos();
                     g.drawImage(img, birdPos.x, birdPos.y, null);
-                } catch(Exception e){
+                } catch(IOException e){
                     System.out.println(e);
                 }
             }
@@ -55,7 +56,7 @@ public class BirdController{
                     Image img = _img.getScaledInstance(bird.getHitWidth(), bird.getHitHeight(), Image.SCALE_SMOOTH);
                     Vec2 birdPos = bird.getPos();
                     g.drawImage(img, birdPos.x, birdPos.y, null);
-                } catch(Exception e){
+                } catch(IOException e){
                     System.out.println(e);
                 }
             }
@@ -94,7 +95,7 @@ public class BirdController{
             if(bird.getIsAllowedMove()){
                 bird.setPosX(bird.getPosX() + bird.getBirdSpeed());
 
-                // changes direction if over turn threshold 
+                // ändert Richtung wenn über weitesten Punkt von Baum entfernt
                 if(bird.getTreeRight() + bird.getBIRD_MOVEMENT_LIMIT() <  bird.getPosX()){
                     float newSpeed = bird.getBirdSpeed() * -1;
                     bird.setBirdSpeed(newSpeed);
