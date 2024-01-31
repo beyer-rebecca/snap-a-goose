@@ -1,3 +1,10 @@
+# Abgabe
+
+Das Javadoc kann unter app/build/docs/javadoc gefunden werden.
+
+Die ausführbare .jar datei kann unter app/build/libs/birdgame-1.0.0.jar gefunden werden.
+
+
 # Git commits optiones
     
     feat – a new feature is introduced with the changes
