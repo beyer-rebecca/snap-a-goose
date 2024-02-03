@@ -4,6 +4,7 @@ Das Javadoc kann unter app/build/docs/javadoc gefunden werden.
 
 Die ausführbare .jar datei kann unter app/build/libs/birdgame-1.0.0.jar gefunden werden.
 
+Die Tests können unter app/src/test/ gefunden werden.
 
 # Git commits optiones
     
